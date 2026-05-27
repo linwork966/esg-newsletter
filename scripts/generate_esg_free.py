@@ -137,6 +137,15 @@ def clean_url(url: str) -> str:
     if not url:
         return url
     return url.split('?')[0]
+def is_url_accessible(url: str) -> bool:
+    """測試連結是否可以正常開啟，失效就回傳 False"""
+    if not url:
+        return False
+    try:
+        resp = requests.head(url, headers=HEADERS, timeout=8, allow_redirects=True)
+        return resp.status_code < 400
+    except Exception:
+        return False
 def clean_html(text: str) -> str:
     """移除 HTML 標籤，整理文字"""
     text = re.sub(r'<[^>]+>', ' ', text or '')
@@ -171,7 +180,8 @@ def fetch_feed(feed_cfg: dict, max_items: int = 5) -> list:
             
             if not title or len(title) < 10:
                 continue
-                
+            if not is_url_accessible(link):
+                link = ''    
             items.append({
                 'title': title,
                 'summary': summary or '點擊標題查看詳情',
