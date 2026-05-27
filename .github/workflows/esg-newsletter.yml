@@ -23,14 +23,17 @@ jobs:
       - name: Install dependencies
         run: pip install feedparser requests
 
+      - name: Sync with remote
+        run: |
+          git config --global user.name "ESG Bot"
+          git config --global user.email "esg-bot@actions"
+          git pull --rebase origin main
+
       - name: Generate ESG Report
         run: python scripts/generate_esg_free.py
 
       - name: Commit and push
         run: |
-          git config --global user.name "ESG Bot"
-          git config --global user.email "esg-bot@actions"
-          git pull --rebase origin main
           git add docs/
           git diff --staged --quiet || git commit -m "📊 ESG Report $(date +'%Y-%m-%d')"
           git push
