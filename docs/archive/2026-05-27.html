@@ -25,7 +25,7 @@ body{font-family:'Noto Sans TC',system-ui,sans-serif;background:var(--bg);color:
 .stat-n{font-size:2rem;font-weight:700;color:var(--g400);line-height:1}
 .stat-l{font-size:11px;opacity:.6;margin-top:2px}
 .free-badge{display:inline-block;background:rgba(76,175,128,.2);border:1px solid var(--g400);color:var(--g400);border-radius:20px;padding:3px 12px;font-size:11px;margin-top:1rem}
-nav{position:sticky;top:0;z-index:100;background:var(--card);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;gap:0;overflow-x:auto;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+nav{position:sticky;top:0;z-index:100;background:var(--card);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;overflow-x:auto;box-shadow:0 2px 8px rgba(0,0,0,.06)}
 nav a{display:flex;align-items:center;gap:6px;padding:1rem 1.25rem;color:var(--text2);text-decoration:none;font-size:14px;font-weight:500;white-space:nowrap;border-bottom:3px solid transparent;transition:.2s}
 nav a:hover{color:var(--g600);border-color:var(--g400)}
 .container{max-width:1100px;margin:0 auto;padding:2.5rem 1.5rem}
@@ -36,10 +36,9 @@ nav a:hover{color:var(--g600);border-color:var(--g400)}
 .sec-head p{font-size:12px;color:var(--textM);margin-top:2px}
 .sec-cnt{margin-left:auto;background:var(--g100);color:var(--g600);padding:3px 10px;border-radius:20px;font-size:12px;font-weight:600}
 .cards{display:flex;flex-direction:column;gap:1rem}
-.card{background:var(--card);border:1px solid var(--border);border-radius:var(--r-lg);padding:1.25rem 1.5rem;display:flex;gap:1rem;transition:.15s}
+.card{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--g400);border-radius:var(--r-lg);padding:1.25rem 1.5rem;display:flex;gap:1rem;transition:.15s}
 .card:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(45,122,79,.1)}
-.card{border-left:4px solid var(--g400)}
-.reg-card{border-left:4px solid var(--blue)}
+.reg-card{border-left-color:var(--blue)}
 .card-rank{font-size:1.4rem;font-weight:800;color:var(--g100);min-width:42px;text-align:center;padding-top:2px;line-height:1}
 .card-body{flex:1;min-width:0}
 .card-meta{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}
@@ -57,6 +56,7 @@ nav a:hover{color:var(--g600);border-color:var(--g400)}
 .read-more:hover{text-decoration:underline}
 .divider{display:flex;align-items:center;gap:10px;margin:1.25rem 0;font-size:12px;color:var(--textM)}
 .divider::before,.divider::after{content:'';flex:1;border-top:1px dashed var(--border)}
+.empty{text-align:center;padding:2rem;color:var(--textM);font-size:14px}
 footer{background:var(--g900);color:rgba(255,255,255,.6);text-align:center;padding:2rem;font-size:13px}
 footer strong{color:rgba(255,255,255,.9)}
 @media(max-width:640px){.card{flex-direction:column}.stats{gap:1.25rem}}
@@ -67,18 +67,18 @@ footer strong{color:rgba(255,255,255,.9)}
 <header class="header">
   <div class="h-badge">🌿 ESG WEEKLY INTELLIGENCE</div>
   <h1>全球 <span>ESG</span> 週報</h1>
-  <p>2026年05月27日 &nbsp;·&nbsp; 第21週</p>
+  <p>2026年05月27日 &nbsp;·&nbsp; 第21週 &nbsp;·&nbsp; 全球 + 台灣</p>
   <div class="stats">
     <div class="stat"><div class="stat-n">10</div><div class="stat-l">精選新聞</div></div>
     <div class="stat"><div class="stat-n">10</div><div class="stat-l">市場消息</div></div>
-    <div class="stat"><div class="stat-n">6</div><div class="stat-l">追蹤法規</div></div>
-    <div class="stat"><div class="stat-n">4</div><div class="stat-l">法規動態</div></div>
+    <div class="stat"><div class="stat-n">7</div><div class="stat-l">追蹤法規</div></div>
+    <div class="stat"><div class="stat-n">5</div><div class="stat-l">法規動態</div></div>
   </div>
-  <div class="free-badge">✅ 完全免費 · 由 RSS 自動彙整</div>
+  <div class="free-badge">✅ 完全免費 · 連結已驗證可直接閱讀</div>
 </header>
 
 <nav>
-  <a href="#news">📰 全球新聞</a>
+  <a href="#news">📰 全球+台灣新聞</a>
   <a href="#market">📊 市場消息</a>
   <a href="#regulations">🏛 法規追蹤</a>
 </nav>
@@ -88,7 +88,7 @@ footer strong{color:rgba(255,255,255,.9)}
   <section class="section" id="news">
     <div class="sec-head">
       <div class="sec-icon">📰</div>
-      <div><h2>ESG 全球新聞</h2><p>來自 ESG Today、UN、Google News 等免費來源彙整</p></div>
+      <div><h2>ESG 全球 + 台灣新聞</h2><p>來自 Google News 彙整，每筆連結皆已驗證可直接開啟</p></div>
       <span class="sec-cnt">Top 10</span>
     </div>
     <div class="cards"><div class="card">
@@ -98,12 +98,12 @@ footer strong{color:rgba(255,255,255,.9)}
           <span class="tag">🌱 ESG綜合</span>
           <span class="tag">🌐 全球</span>
         </div>
-        <h3 class="card-title">BP Removes New Chair Over Governance, Conduct Concerns - ESG Today</h3>
-        <p class="card-summary">BP Removes New Chair Over Governance, Conduct Concerns ESG Today</p>
+        <h3 class="card-title">CPM Advances ESG Integration Across Its Operations - Mexico Business News</h3>
+        <p class="card-summary">CPM Advances ESG Integration Across Its Operations Mexico Business News</p>
         <div class="card-footer">
-          <span>📰 Google News - ESG Today</span>
+          <span>📰 Google News - ESG 綜合</span>
           <span>🗓 2026/05/27</span>
-          <a href="https://news.google.com/rss/articles/CBMihgFBVV95cUxOaGpFSEJ1M0NFVHRBTmdmT2tVeFN0X044LVZGV1ZJbTlGaDFOSFhJYk5aR2QtbE5OaDN3VE5GbjF2RHpEM3FLTXdPallPclBQWTNSTk9xUG56aHc1TFh1U1N4OGh0amY3Sy02dkhjekQwU1Z6SU9JWS1zUnF3VWw5SG1sN2dtUQ?oc=5" target="_blank" rel="noopener" class="read-more">閱讀原文 →</a>
+          <a href="https://news.google.com/rss/articles/CBMinwFBVV95cUxOZkVwelhBdjlEU3ZMNVhvcWpZZ0lla1BBSDg2UnFrMi1ud1Awd3dneTJ5Tk5rR0YwZWtOLXp4ZlVaV1BEM1hXTWRWVGMxTEEzSUNaY2JsdmJjdkFOV0xYSWdvQ3g3Z3ZNRk91Rm1pelZSTkFSelFpeGlzc21UQUZDVGNiQy1zaWlVaTVpNW1JeUNGaTljMGlONW9RakJGWXM?oc=5" target="_blank" rel="noopener" class="read-more">閱讀原文 →</a>
         </div>
       </div>
     </div>
@@ -114,12 +114,12 @@ footer strong{color:rgba(255,255,255,.9)}
           <span class="tag">🌱 ESG綜合</span>
           <span class="tag">🌐 全球</span>
         </div>
-        <h3 class="card-title">SBTi Broadens Focus from Climate Target Setting to Implementation - ESG Today</h3>
-        <p class="card-summary">SBTi Broadens Focus from Climate Target Setting to Implementation ESG Today</p>
+        <h3 class="card-title">It’s official: Shein will acquire Everlane - ESG Dive</h3>
+        <p class="card-summary">It’s official: Shein will acquire Everlane ESG Dive</p>
         <div class="card-footer">
-          <span>📰 Google News - ESG Today</span>
-          <span>🗓 2026/05/22</span>
-          <a href="https://news.google.com/rss/articles/CBMilgFBVV95cUxNLXVjRXI0M2h4TWp4MHZDS3JBaTFaY3p1YmF2aVN1Zk5MVEVsM2MtMTkyYWNmMDVGa1NNck9KcXBZalBmVy1iV29fU1RNV1ZDRFJqNk5aRGFJNE5sYTNhMjFOZ0V3SnBVZnA1S3NWM3Jmem5hVE9uVEotQVg2MTJrZW5oQXlvOWg0MC1ZandSUzNoWHQ2clE?oc=5" target="_blank" rel="noopener" class="read-more">閱讀原文 →</a>
+          <span>📰 Google News - ESG 綜合</span>
+          <span>🗓 2026/05/26</span>
+          <a href="https://news.google.com/rss/articles/CBMieEFVX3lxTE5sNWQxU0FjZUYtcURKZ0JPWFN3dkZMWWxTa1VKUXhzNTVIRmtLeURmaV9iVUlKdkhUTWxMTTBYUkVGUlplamF3OW9ULVhrTks2QmhZRm91U2pGNlE4WWlpVFAwQkd6czd0dWVqWjJldXdfc1Jhb2c4Sg?oc=5" target="_blank" rel="noopener" class="read-more">閱讀原文 →</a>
         </div>
       </div>
     </div>
@@ -130,12 +130,12 @@ footer strong{color:rgba(255,255,255,.9)}
           <span class="tag">🌱 ESG綜合</span>
           <span class="tag">🌐 全球</span>
         </div>
-        <h3 class="card-title">Four States Launch Lawsuits Against Proxy Advisor ISS Over ESG Policies - ESG Today</h3>
-        <p class="card-summary">Four States Launch Lawsuits Against Proxy Advisor ISS Over ESG Policies ESG Today</p>
+        <h3 class="card-title">Board 50% women as Eldorado Gold details climate and community in 2025 report - Stock Titan</h3>
+        <p class="card-summary">Board 50% women as Eldorado Gold details climate and community in 2025 report Stock Titan</p>
         <div class="card-footer">
-          <span>📰 Google News - ESG Today</span>
-          <span>🗓 2026/05/22</span>
-          <a href="https://news.google.com/rss/articles/CBMingFBVV95cUxPMk9zNWVoWFdXZzNsRGp4d3o0ZFJ0WE43SEt2ZXQ2LTR1Nl9CTXhmZkt1X0RCcUNxd0VjVXRwT1dOUi1SWXZGU0RKWTZSeGdkd0N1QldlOXk0ZjRqbXdyM0RuNm9rLTlIMWc0aXY3OGRmdWZDOVNfWkVEcFdtT3N2Y2loTzY5Nlh2ZkhTMS1VMHFQYVFTRnZpcTRhZWViUQ?oc=5" target="_blank" rel="noopener" class="read-more">閱讀原文 →</a>
+          <span>📰 Google News - ESG 綜合</span>
+          <span>🗓 2026/05/27</span>
+          <a href="https://news.google.com/rss/articles/CBMiugFBVV95cUxQbGZtd3dmQ3FJMW5jV043X21aRTA5SkF0TzRObjVZalRlSGQwTmVYU09vdmtLVGJqdEM1QWsxbDYyZThua2ViNmx6alVIY2ctXzNLMTJUZDhZV281Sk1BU3ptZ1A2SjJyVU5tWXNNMW9JWXhpV1NRWlVIWUZzbTN6amUxUnZoZ3Q2RGRpZzk3TXJHOHE3X09aTHQxLUZnMGlWa3hvRUJqbnBIUV91T1ZmdTBpc1QwT2drZHc?oc=5" target="_blank" rel="noopener" class="read-more">閱讀原文 →</a>
         </div>
       </div>
     </div>
@@ -146,12 +146,12 @@ footer strong{color:rgba(255,255,255,.9)}
           <span class="tag">🌱 ESG綜合</span>
           <span class="tag">🌐 全球</span>
         </div>
-        <h3 class="card-title">Microsoft Signs First Major Carbon Removal Deal Since Reportedly Pausing Purchases - ESG Today</h3>
-        <p class="card-summary">Microsoft Signs First Major Carbon Removal Deal Since Reportedly Pausing Purchases ESG Today</p>
+        <h3 class="card-title">ESG controllers improve sustainability reporting - BioXconomy</h3>
+        <p class="card-summary">ESG controllers improve sustainability reporting BioXconomy</p>
         <div class="card-footer">
-          <span>📰 Google News - ESG Today</span>
-          <span>🗓 2026/05/20</span>
-          <a href="https://news.google.com/rss/articles/CBMiswFBVV95cUxOc05DZzVNTFdiMlNCcElyUlZxRVBxYzlQeEtkakpiTU1ETk1HckhGQlIzTF9OZXh0QkdIaG50ZGpWWWd0M0ZtUFhKeFI5UkZKV1hkdUZoa3BxeC12dTc1MGtWX21xdE52U1N4c0x0Sk53c00wSk5raWFEWF9UdHlMekRDLWtSN2VrMGZ1TTJvcHZmbGpyTGdGS0c1MG5FYkw0NXJpOWJYMFBwUUsyRGg2NTBnSQ?oc=5" target="_blank" rel="noopener" class="read-more">閱讀原文 →</a>
+          <span>📰 Google News - ESG 綜合</span>
+          <span>🗓 2026/05/26</span>
+          <a href="https://news.google.com/rss/articles/CBMiwAFBVV95cUxQcVJHX3EwYlpGZ2FyaDNLS2U1WmhLWmc3QWRBdS1PeV9yM1pkY3I4blctUVlZX0F3dllkdEt6ZXVpbTA3SkRNVTZpSm1URGNzNWNDRTEyaEszZnNpXzRfNHVKVkYwVE9SY1U0THBndk9QRzZXajJBSEdPU3VtSWlqQXQzTVowb09aN19xVUh6MjZfQ3M2ZFptc0xnVkZKZUlpak9FVGZ1aGM1d2pIOXVsb0E1TUN1Z0J3ajNESzIzdmI?oc=5" target="_blank" rel="noopener" class="read-more">閱讀原文 →</a>
         </div>
       </div>
     </div>
@@ -162,12 +162,12 @@ footer strong{color:rgba(255,255,255,.9)}
           <span class="tag">🌱 ESG綜合</span>
           <span class="tag">🌐 全球</span>
         </div>
-        <h3 class="card-title">Why ESG and CSR reports matter—and how your firm can start making them - The American Institute of Architects: AIA</h3>
-        <p class="card-summary">Why ESG and CSR reports matter—and how your firm can start making them The American Institute of Architects: AIA</p>
+        <h3 class="card-title">Shein’s $100 Million Everlane Deal Puts Sustainability Claims Under New Scrutiny - ESG News</h3>
+        <p class="card-summary">Shein’s $100 Million Everlane Deal Puts Sustainability Claims Under New Scrutiny ESG News</p>
         <div class="card-footer">
-          <span>📰 Google News - 企業永續</span>
-          <span>🗓 2025/11/03</span>
-          <a href="https://news.google.com/rss/articles/CBMisgFBVV95cUxPNzhtQzU3a1RRMHV6RXNuQ2NkZWFYUTU0eGppZ1Q2YUpEUW9laXZTaW5KUm00NXl3Si1LT0tCNnhzTmY2NzA4WVdlal9Ka0QzYjNiUG8yWl9MNmYzZmNRSElhTWt6OFZYdENhWGMtcTJiYW5YRkZSNEZkRmxwNnlBclA3Z243ZlVEakpOS05pcFRnT2x2T1VwWHdVbnVVQzE5OE9kMW9ubXF3OVpEZUtabUNn?oc=5" target="_blank" rel="noopener" class="read-more">閱讀原文 →</a>
+          <span>📰 Google News - ESG 綜合</span>
+          <span>🗓 2026/05/26</span>
+          <a href="https://news.google.com/rss/articles/CBMioAFBVV95cUxPb3A1R0VkeUhmWVVQald3Rk8xRFBoVUZqRU5uWXlfeUNTU25kbVdjLVIyVUtvSkZvSU9rOUN3SV9GRzY4Q3J6RnRWX2toTkV0LXRlSjBMNWMzeDU2Rm5TcG5kNVJJOVZGS3ZRWjNyNTlvZWFJbmhYbmVzVUxaOFo1c1hKVERnRklVWWt5MUxSMndSRlZXWGFPVTRqaVRlMG1z?oc=5" target="_blank" rel="noopener" class="read-more">閱讀原文 →</a>
         </div>
       </div>
     </div>
@@ -175,15 +175,15 @@ footer strong{color:rgba(255,255,255,.9)}
       <div class="card-rank">#6</div>
       <div class="card-body">
         <div class="card-meta">
-          <span class="tag">🌱 ESG綜合</span>
+          <span class="tag">🌍 氣候</span>
           <span class="tag">🌐 全球</span>
         </div>
-        <h3 class="card-title">What Is an ESG Reporting Platform? Features, Benefits, and Best Practices - Nasdaq</h3>
-        <p class="card-summary">What Is an ESG Reporting Platform? Features, Benefits, and Best Practices Nasdaq</p>
+        <h3 class="card-title">China’s change in maths on carbon emissions masks growth, report says - Financial Times</h3>
+        <p class="card-summary">China’s change in maths on carbon emissions masks growth, report says Financial Times</p>
         <div class="card-footer">
-          <span>📰 Google News - 企業永續</span>
-          <span>🗓 2026/05/11</span>
-          <a href="https://news.google.com/rss/articles/CBMieEFVX3lxTE1mZHBzN1Y1ekhhVnNRVTdZa0xaOWxjald4ek9nSThVdVZkakgwNUtxeFFzendCQVduOGtqWW9GOTUyWmlyOEk5b2VSbkcxbkplc2xxbzBleG5HUkZnaEhmOUlETnhKSEdoNmlRN3RzWWVTWVB4R0VpQw?oc=5" target="_blank" rel="noopener" class="read-more">閱讀原文 →</a>
+          <span>📰 Google News - 氣候變遷</span>
+          <span>🗓 2026/05/26</span>
+          <a href="https://news.google.com/rss/articles/CBMihAFBVV95cUxQVG84ZlRMQ2FFT0JoRENreWdTYUxzQ245VHlfaTdUOTZiVU5HZ0FfZEZTUDQ3clAzVkh2bU5idGMxbmE0SUhPcGZ0WFp4WE5SeGsxRklNSUwtQXNhTDlxLXV3NDRpU1JqcXg4YzRaRFo1Z2lWZ2N4T1hKMWk0UHl0aV9odDg?oc=5" target="_blank" rel="noopener" class="read-more">閱讀原文 →</a>
         </div>
       </div>
     </div>
@@ -191,15 +191,15 @@ footer strong{color:rgba(255,255,255,.9)}
       <div class="card-rank">#7</div>
       <div class="card-body">
         <div class="card-meta">
-          <span class="tag">🌱 ESG綜合</span>
+          <span class="tag">🌍 氣候</span>
           <span class="tag">🌐 全球</span>
         </div>
-        <h3 class="card-title">EU companies pursue sustainability reporting despite CSRD rollbacks: report - ESG Dive</h3>
-        <p class="card-summary">EU companies pursue sustainability reporting despite CSRD rollbacks: report ESG Dive</p>
+        <h3 class="card-title">Revealed: huge climate cost of harmful emissions from US immigration flights - The Guardian</h3>
+        <p class="card-summary">Revealed: huge climate cost of harmful emissions from US immigration flights The Guardian</p>
         <div class="card-footer">
-          <span>📰 Google News - 企業永續</span>
-          <span>🗓 2026/03/19</span>
-          <a href="https://news.google.com/rss/articles/CBMizwFBVV95cUxQbmNWVl9sZTIxN295bHd4N1gzdll1VTVJMXZXQXpHVmNhZGxDSHJuVVc4SEZkckExWUpsR0RDYmJiVUt3WXJQcGxkbDFMWGt1cnJxd1JzeWpBX1RDTUxyWWhLOVA3TTU1VlcxbzAzVk9KN1RnZ0tqWHYxUnFtcmNhaWctV2d6NWpNNVFWUnNfcHJ0VnNiZS00U0NkTjVaYjNkVnBrdWNqbS1yRERlZHRNZXJ6NEF1d3ZnNUNUc1gzRllRY3NFM282S1ZUbElYUTg?oc=5" target="_blank" rel="noopener" class="read-more">閱讀原文 →</a>
+          <span>📰 Google News - 氣候變遷</span>
+          <span>🗓 2026/05/26</span>
+          <a href="https://news.google.com/rss/articles/CBMihwFBVV95cUxQS0t6Ry1TWnhlcjNsRFRVaTNMVXZDSFJpTHZzTl9zbmJJNHduazhXMkNHVklqY01SXzJZTTVYZUNlaklGLW9PWEwxRldqRGd6UFhBN1FaRnJ6a3JlMWhZUVh2MEpVNW1JRDB0bEpQUFJtVlF6cVhKUWxpRGJJVXM4dE41cTdRaW8?oc=5" target="_blank" rel="noopener" class="read-more">閱讀原文 →</a>
         </div>
       </div>
     </div>
@@ -207,15 +207,15 @@ footer strong{color:rgba(255,255,255,.9)}
       <div class="card-rank">#8</div>
       <div class="card-body">
         <div class="card-meta">
-          <span class="tag">🌱 ESG綜合</span>
+          <span class="tag">🌍 氣候</span>
           <span class="tag">🌐 全球</span>
         </div>
-        <h3 class="card-title">ESG Reporting Software Market Trends: Transforming Corporate Sustainability Reporting - MarketsandMarkets</h3>
-        <p class="card-summary">ESG Reporting Software Market Trends: Transforming Corporate Sustainability Reporting MarketsandMarkets</p>
+        <h3 class="card-title">New York Leads in Controlling Heat-Trapping Methane. That Could Change. - The New York Times</h3>
+        <p class="card-summary">New York Leads in Controlling Heat-Trapping Methane. That Could Change. The New York Times</p>
         <div class="card-footer">
-          <span>📰 Google News - 企業永續</span>
-          <span>🗓 2026/05/07</span>
-          <a href="https://news.google.com/rss/articles/CBMifEFVX3lxTE1EMVJtX1lTZGI1WG9lQzVMZnNYZnl2d0FIOGRJR3Z0dldxcUNPTzFHTFhJclRuVy1ySU1ZOVZIYVo2bDVXNF8tVkZmejg0RHptcnFkYUpoZzNSQTdDcldOYU5JRGsxdm5DdUEyaFkwWTk1RHJucDF6S2ZFY0E?oc=5" target="_blank" rel="noopener" class="read-more">閱讀原文 →</a>
+          <span>📰 Google News - 氣候變遷</span>
+          <span>🗓 2026/05/26</span>
+          <a href="https://news.google.com/rss/articles/CBMijAFBVV95cUxPTkt3RkxpWC1jLXFEYlphdG9WOVhUTmY1TjdJYldOMFhNakc3VXEzNjhuc0p1b0ExcUNibUlXUlBzMXVFcXZOQUtkc25mQ0MzUllVQ2Rqc1ZqY0NKNnpoekVOajE4RDF2OVdGRmV1LVp3Z0ZKdmVJX2dicDNvaDlSVmN5REFKRG1iTWRGWA?oc=5" target="_blank" rel="noopener" class="read-more">閱讀原文 →</a>
         </div>
       </div>
     </div>
@@ -223,15 +223,15 @@ footer strong{color:rgba(255,255,255,.9)}
       <div class="card-rank">#9</div>
       <div class="card-body">
         <div class="card-meta">
-          <span class="tag">🌱 ESG綜合</span>
+          <span class="tag">🌍 氣候</span>
           <span class="tag">🌐 全球</span>
         </div>
-        <h3 class="card-title">It’s official: Shein will acquire Everlane - ESG Dive</h3>
-        <p class="card-summary">It’s official: Shein will acquire Everlane ESG Dive</p>
+        <h3 class="card-title">Is Landfill Methane Or Car CO2 Worse For Climate Change? - Jalopnik</h3>
+        <p class="card-summary">Is Landfill Methane Or Car CO2 Worse For Climate Change? Jalopnik</p>
         <div class="card-footer">
-          <span>📰 Google News - ESG</span>
-          <span>🗓 2026/05/26</span>
-          <a href="https://news.google.com/rss/articles/CBMieEFVX3lxTE5sNWQxU0FjZUYtcURKZ0JPWFN3dkZMWWxTa1VKUXhzNTVIRmtLeURmaV9iVUlKdkhUTWxMTTBYUkVGUlplamF3OW9ULVhrTks2QmhZRm91U2pGNlE4WWlpVFAwQkd6czd0dWVqWjJldXdfc1Jhb2c4Sg?oc=5" target="_blank" rel="noopener" class="read-more">閱讀原文 →</a>
+          <span>📰 Google News - 氣候變遷</span>
+          <span>🗓 2026/05/25</span>
+          <a href="https://news.google.com/rss/articles/CBMinwFBVV95cUxOUjctZDZDd29ERlNObkJoa1dzMU9YOEc3eWpJRjVCWE1aNlBjV1BMTk42WUF3Vl9EUjQzNWE0aFRtSUNMQzlOekhGODVvSWJlek05a090ZlNKOWNrOW1XR3MxMFdtQmUwQXVoWG5QSXRzN3dpSW5wMGF0LVo1VGVVd1JsdFNGYzJCSm5MTXVTcFR1VFV0azZPRHNjN3lpWFE?oc=5" target="_blank" rel="noopener" class="read-more">閱讀原文 →</a>
         </div>
       </div>
     </div>
@@ -239,15 +239,15 @@ footer strong{color:rgba(255,255,255,.9)}
       <div class="card-rank">#10</div>
       <div class="card-body">
         <div class="card-meta">
-          <span class="tag">🌱 ESG綜合</span>
+          <span class="tag">🌍 氣候</span>
           <span class="tag">🌐 全球</span>
         </div>
-        <h3 class="card-title">Board 50% women as Eldorado Gold details climate and community in 2025 report - Stock Titan</h3>
-        <p class="card-summary">Board 50% women as Eldorado Gold details climate and community in 2025 report Stock Titan</p>
+        <h3 class="card-title">Rice feeds more than half the world. It’s also the climate equivalent of 239 million cars - Fortune</h3>
+        <p class="card-summary">Rice feeds more than half the world. It’s also the climate equivalent of 239 million cars Fortune</p>
         <div class="card-footer">
-          <span>📰 Google News - ESG</span>
-          <span>🗓 2026/05/27</span>
-          <a href="https://news.google.com/rss/articles/CBMiugFBVV95cUxQbGZtd3dmQ3FJMW5jV043X21aRTA5SkF0TzRObjVZalRlSGQwTmVYU09vdmtLVGJqdEM1QWsxbDYyZThua2ViNmx6alVIY2ctXzNLMTJUZDhZV281Sk1BU3ptZ1A2SjJyVU5tWXNNMW9JWXhpV1NRWlVIWUZzbTN6amUxUnZoZ3Q2RGRpZzk3TXJHOHE3X09aTHQxLUZnMGlWa3hvRUJqbnBIUV91T1ZmdTBpc1QwT2drZHc?oc=5" target="_blank" rel="noopener" class="read-more">閱讀原文 →</a>
+          <span>📰 Google News - 氣候變遷</span>
+          <span>🗓 2026/05/25</span>
+          <a href="https://news.google.com/rss/articles/CBMiiAFBVV95cUxNRUR3RWxXNTZZd0owYUlEQTFKd1IxT1hqUG1ES2pZdmVBc0txSy1XYnh4VjBKdjFISFhkZFR5Y05YQTQzcnA2MFVUUEtUdV9sTkZSZFd6bEc1TVlRYVBIQW01cHhoXzZXX2VzQU91bG1YTHlST0RabkV4MHowVzJSTWhsLVBtZXVr?oc=5" target="_blank" rel="noopener" class="read-more">閱讀原文 →</a>
         </div>
       </div>
     </div></div>
@@ -327,15 +327,15 @@ footer strong{color:rgba(255,255,255,.9)}
       <div class="card-rank">#5</div>
       <div class="card-body">
         <div class="card-meta">
-          <span class="tag">💼 基金</span>
+          <span class="tag">📋 債券</span>
           <span class="tag">🌐 全球</span>
         </div>
-        <h3 class="card-title">14 Best-Performing and Cheap ESG Funds for 2026 - NerdWallet</h3>
-        <p class="card-summary">14 Best-Performing and Cheap ESG Funds for 2026 NerdWallet</p>
+        <h3 class="card-title">DC Water Earns Prominent Award for Sustainable Finance Leadership through Green Bonds - DC Water</h3>
+        <p class="card-summary">DC Water Earns Prominent Award for Sustainable Finance Leadership through Green Bonds DC Water</p>
         <div class="card-footer">
-          <span>📰 Google News - ESG基金</span>
-          <span>🗓 2026/05/04</span>
-          <a href="https://news.google.com/rss/articles/CBMiaEFVX3lxTE5ELVlfcU1KYktDOEZyM1kyU1FvWlcwVXFjQWdOaDZBM1o4MTdXZXVBLXA4VjhSYkdTenVCNzFvcUtESXJSVjhpX1JaTW5jaU1sQV9wNXgxUHFvb3Z0S295NzF3ZnNYcVh6?oc=5" target="_blank" rel="noopener" class="read-more">閱讀原文 →</a>
+          <span>📰 Google News - 綠色債券</span>
+          <span>🗓 2026/04/20</span>
+          <a href="https://news.google.com/rss/articles/CBMiuwFBVV95cUxQdGl1MHVhQ2Z1cF92TnBaMlZ3VG5jRVl3ZlVGTHN5UFNBdzloWmZRbHptR2hOdHhZejFYNC1GMG04MjQ2VDBUSUs1cF9kZW5ITGZVMDJNRFV3RDBQWG5PRlNLajFoOHZ4X25PU01mUXVpcU1QcnBETEJMbFdOcmJIbDNIbmtlbS1XT2xUdTUzNnljSTRBcmt6bnh0aFRiS0JmVVVrVHVETmlpMWd5cUFzYU5xbTFtR3d2eDUw?oc=5" target="_blank" rel="noopener" class="read-more">閱讀原文 →</a>
         </div>
       </div>
     </div>
@@ -346,12 +346,12 @@ footer strong{color:rgba(255,255,255,.9)}
           <span class="tag">💼 基金</span>
           <span class="tag">🌐 全球</span>
         </div>
-        <h3 class="card-title">Private wealth can rejuvenate ESG investing - Professional Wealth Management</h3>
-        <p class="card-summary">Private wealth can rejuvenate ESG investing Professional Wealth Management</p>
+        <h3 class="card-title">14 Best-Performing and Cheap ESG Funds for 2026 - NerdWallet</h3>
+        <p class="card-summary">14 Best-Performing and Cheap ESG Funds for 2026 NerdWallet</p>
         <div class="card-footer">
-          <span>📰 Google News - ESG基金</span>
-          <span>🗓 2026/05/21</span>
-          <a href="https://news.google.com/rss/articles/CBMidkFVX3lxTE1UUHMxT0Rsc0g0TzVGYzRnV1FMMHhSQWp4NEloZTgySlhnUnlJejBnNHQtMGIxYW56TzlQYnIwcmZkcmhHNmdmYU5WSGNTSlNCYWgxZG9yY2Q4X1lCTFY2ZnZRX0g5S2R2SU5hN0Z4cDNGbnBabnc?oc=5" target="_blank" rel="noopener" class="read-more">閱讀原文 →</a>
+          <span>📰 Google News - ESG 基金</span>
+          <span>🗓 2026/05/04</span>
+          <a href="https://news.google.com/rss/articles/CBMiaEFVX3lxTE5ELVlfcU1KYktDOEZyM1kyU1FvWlcwVXFjQWdOaDZBM1o4MTdXZXVBLXA4VjhSYkdTenVCNzFvcUtESXJSVjhpX1JaTW5jaU1sQV9wNXgxUHFvb3Z0S295NzF3ZnNYcVh6?oc=5" target="_blank" rel="noopener" class="read-more">閱讀原文 →</a>
         </div>
       </div>
     </div>
@@ -362,12 +362,12 @@ footer strong{color:rgba(255,255,255,.9)}
           <span class="tag">💼 基金</span>
           <span class="tag">🌐 全球</span>
         </div>
-        <h3 class="card-title">ESG Funds: 2025 Closes With Continued Outflows Amid Persistent Headwinds | Morningstar Nordics - Morningstar</h3>
-        <p class="card-summary">ESG Funds: 2025 Closes With Continued Outflows Amid Persistent Headwinds | Morningstar Nordics Morningstar</p>
+        <h3 class="card-title">Global Sustainable Fund Performance: 2H 2025 - Morgan Stanley</h3>
+        <p class="card-summary">Global Sustainable Fund Performance: 2H 2025 Morgan Stanley</p>
         <div class="card-footer">
-          <span>📰 Google News - ESG基金</span>
-          <span>🗓 2026/02/04</span>
-          <a href="https://news.google.com/rss/articles/CBMiygFBVV95cUxPSExPTUdIckk5R2F1QXlqUVhjbWV2QjFLSXNwSVM0aDZUanV0MVBIMjVpek45SDdjcm54UGNyMFJzckJ5MnhmclZtYXcyTWw1b2RFcUpCQU9kbUxuZ211b0VlMERTTVJ3LS04a0Q2UWkzYjZKcjVhSE92VktHUlhMa28zT196WERjZzNfZ1l2d3luaHc3MWw0N1RjOEVlSEFLc2FQLWN4di1IX0NiTGROSm5QQXR3cGNCajNRSVJMbDBIa255UFJ0LWNB?oc=5" target="_blank" rel="noopener" class="read-more">閱讀原文 →</a>
+          <span>📰 Google News - ESG 基金</span>
+          <span>🗓 2026/03/11</span>
+          <a href="https://news.google.com/rss/articles/CBMimAFBVV95cUxNdE5lVHU3dldzeDZueDYzTEc0RWxJUktyWlJlb3BRNmJhS0lCX1JaZUJRc1BQemdQSG1HY1FsbFY4RVZ0YlQzYTIycmF6c2pkSkZYR3RUbWZuZkp2Q3BqMW9JSzVvTlZCTWFxSkxzaUNyVkJTY0VfaXR2NFRKUjc5UWgwbW54SUlja2VaWkd2cXFSbHB0TE5VTA?oc=5" target="_blank" rel="noopener" class="read-more">閱讀原文 →</a>
         </div>
       </div>
     </div>
@@ -378,12 +378,12 @@ footer strong{color:rgba(255,255,255,.9)}
           <span class="tag">💼 基金</span>
           <span class="tag">🌐 全球</span>
         </div>
-        <h3 class="card-title">SEC Chair Says Commission to Review ESG Fund Names Rule - ESG Today</h3>
-        <p class="card-summary">SEC Chair Says Commission to Review ESG Fund Names Rule ESG Today</p>
+        <h3 class="card-title">US sustainable investing hangs on against strong headwinds: report - ESG Dive</h3>
+        <p class="card-summary">US sustainable investing hangs on against strong headwinds: report ESG Dive</p>
         <div class="card-footer">
-          <span>📰 Google News - ESG基金</span>
-          <span>🗓 2026/02/12</span>
-          <a href="https://news.google.com/rss/articles/CBMiggFBVV95cUxOMGt5Qk1mbnlzZ2Vyb0dPbWprRzQ1bUcyZkN4aWNqTXBMUkFET3VkY1lRYVNZSVVTUXJ1TndXTGV1dGF3YVByVVl1MUxweVNlSjc3STdXR3FzV1Fad0FUWHB0dXVvYU81a0c1OFAySXZ5ZzRNNDNUcE0xcFhid1JaMUl3?oc=5" target="_blank" rel="noopener" class="read-more">閱讀原文 →</a>
+          <span>📰 Google News - ESG 基金</span>
+          <span>🗓 2025/12/18</span>
+          <a href="https://news.google.com/rss/articles/CBMixwFBVV95cUxQMngwcEhPY2JaNmhNSmJyWWQtNFFzODVNeUo3M3d4YWZ0blR2Z09HcnZENDhPa2R5bjExdl8xUnhIbXNOaTNwb2pWVFdndWlYbE5WT0xvMTNEM05Xb2tYYlcxOTZKVFlfdjBTbFp4Q3dkcEczdmNlamtBWGFyTzVUNVp2dkFpNVpFZUdjd2tzS2VRWU40WXY2cHg5M05jM3B5VWhpSkdOZGl0NTZENDAtTzFmVFhkQTd3b2Z2MTNvMk9GYjZQQXpJ?oc=5" target="_blank" rel="noopener" class="read-more">閱讀原文 →</a>
         </div>
       </div>
     </div>
@@ -391,15 +391,15 @@ footer strong{color:rgba(255,255,255,.9)}
       <div class="card-rank">#9</div>
       <div class="card-body">
         <div class="card-meta">
-          <span class="tag">♻️ 碳市場</span>
+          <span class="tag">💼 基金</span>
           <span class="tag">🌐 全球</span>
         </div>
-        <h3 class="card-title">Integrating North American carbon credit markets: Prospects and recommendations - Brookings</h3>
-        <p class="card-summary">Integrating North American carbon credit markets: Prospects and recommendations Brookings</p>
+        <h3 class="card-title">ESG Funds: 2025 Closes With Continued Outflows Amid Persistent Headwinds - Morningstar</h3>
+        <p class="card-summary">ESG Funds: 2025 Closes With Continued Outflows Amid Persistent Headwinds Morningstar</p>
         <div class="card-footer">
-          <span>📰 Google News - 碳市場</span>
-          <span>🗓 2026/05/27</span>
-          <a href="https://news.google.com/rss/articles/CBMitAFBVV95cUxPSDlsSzVkaHZlbzJ4RjNXXzBNNHB5Y1hNTkNBbEFFMUdnTHE4YlE1bUdMRVFqenhVUjhiRkZydzlJUXQ1czhxQTRTc3Fkbl9fejFlOHBza0ZnSzJBMGFUZGdCWThtYWdWb0FVUVNIYmR6eU1xMEhBcEF6blhaMlhoLVJGT2M2YUVFdXlOT3Q3UUZmYlRXaTliQm1MQjRnREREVWNkT2FMN2E3bTc5d3FGeEhpVWs?oc=5" target="_blank" rel="noopener" class="read-more">閱讀原文 →</a>
+          <span>📰 Google News - ESG 基金</span>
+          <span>🗓 2026/02/03</span>
+          <a href="https://news.google.com/rss/articles/CBMivgFBVV95cUxOTGsxREJla3dsODB0YmpXVUctNGtudGNCTmZ1MHJOMXQwU2VOclFHdHJXY01SQU1SUHNzRndsV0hwTjVZMmlyOUMzeU5IbWZCazRTNFJGcFV2OE1Sa3BMRnNlWmtOekIwb3hMSEQ0YWt0aWRCZmJXVTl2dUJQLUpHVmdxWTFDWDdMNnVBclJTMi1xRHh1RWhPU2pEb1E3VEZtWS16ZDRTaVhYSHVaSUJIWXZfbzZDNm0xdWRQbmp3?oc=5" target="_blank" rel="noopener" class="read-more">閱讀原文 →</a>
         </div>
       </div>
     </div>
@@ -407,15 +407,15 @@ footer strong{color:rgba(255,255,255,.9)}
       <div class="card-rank">#10</div>
       <div class="card-body">
         <div class="card-meta">
-          <span class="tag">♻️ 碳市場</span>
+          <span class="tag">💼 基金</span>
           <span class="tag">🌐 全球</span>
         </div>
-        <h3 class="card-title">Dubious Chinese Carbon Credits Expose European Market’s Flaws - Bloomberg</h3>
-        <p class="card-summary">Dubious Chinese Carbon Credits Expose European Market’s Flaws Bloomberg</p>
+        <h3 class="card-title">SEC Chair Says Commission to Review ESG Fund Names Rule - ESG Today</h3>
+        <p class="card-summary">SEC Chair Says Commission to Review ESG Fund Names Rule ESG Today</p>
         <div class="card-footer">
-          <span>📰 Google News - 碳市場</span>
-          <span>🗓 2026/05/25</span>
-          <a href="https://news.google.com/rss/articles/CBMiggFBVV95cUxQampMOWd4T0xQelNWQVBwMUtaTDVHUjFSZGtTY0ZfaTNIa2dVWUh2bDJiOGY3TF9LX1FkMGJFQy1namIwck9iNWFQVWNma21rV1NVUkxIYTdzYTJqbFplYm9QVG9Sa3RnSHR0QnZIOGxjRE1uN0ZLdjJhY0duOUcyZnR3?oc=5" target="_blank" rel="noopener" class="read-more">閱讀原文 →</a>
+          <span>📰 Google News - ESG 基金</span>
+          <span>🗓 2026/02/12</span>
+          <a href="https://news.google.com/rss/articles/CBMiggFBVV95cUxOMGt5Qk1mbnlzZ2Vyb0dPbWprRzQ1bUcyZkN4aWNqTXBMUkFET3VkY1lRYVNZSVVTUXJ1TndXTGV1dGF3YVByVVl1MUxweVNlSjc3STdXR3FzV1Fad0FUWHB0dXVvYU81a0c1OFAySXZ5ZzRNNDNUcE0xcFhid1JaMUl3?oc=5" target="_blank" rel="noopener" class="read-more">閱讀原文 →</a>
         </div>
       </div>
     </div></div>
@@ -424,10 +424,10 @@ footer strong{color:rgba(255,255,255,.9)}
   <section class="section" id="regulations">
     <div class="sec-head">
       <div class="sec-icon">🏛</div>
-      <div><h2>ESG 法規動態</h2><p>重要法規持續追蹤 + 本週最新法規新聞</p></div>
-      <span class="sec-cnt">10 項</span>
+      <div><h2>ESG 法規動態</h2><p>全球與台灣重要法規持續追蹤 + 本週最新法規新聞</p></div>
+      <span class="sec-cnt">12 項</span>
     </div>
-    <div class="divider">📋 重要法規持續追蹤</div>
+    <div class="divider">📋 重要法規持續追蹤（含台灣）</div>
     <div class="cards"><div class="card reg-card">
       <div class="card-rank">#1</div>
       <div class="card-body">
@@ -436,7 +436,7 @@ footer strong{color:rgba(255,255,255,.9)}
           <span class="tag">🏛️ 歐盟</span>
         </div>
         <h3 class="card-title">歐盟企業永續報告指令 (CSRD)</h3>
-        <p class="card-summary">要求大型企業及上市公司進行標準化永續資訊揭露，取代原有 NFRD，適用範圍大幅擴展至約 5 萬家企業。</p>
+        <p class="card-summary">要求大型企業及上市公司進行標準化永續資訊揭露，取代原有 NFRD，適用範圍擴展至約 5 萬家企業，並需經第三方確信。</p>
         <div class="areas"><span class="tag">永續報告</span> <span class="tag">資訊揭露</span> <span class="tag">供應鏈</span></div>
         <div class="card-footer">
           <span>📅 2024年起分階段實施</span>
@@ -452,7 +452,7 @@ footer strong{color:rgba(255,255,255,.9)}
           <span class="tag">🌐 全球</span>
         </div>
         <h3 class="card-title">ISSB 永續揭露準則 (IFRS S1/S2)</h3>
-        <p class="card-summary">國際財務報告準則基金會發布的全球統一永續揭露基準，S1 為一般要求，S2 專注氣候相關揭露，多國已宣布採用時程。</p>
+        <p class="card-summary">國際財務報告準則基金會發布全球統一永續揭露基準，S1 為一般要求，S2 專注氣候相關揭露，台灣、日本、英國等多國已宣布採用時程。</p>
         <div class="areas"><span class="tag">氣候揭露</span> <span class="tag">財務報告</span> <span class="tag">永續準則</span></div>
         <div class="card-footer">
           <span>📅 2023年發布，各國陸續採用</span>
@@ -468,7 +468,7 @@ footer strong{color:rgba(255,255,255,.9)}
           <span class="tag">🏛️ 歐盟</span>
         </div>
         <h3 class="card-title">歐盟永續金融揭露規範 (SFDR)</h3>
-        <p class="card-summary">要求歐盟金融市場參與者及財務顧問揭露 ESG 整合方式，將產品分為 Article 6/8/9 三類，並規範主要不利影響 (PAI) 揭露。</p>
+        <p class="card-summary">要求金融市場參與者揭露 ESG 整合方式，將產品分為 Article 6/8/9 三類，並規範主要不利影響 (PAI) 揭露，目前進行修訂。</p>
         <div class="areas"><span class="tag">基金管理</span> <span class="tag">投資產品</span> <span class="tag">ESG標籤</span></div>
         <div class="card-footer">
           <span>📅 2021年起，持續更新中</span>
@@ -484,7 +484,7 @@ footer strong{color:rgba(255,255,255,.9)}
           <span class="tag">🏛️ 美國</span>
         </div>
         <h3 class="card-title">美國 SEC 氣候披露規則</h3>
-        <p class="card-summary">美國證管會要求上市公司揭露氣候相關風險、溫室氣體排放量（Scope 1 & 2），部分企業需揭露 Scope 3，目前仍在司法審查中。</p>
+        <p class="card-summary">要求上市公司揭露氣候相關風險及溫室氣體排放量（Scope 1&2），目前仍在司法審查中，最終範圍尚未確定。</p>
         <div class="areas"><span class="tag">氣候揭露</span> <span class="tag">溫室氣體</span> <span class="tag">上市公司</span></div>
         <div class="card-footer">
           <span>📅 2025–2026年分階段</span>
@@ -500,11 +500,11 @@ footer strong{color:rgba(255,255,255,.9)}
           <span class="tag">🇹🇼 台灣</span>
         </div>
         <h3 class="card-title">台灣上市櫃公司永續報告書申報規範</h3>
-        <p class="card-summary">金管會要求上市櫃公司依規模分階段申報永續報告書，並逐步接軌 ISSB 準則，資本額 20 億以上公司須取得第三方確信。</p>
+        <p class="card-summary">金管會要求上市櫃公司依規模分階段申報永續報告書，逐步接軌 ISSB 準則，資本額 20 億以上須取得第三方確信。</p>
         <div class="areas"><span class="tag">永續報告</span> <span class="tag">公司治理</span> <span class="tag">ESG揭露</span></div>
         <div class="card-footer">
           <span>📅 分階段：2023年起擴大適用</span>
-          <a href="https://www.twse.com.tw/zh/listed/sustainability/report.html" target="_blank" rel="noopener" class="read-more">查看詳情 →</a>
+          <a href="https://cgc.twse.com.tw/frontEN/sustainReport" target="_blank" rel="noopener" class="read-more">查看詳情 →</a>
         </div>
       </div>
     </div>
@@ -513,10 +513,26 @@ footer strong{color:rgba(255,255,255,.9)}
       <div class="card-body">
         <div class="card-meta">
           <span class="badge badge-green">已生效</span>
+          <span class="tag">🇹🇼 台灣</span>
+        </div>
+        <h3 class="card-title">台灣碳費徵收制度</h3>
+        <p class="card-summary">環境部對年排放量逾 2.5 萬噸 CO₂ 的排放源徵收碳費，初期費率每噸 300 元（自主減量可申請優惠），為亞洲首批碳定價機制之一。</p>
+        <div class="areas"><span class="tag">碳定價</span> <span class="tag">製造業</span> <span class="tag">能源業</span></div>
+        <div class="card-footer">
+          <span>📅 2024年起徵收，2025年正式開徵</span>
+          <a href="https://www.epa.gov.tw/climate/4B9E1E3855AAEE81" target="_blank" rel="noopener" class="read-more">查看詳情 →</a>
+        </div>
+      </div>
+    </div>
+<div class="card reg-card">
+      <div class="card-rank">#7</div>
+      <div class="card-body">
+        <div class="card-meta">
+          <span class="badge badge-green">已生效</span>
           <span class="tag">🏛️ 歐盟</span>
         </div>
         <h3 class="card-title">歐盟碳邊境調整機制 (CBAM)</h3>
-        <p class="card-summary">對進口至歐盟的特定高碳產品（鋼鐵、鋁、水泥、化肥、電力、氫）徵收碳邊境稅，以防止碳洩漏，對台灣出口商影響深遠。</p>
+        <p class="card-summary">對進口至歐盟的鋼鐵、鋁、水泥、化肥、電力、氫等高碳產品徵收碳邊境稅，防止碳洩漏，對台灣出口商影響深遠。</p>
         <div class="areas"><span class="tag">碳關稅</span> <span class="tag">國際貿易</span> <span class="tag">製造業</span></div>
         <div class="card-footer">
           <span>📅 2023年10月試行，2026年正式</span>
@@ -528,37 +544,61 @@ footer strong{color:rgba(255,255,255,.9)}
     <div class="cards"><div class="card reg-card">
       <div class="card-rank">◉</div>
       <div class="card-body">
-        <div class="card-meta"><span class="badge badge-blue">最新動態</span><span class="tag">🇪🇺 歐洲</span></div>
-        <h3 class="card-title">ESG Focus: UK/EU/International ESG Regulation Monthly Round-Up – December 2025 - www.hoganlovells.com</h3>
-        <p class="card-summary">ESG Focus: UK/EU/International ESG Regulation Monthly Round-Up – December 2025 www.hoganlovells.com</p>
-        <div class="card-footer"><span>📰 Google News - ESG法規</span><span>🗓 2026/01/07</span><a href="https://news.google.com/rss/articles/CBMiuAFBVV95cUxNRVo1WHhDUENjTUstMEJPV0QtbGhRVldUYmhvLTFjS1Q2aDJMQjdCNWdwMVY0YmtYWmdhZW9ldXQxYWNQeUc4YVIyUWRIdGNlbmRPcDFMOW5QOWplSUU4YjRIdzRaOGh3NE4wNm9Tc1ktcGpKNndyNnU0TzJVTmZfRjZPUENSOFVLRTZPaFN3aGFERWZZbGJyUjFEX3diTGVYb0F0ZDllSHZkYWw1eGs0V3h2YXlsSXFu?oc=5" target="_blank" rel="noopener" class="read-more">閱讀原文 →</a></div>
-      </div>
-    </div>
-<div class="card reg-card">
-      <div class="card-rank">◉</div>
-      <div class="card-body">
-        <div class="card-meta"><span class="badge badge-blue">最新動態</span><span class="tag">🇪🇺 歐洲</span></div>
+        <div class="card-meta">
+          <span class="badge badge-blue">最新動態</span>
+          <span class="tag">🇪🇺 歐洲</span>
+        </div>
         <h3 class="card-title">EU Sustainability: State of Play — ESG in the Financial Services Sector - globalfinregblog.com</h3>
         <p class="card-summary">EU Sustainability: State of Play — ESG in the Financial Services Sector globalfinregblog.com</p>
-        <div class="card-footer"><span>📰 Google News - ESG法規</span><span>🗓 2025/10/29</span><a href="https://news.google.com/rss/articles/CBMirwFBVV95cUxQak9qOGwtVGQzOFBRZHpUNzNqakhXOHVyRWpPMFQ3LVBJeFpXdU1ZN2R3SWNvZHhOTkc2U2xNQUlNYVhwQ1BvRDExU29Mc01FcTVqeE1GVS15ald0XzQ0dVVHUnlreWp6TGhiMk80NUFaUWJsS1NjLWMySHA5NTBTSlVJdDcxTFVTZTAtaUhkVjNJcS1JWFhVQzd2WWhCQzFjRFgyeVBWYTZxUkQ1ZEo4?oc=5" target="_blank" rel="noopener" class="read-more">閱讀原文 →</a></div>
+        <div class="card-footer"><span>📰 Google News - CSRD/SFDR</span><span>🗓 2025/10/29</span><a href="https://news.google.com/rss/articles/CBMirwFBVV95cUxQak9qOGwtVGQzOFBRZHpUNzNqakhXOHVyRWpPMFQ3LVBJeFpXdU1ZN2R3SWNvZHhOTkc2U2xNQUlNYVhwQ1BvRDExU29Mc01FcTVqeE1GVS15ald0XzQ0dVVHUnlreWp6TGhiMk80NUFaUWJsS1NjLWMySHA5NTBTSlVJdDcxTFVTZTAtaUhkVjNJcS1JWFhVQzd2WWhCQzFjRFgyeVBWYTZxUkQ1ZEo4?oc=5" target="_blank" rel="noopener" class="read-more">閱讀原文 →</a></div>
       </div>
     </div>
 <div class="card reg-card">
       <div class="card-rank">◉</div>
       <div class="card-body">
-        <div class="card-meta"><span class="badge badge-blue">最新動態</span><span class="tag">🇪🇺 歐洲</span></div>
+        <div class="card-meta">
+          <span class="badge badge-blue">最新動態</span>
+          <span class="tag">🇪🇺 歐洲</span>
+        </div>
+        <h3 class="card-title">ESG Focus: UK/EU/International ESG Regulation Monthly Round-Up – December 2025 - www.hoganlovells.com</h3>
+        <p class="card-summary">ESG Focus: UK/EU/International ESG Regulation Monthly Round-Up – December 2025 www.hoganlovells.com</p>
+        <div class="card-footer"><span>📰 Google News - CSRD/SFDR</span><span>🗓 2026/01/07</span><a href="https://news.google.com/rss/articles/CBMiuAFBVV95cUxNRVo1WHhDUENjTUstMEJPV0QtbGhRVldUYmhvLTFjS1Q2aDJMQjdCNWdwMVY0YmtYWmdhZW9ldXQxYWNQeUc4YVIyUWRIdGNlbmRPcDFMOW5QOWplSUU4YjRIdzRaOGh3NE4wNm9Tc1ktcGpKNndyNnU0TzJVTmZfRjZPUENSOFVLRTZPaFN3aGFERWZZbGJyUjFEX3diTGVYb0F0ZDllSHZkYWw1eGs0V3h2YXlsSXFu?oc=5" target="_blank" rel="noopener" class="read-more">閱讀原文 →</a></div>
+      </div>
+    </div>
+<div class="card reg-card">
+      <div class="card-rank">◉</div>
+      <div class="card-body">
+        <div class="card-meta">
+          <span class="badge badge-blue">最新動態</span>
+          <span class="tag">🇪🇺 歐洲</span>
+        </div>
+        <h3 class="card-title">EU Regulations update: CSRD and CSDDD close to the finish line - ERM</h3>
+        <p class="card-summary">EU Regulations update: CSRD and CSDDD close to the finish line ERM</p>
+        <div class="card-footer"><span>📰 Google News - CSRD/SFDR</span><span>🗓 2025/12/11</span><a href="https://news.google.com/rss/articles/CBMilgFBVV95cUxOSUZoT0dpUDJ3dkVpbnNtcUxtelRQbUFac1RzR2VxdTdYMlcxTjdIMjFkZ2Nsa2FaQ3pnY243dy1tTGFiNDBkR0YxbjlENHRsVGlrU2c3WTNNR092UUNIb1Z2RW9DVzVPREJPOWdZS3hLTnlabTJrWXJJZ2NRWTVHdld4SmtZNTNEUFRJVm9jaVRKVU5oZVE?oc=5" target="_blank" rel="noopener" class="read-more">閱讀原文 →</a></div>
+      </div>
+    </div>
+<div class="card reg-card">
+      <div class="card-rank">◉</div>
+      <div class="card-body">
+        <div class="card-meta">
+          <span class="badge badge-blue">最新動態</span>
+          <span class="tag">🇪🇺 歐洲</span>
+        </div>
         <h3 class="card-title">SFDR 2.0: Making labels work for the consumer - IEEFA | Institute for Energy Economics and Financial Analysis</h3>
         <p class="card-summary">SFDR 2.0: Making labels work for the consumer IEEFA | Institute for Energy Economics and Financial Analysis</p>
-        <div class="card-footer"><span>📰 Google News - ESG法規</span><span>🗓 2025/11/20</span><a href="https://news.google.com/rss/articles/CBMicEFVX3lxTE4zTmFmQ24yNm5HN05fR1hnenRkbnhmbERObjVfS0NYQldCVVJCb3djMG5KUFpxZzhyaUNrYkhuYTM4SEpObzFBc28zS0VWSmJwTC1uNnB2TG1VeC15NzdkSi0yM01JcVNPZHlSY2lySV8?oc=5" target="_blank" rel="noopener" class="read-more">閱讀原文 →</a></div>
+        <div class="card-footer"><span>📰 Google News - CSRD/SFDR</span><span>🗓 2025/11/20</span><a href="https://news.google.com/rss/articles/CBMicEFVX3lxTE4zTmFmQ24yNm5HN05fR1hnenRkbnhmbERObjVfS0NYQldCVVJCb3djMG5KUFpxZzhyaUNrYkhuYTM4SEpObzFBc28zS0VWSmJwTC1uNnB2TG1VeC15NzdkSi0yM01JcVNPZHlSY2lySV8?oc=5" target="_blank" rel="noopener" class="read-more">閱讀原文 →</a></div>
       </div>
     </div>
 <div class="card reg-card">
       <div class="card-rank">◉</div>
       <div class="card-body">
-        <div class="card-meta"><span class="badge badge-blue">最新動態</span><span class="tag">🌎 美洲</span></div>
+        <div class="card-meta">
+          <span class="badge badge-blue">最新動態</span>
+          <span class="tag">🌎 美洲</span>
+        </div>
         <h3 class="card-title">SEC works to rescind Biden-era climate disclosure rule - ESG Dive</h3>
         <p class="card-summary">SEC works to rescind Biden-era climate disclosure rule ESG Dive</p>
-        <div class="card-footer"><span>📰 Google News - SEC氣候披露</span><span>🗓 2026/05/07</span><a href="https://news.google.com/rss/articles/CBMikgFBVV95cUxNUG9NWEhzeV9qdkJZTDNvdXpqUml5d28zNHlpV3BvUl9XbWFSaHF1RkJzNjBUaWNRVklnNjhpY3FhWjRHV0I5R1ItZlJ0Q2pyQ01heFpDeGtqYjJ1U0tONTNSXzc4a3FkbkZRS1lMNHJBckN1Z3J5SFVNZ3VKRDZYRjJiT21ibU1YcFZla0pBNmpkQQ?oc=5" target="_blank" rel="noopener" class="read-more">閱讀原文 →</a></div>
+        <div class="card-footer"><span>📰 Google News - SEC 氣候披露</span><span>🗓 2026/05/07</span><a href="https://news.google.com/rss/articles/CBMikgFBVV95cUxNUG9NWEhzeV9qdkJZTDNvdXpqUml5d28zNHlpV3BvUl9XbWFSaHF1RkJzNjBUaWNRVklnNjhpY3FhWjRHV0I5R1ItZlJ0Q2pyQ01heFpDeGtqYjJ1U0tONTNSXzc4a3FkbkZRS1lMNHJBckN1Z3J5SFVNZ3VKRDZYRjJiT21ibU1YcFZla0pBNmpkQQ?oc=5" target="_blank" rel="noopener" class="read-more">閱讀原文 →</a></div>
       </div>
     </div></div>
   </section>
@@ -566,8 +606,8 @@ footer strong{color:rgba(255,255,255,.9)}
 </main>
 
 <footer>
-  <p><strong>ESG 智能週報（免費版）</strong> &nbsp;·&nbsp; 資料來源：公開 RSS Feed &nbsp;·&nbsp; 2026年05月27日 更新</p>
-  <p style="margin-top:6px">本報告僅供參考，投資決策請諮詢專業人士</p>
+  <p><strong>ESG 智能週報（免費版）</strong> &nbsp;·&nbsp; 資料來源：Google News RSS &nbsp;·&nbsp; 2026年05月27日 更新</p>
+  <p style="margin-top:6px">所有新聞連結已自動驗證可開啟 · 本報告僅供參考，投資決策請諮詢專業人士</p>
 </footer>
 </body>
 </html>
