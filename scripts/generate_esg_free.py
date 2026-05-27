@@ -23,8 +23,14 @@ FILENAME = NOW.strftime("%Y-%m-%d")
 
 NEWS_FEEDS = [
     {
-        "name": "ESG Today",
-        "url": "https://www.esgtoday.com/feed/",
+        "name": "Google News - ESG Today",
+        "url": "https://news.google.com/rss/search?q=site:esgtoday.com&hl=en&gl=US&ceid=US:en",
+        "category": "ESG綜合",
+        "region": "全球"
+    },
+    {
+        "name": "Google News - 企業永續",
+        "url": "https://news.google.com/rss/search?q=corporate+sustainability+ESG+report&hl=en&gl=US&ceid=US:en",
         "category": "ESG綜合",
         "region": "全球"
     },
@@ -291,7 +297,7 @@ def news_card(item: dict) -> str:
     cat_icon = CAT_ICONS.get(category, '📌')
     reg_icon = CAT_ICONS.get(region, '🌐')
     search_url = f"https://www.google.com/search?q={requests.utils.quote(title)}"
-    link = f'<a href="{search_url}" target="_blank" rel="noopener" class="read-more">Google 搜尋 →</a>' if title else ''
+    link = f'<a href="{url}" target="_blank" rel="noopener" class="read-more">閱讀原文 →</a>' if url else ''
     
     return f"""<div class="card">
       <div class="card-rank">#{rank}</div>
@@ -350,7 +356,7 @@ def reg_news_card(item: dict, idx: int) -> str:
     region = item.get('region', '')
     reg_icon = CAT_ICONS.get(region, '🌐')
     search_url = f"https://www.google.com/search?q={requests.utils.quote(title)}"
-    link = f'<a href="{search_url}" target="_blank" rel="noopener" class="read-more">Google 搜尋 →</a>' if title else ''
+    link = f'<a href="{url}" target="_blank" rel="noopener" class="read-more">閱讀原文 →</a>' if url else ''
     
     return f"""<div class="card reg-card">
       <div class="card-rank">◉</div>
