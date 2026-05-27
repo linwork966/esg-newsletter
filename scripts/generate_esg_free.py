@@ -139,11 +139,16 @@ def clean_url(url: str) -> str:
     return url.split('?')[0]
     
 def is_url_accessible(url: str) -> bool:
-    """測試連結是否可以正常開啟，失效就回傳 False"""
+    """用瀏覽器身份測試連結，失效回傳 False"""
     if not url:
         return False
+    browser_headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+    }
     try:
-        resp = requests.head(url, headers=HEADERS, timeout=8, allow_redirects=True)
+        resp = requests.get(url, headers=browser_headers, timeout=8,
+                           allow_redirects=True, stream=True)
+        resp.close()
         return resp.status_code < 400
     except Exception:
         return False
