@@ -290,7 +290,8 @@ def news_card(item: dict) -> str:
     
     cat_icon = CAT_ICONS.get(category, '📌')
     reg_icon = CAT_ICONS.get(region, '🌐')
-    link = f'<a href="{url}" target="_blank" rel="noopener" class="read-more">閱讀原文 →</a>' if url else ''
+    search_url = f"https://www.google.com/search?q={requests.utils.quote(title)}"
+    link = f'<a href="{search_url}" target="_blank" rel="noopener" class="read-more">Google 搜尋 →</a>' if title else ''
     
     return f"""<div class="card">
       <div class="card-rank">#{rank}</div>
