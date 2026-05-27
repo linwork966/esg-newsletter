@@ -28,6 +28,7 @@ jobs:
         run: |
           git config --global user.name "ESG Bot"
           git config --global user.email "esg-bot@actions"
+          git pull --rebase
           git add docs/
           git diff --staged --quiet || git commit -m "📊 ESG Report $(date +'%Y-%m-%d')"
           git push
