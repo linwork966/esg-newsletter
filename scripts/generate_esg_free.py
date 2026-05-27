@@ -126,6 +126,11 @@ HEADERS = {
     "User-Agent": "Mozilla/5.0 (compatible; ESG-Newsletter-Bot/1.0)"
 }
 
+def clean_url(url: str) -> str:
+    """移除 UTM 追蹤參數，避免 403 錯誤"""
+    if not url:
+        return url
+    return url.split('?')[0]
 def clean_html(text: str) -> str:
     """移除 HTML 標籤，整理文字"""
     text = re.sub(r'<[^>]+>', ' ', text or '')
@@ -156,7 +161,7 @@ def fetch_feed(feed_cfg: dict, max_items: int = 5) -> list:
         for entry in parsed.entries[:max_items]:
             title = clean_html(entry.get('title', ''))
             summary = clean_html(entry.get('summary', '') or entry.get('description', ''))
-            link = entry.get('link', '')
+            link = clean_url(entry.get('link', ''))
             
             if not title or len(title) < 10:
                 continue
