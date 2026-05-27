@@ -21,13 +21,6 @@ FILENAME = NOW.strftime("%Y-%m-%d")
 # ── RSS 來源設定 ──────────────────────────────────────────────────────────────
 # 全部為公開免費 RSS，不需要帳號或 Key
 
-NEWS_FEEDS = [
-    {
-        "name": "Google News - ESG Today",
-        "url": "https://news.google.com/rss/search?q=site:esgtoday.com&hl=en&gl=US&ceid=US:en",
-        "category": "ESG綜合",
-        "region": "全球"
-    },
     {
         "name": "Google News - 企業永續",
         "url": "https://news.google.com/rss/search?q=corporate+sustainability+ESG+report&hl=en&gl=US&ceid=US:en",
@@ -138,10 +131,15 @@ def clean_url(url: str) -> str:
         return url
     return url.split('?')[0]
     
+BLOCKED_DOMAINS = ['esgtoday.com']
+
 def is_url_accessible(url: str) -> bool:
-    """用瀏覽器身份測試連結，失效回傳 False"""
+    """已知封鎖的網域直接過濾，其餘測試是否可開啟"""
     if not url:
         return False
+    for domain in BLOCKED_DOMAINS:
+        if domain in url:
+            return False
     browser_headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
     }
