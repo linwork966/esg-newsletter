@@ -167,7 +167,7 @@ def fetch_feed(feed_cfg: dict, max_items: int = 5) -> list:
         for entry in parsed.entries[:max_items]:
             title = clean_html(entry.get('title', ''))
             summary = clean_html(entry.get('summary', '') or entry.get('description', ''))
-            link = clean_url(entry.get('link', ''))
+            link = entry.get('link', '')
             
             if not title or len(title) < 10:
                 continue
@@ -296,7 +296,6 @@ def news_card(item: dict) -> str:
     
     cat_icon = CAT_ICONS.get(category, '📌')
     reg_icon = CAT_ICONS.get(region, '🌐')
-    search_url = f"https://www.google.com/search?q={requests.utils.quote(title)}"
     link = f'<a href="{url}" target="_blank" rel="noopener" class="read-more">閱讀原文 →</a>' if url else ''
     
     return f"""<div class="card">
