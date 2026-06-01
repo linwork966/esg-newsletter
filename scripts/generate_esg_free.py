@@ -504,6 +504,12 @@ def build_html(news, market, reg_news):
         dashboard_gwp() +
         dashboard_ncv() +
         dashboard_carbon_fee()
+    
+    )
+    third_col = (
+        sr_checklist() +
+        sr_notes() +
+        sr_activities()
     )
 
     return f"""<!DOCTYPE html>
@@ -665,11 +671,7 @@ footer strong{{color:rgba(255,255,255,.9)}}
   <!-- ── 第三欄：永續報告書指引 ── -->
   <div class="right-col">
     {third_col}
-        sr_checklist() +
-        sr_notes() +
-        sr_activities()
-    )
-  </div>
+    </div>
 </div>
 
 <footer>
