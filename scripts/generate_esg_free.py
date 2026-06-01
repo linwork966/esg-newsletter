@@ -337,6 +337,97 @@ def dashboard_carbon_fee():
   {legend}
 </div>'''
 
+def sr_checklist():
+    sections = [
+        ("📋 基本資訊", ["公司概況與治理架構","報告書範疇與邊界","重大性議題鑑別矩陣","利害關係人溝通方式","永續策略與目標"]),
+        ("🌍 環境面(E)", ["溫室氣體盤查(Scope 1/2/3)","能源使用與再生能源比例","用水量與水資源管理","廢棄物產生與處置","生物多樣性影響評估","產品碳足跡/水足跡"]),
+        ("👥 社會面(S)", ["員工人數/離職率/多元化","薪酬結構與性別薪酬差距","教育訓練時數與費用","職業安全衛生數據","供應鏈人權盡職調查","社區投資與公益支出","客戶隱私與資料安全"]),
+        ("🏛 治理面(G)", ["董事會組成與獨立性","女性董事比例","高階主管薪酬揭露","反貪腐與商業倫理政策","稅務透明度","風險管理機制","法規遵循紀錄"]),
+        ("📊 對齊框架", ["GRI準則對應表","SASB指標","TCFD氣候相關揭露","SDGs貢獻對應","ISSB S1/S2（新版要求）"]),
+    ]
+    html = ""
+    for title, items in sections:
+        lis = "".join(f'<li style="font-size:11px;color:var(--text2);padding:2px 0;border-bottom:1px dotted var(--border)">{i}</li>' for i in items)
+        html += f'''<div style="margin-bottom:10px">
+          <div style="font-size:11px;font-weight:700;color:var(--g600);background:var(--g100);padding:3px 8px;border-radius:4px;margin-bottom:4px">{title}</div>
+          <ul style="list-style:none;padding:0">{lis}</ul>
+        </div>'''
+    return f'''<div class="dash-card">
+  <div class="dash-title">📝 永續報告書內容清單</div>
+  {html}
+  <div style="font-size:10px;color:var(--textM);margin-top:4px">對標 GRI Standards・ISSB・TCFD・金管會規範</div>
+</div>'''
+
+def sr_notes():
+    notes = [
+        ("🔴 必須注意","重大性鑑別不能自己決定，需透過利害關係人調查產出矩陣"),
+        ("🔴 必須注意","數據需具可比較性：同口徑、同邊界、歷年一致"),
+        ("🔴 必須注意","資本額20億以上須取得第三方確信（有限確信或合理確信）"),
+        ("🟡 容易出錯","Scope 3 常被低估：員工通勤、差旅、上下游供應鏈皆需納入"),
+        ("🟡 容易出錯","薪酬差距計算需說明方法論，不能只寫「符合法規」"),
+        ("🟡 容易出錯","目標需 SMART：可量化、有時程、有基準年"),
+        ("🟢 加分項目","設定科學基礎減量目標(SBTi)並取得認可"),
+        ("🟢 加分項目","參考 SASB 產業標準，揭露產業特定指標"),
+        ("🟢 加分項目","董事會層級設置永續委員會，強化治理"),
+        ("🟢 加分項目","納入氣候情境分析(TCFD)：1.5°C / 2°C 兩種情境"),
+        ("💡 撰寫原則","避免漂綠：數據需有來源，成效需有證明"),
+        ("💡 撰寫原則","報告書應與年報/財報資訊一致，避免矛盾"),
+    ]
+    html = "".join(f'''<div style="display:flex;gap:6px;padding:5px 0;border-bottom:1px dotted var(--border);align-items:flex-start">
+      <span style="font-size:11px;flex-shrink:0">{badge}</span>
+      <span style="font-size:11px;color:var(--text2);line-height:1.5">{text}</span>
+    </div>''' for badge, text in notes)
+    return f'''<div class="dash-card">
+  <div class="dash-title">⚠️ 撰寫注意事項</div>
+  {html}
+</div>'''
+
+def sr_activities():
+    cats = [
+        ("🌿 環境面(E)","#22c55e",[
+            ("每月","無紙化挑戰：辦公室列印量減少X%目標"),
+            ("每季","員工碳足跡計算工具（通勤+飲食+購物）"),
+            ("每年","植樹造林活動 / 認養城市綠地"),
+            ("持續","綠色通勤：步行/自行車/大眾運輸獎勵"),
+            ("持續","辦公室節電競賽，部門用電排行看板"),
+            ("持續","廚餘堆肥 / 舊物循環二手市集"),
+            ("特殊","淨灘/淨山志工日 / 生態導覽體驗"),
+        ]),
+        ("👥 社會面(S)","#3b82f6",[
+            ("每月","多元共融午餐會：不同文化背景員工分享"),
+            ("每季","技能共享課程：員工教員工（內部講師）"),
+            ("每年","供應商稽核志工：了解供應鏈人權議題"),
+            ("持續","閱讀角設置 / 書本交換平台"),
+            ("持續","身心健康計畫：正念冥想、心理諮詢"),
+            ("特殊","偏鄉教育志工 / 銀髮數位培訓"),
+            ("特殊","捐血活動 / 物資募集公益日"),
+        ]),
+        ("🏛 治理面(G)","#8b5cf6",[
+            ("每月","ESG小學堂：15分鐘法規與趨勢分享"),
+            ("每季","員工誠信宣誓 / 反貪腐教育訓練"),
+            ("每年","ESG提案競賽：員工提出改善方案"),
+            ("持續","吹哨者保護管道宣導（匿名舉報系統）"),
+            ("持續","ESG績效目標納入各部門KPI"),
+            ("特殊","股東會模擬：讓員工了解公司治理運作"),
+            ("特殊","ESG參訪：拜訪標竿企業或永續農場"),
+        ]),
+    ]
+    html = ""
+    for title, color, activities in cats:
+        items = "".join(f'''<div style="display:flex;gap:6px;padding:4px 0;border-bottom:1px dotted var(--border);align-items:flex-start">
+          <span style="background:{color}22;color:{color};border-radius:4px;padding:1px 5px;font-size:9px;font-weight:700;flex-shrink:0;margin-top:2px">{freq}</span>
+          <span style="font-size:11px;color:var(--text2);line-height:1.4">{act}</span>
+        </div>''' for freq, act in activities)
+        html += f'''<div style="margin-bottom:12px">
+          <div style="font-size:11px;font-weight:700;color:#fff;background:{color};padding:4px 10px;border-radius:6px;margin-bottom:6px">{title}</div>
+          {items}
+        </div>'''
+    return f'''<div class="dash-card">
+  <div class="dash-title">🎯 員工ESG參與活動建議</div>
+  <div style="font-size:11px;color:var(--textM);margin-bottom:8px">從生活中落實，讓ESG成為企業文化</div>
+  {html}
+</div>'''
+
 def dashboard_cbam():
     items = [
         ("🗓 時程","2023/10 過渡期開始（僅申報）<br>2026/01 正式徵收CBAM憑證費用"),
@@ -446,8 +537,9 @@ nav{{position:sticky;top:0;z-index:100;background:var(--card);border-bottom:1px 
 nav a{{display:flex;align-items:center;gap:5px;padding:.75rem 1rem;color:var(--text2);text-decoration:none;font-size:13px;font-weight:500;white-space:nowrap;border-bottom:3px solid transparent;transition:.2s}}
 nav a:hover{{color:var(--g600);border-color:var(--g400)}}
 /* ── Layout ── */
-.layout{{display:grid;grid-template-columns:1fr 360px;gap:1.5rem;max-width:1280px;margin:0 auto;padding:1.5rem}}
-@media(max-width:900px){{.layout{{grid-template-columns:1fr}}}}
+.layout{{display:grid;grid-template-columns:1fr 340px 300px;gap:1.5rem;max-width:1440px;margin:0 auto;padding:1.5rem}}
+@media(max-width:1100px){{.layout{{grid-template-columns:1fr 320px}}}}
+@media(max-width:800px){{.layout{{grid-template-columns:1fr}}}}
 /* ── Left column ── */
 .section{{margin-bottom:2.5rem}}
 .sec-head{{display:flex;align-items:center;gap:10px;margin-bottom:1.25rem;padding-bottom:.75rem;border-bottom:2px solid var(--g100)}}
@@ -568,6 +660,15 @@ footer strong{{color:rgba(255,255,255,.9)}}
   <!-- ── 右欄：儀表板 ── -->
   <div class="right-col">
     {right_col}
+  </div>
+
+  <!-- ── 第三欄：永續報告書指引 ── -->
+  <div class="right-col">
+    {third_col}
+        sr_checklist() +
+        sr_notes() +
+        sr_activities()
+    )
   </div>
 </div>
 
