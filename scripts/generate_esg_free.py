@@ -337,6 +337,65 @@ def dashboard_carbon_fee():
   {legend}
 </div>'''
 
+def dashboard_cbam():
+    items = [
+        ("🗓 時程","2023/10 過渡期開始（僅申報）<br>2026/01 正式徵收CBAM憑證費用"),
+        ("📦 適用產品","鋼鐵、鋁、水泥、化肥、電力、氫氣<br>（2026年後預計擴大至更多產品）"),
+        ("💶 憑證價格","連動 EU ETS 碳價<br>目前約 €60–70 / tCO₂e"),
+        ("🇹🇼 台灣影響","鋼鐵（中鋼等）、鋁業出口商首當其衝<br>需提供產品碳含量申報文件"),
+        ("📋 申報義務","出口商須提交：生產國碳價、<br>產品直接/間接排放量、CBAM申報書"),
+        ("🔴 最新動態","歐洲議會2024年討論擴大至<br>有機化學品、塑料、橡膠等產品"),
+    ]
+    rows = "".join(f'<tr><td style="color:var(--g600);font-weight:600;white-space:nowrap;font-size:11px">{k}</td><td style="font-size:11px;line-height:1.5">{v}</td></tr>' for k,v in items)
+    return f'''<div class="dash-card">
+  <div class="dash-title">🌍 CBAM 碳邊境調整機制最新資訊</div>
+  <table class="dash-table"><tbody>{rows}</tbody></table>
+  <div style="font-size:10px;color:var(--textM);margin-top:6px">資料來源：歐盟官方公報・環境部・工業總會</div>
+</div>'''
+
+def dashboard_tw_carbon_2027():
+    tiers = [
+        ("#2d7a4f","一般費率","NT$300/t","2025年","已公告，適用未提減量計畫者"),
+        ("#4caf80","優惠費率A","NT$50/t","2025年","提交自主減量計畫且達標"),
+        ("#f59e0b","一般費率","NT$500–800/t","2026–2027年","預估，視減碳進展調升"),
+        ("#ef4444","長期目標","NT$1,200+/t","2030年","接軌歐盟碳價水準"),
+    ]
+    rows = "".join(f'<tr><td><span style="display:inline-block;width:8px;height:8px;background:{c};border-radius:50%;margin-right:4px"></span><span style="font-size:11px">{n}</span></td><td style="font-weight:700;font-size:12px;color:{c}">{f}</td><td style="font-size:10px;color:var(--textM)">{y}</td></tr>' for c,n,f,y,_ in tiers)
+    notes = "".join(f'<li style="font-size:10px;color:var(--textM);margin-bottom:2px">{n} → {d}</li>' for _,n,f,y,d in tiers)
+    return f'''<div class="dash-card">
+  <div class="dash-title">💰 2027 台灣碳費收費標準</div>
+  <div style="font-size:11px;color:var(--textM);margin-bottom:8px">徵收對象：年排放 ≥ 25,000 tCO₂e 業者（電力、鋼鐵、石化、水泥等）</div>
+  <table class="dash-table"><thead><tr><th>費率類型</th><th>費率</th><th>年度</th></tr></thead><tbody>{rows}</tbody></table>
+  <ul style="margin-top:8px;padding-left:4px;list-style:none">{notes}</ul>
+  <div style="font-size:10px;color:var(--textM);margin-top:6px">* 2026年後費率為政策預估值，以環境部正式公告為準</div>
+</div>'''
+
+def dashboard_enterprise_response():
+    steps = [
+        ("1","立即","完成碳盤查","依 ISO 14064-1 盤查 Scope 1+2+3<br>取得第三方查驗，建立排放基準年"),
+        ("2","短期","申請優惠費率","向環境部提交自主減量計畫<br>費率可從 NT$300 降至 NT$50/t"),
+        ("3","短期","購買綠電/憑證","簽訂企業購電協議(CPPA)<br>採購再生能源憑證(T-REC/I-REC)"),
+        ("4","中期","設定 SBTi 目標","加入科學基礎減量目標倡議<br>取得國際認可，強化品牌形象"),
+        ("5","中期","供應鏈碳管理","要求供應商申報碳足跡<br>建立低碳採購標準"),
+        ("6","長期","碳權抵換準備","參與台灣自願減量額度(VCS/Gold)<br>預備碳信用買賣抵換機制"),
+    ]
+    cards = ""
+    for no, timing, title, desc in steps:
+        color = "#2d7a4f" if timing=="立即" else "#f59e0b" if timing=="短期" else "#8b5cf6"
+        cards += f'''<div style="border:1px solid var(--border);border-left:3px solid {color};border-radius:6px;padding:7px 10px;margin-bottom:6px">
+          <div style="display:flex;align-items:center;gap:6px;margin-bottom:3px">
+            <span style="background:{color};color:#fff;border-radius:50%;width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0">{no}</span>
+            <span style="font-weight:600;font-size:12px">{title}</span>
+            <span style="margin-left:auto;background:{color}22;color:{color};border-radius:10px;padding:1px 7px;font-size:10px;font-weight:600">{timing}</span>
+          </div>
+          <div style="font-size:11px;color:var(--text2);line-height:1.5;padding-left:24px">{desc}</div>
+        </div>'''
+    return f'''<div class="dash-card">
+  <div class="dash-title">🏢 企業因應碳費六大行動</div>
+  {cards}
+  <div style="font-size:10px;color:var(--textM);margin-top:4px">資料來源：環境部・工業局・永續發展目標(SDGs)・SBTi</div>
+</div>'''
+
 # ── 主 HTML ───────────────────────────────────────────────────────────────────
 def build_html(news, market, reg_news):
     news_html      = '\n'.join(news_card(i) for i in news)
@@ -347,6 +406,9 @@ def build_html(news, market, reg_news):
     right_col = (
         dashboard_summary(news, market, reg_news) +
         dashboard_temp() +
+        dashboard_cbam() + 
+        dashboard_tw_carbon_2027() +
+        dashboard_enterprise_response() +
         dashboard_semi() +
         dashboard_gwp() +
         dashboard_ncv() +
