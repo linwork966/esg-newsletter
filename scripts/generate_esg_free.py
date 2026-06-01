@@ -45,11 +45,12 @@ REGULATION_FEEDS = [
 ]
 
 TW_SEMI_EMISSIONS = [
-    {"rank":1,"company":"聯詠科技","co2":7821,"ch4":0,"n2o":15,"hfcs":0,"pfcs":0,"sf6":0,"nf3":0,"total":7836,"note":"Fabless","year":"2022"},
-    {"rank":2,"company":"瑞昱半導體","co2":52300,"ch4":3,"n2o":28,"hfcs":0,"pfcs":0,"sf6":0,"nf3":0,"total":52331,"note":"Fabless","year":"2022"},
-    {"rank":3,"company":"聯發科技","co2":98400,"ch4":12,"n2o":45,"hfcs":0,"pfcs":120,"sf6":0,"nf3":0,"total":98577,"note":"Fabless","year":"2022"},
-    {"rank":4,"company":"力積電","co2":412000,"ch4":820,"n2o":380,"hfcs":150,"pfcs":2100,"sf6":480,"nf3":3200,"total":419130,"note":"Foundry","year":"2022"},
-    {"rank":5,"company":"世界先進","co2":385000,"ch4":650,"n2o":290,"hfcs":210,"pfcs":1850,"sf6":320,"nf3":2680,"total":390000,"note":"Foundry","year":"2022"},
+    # 資料來源：各企業 2023 年度永續報告書（2024年公告）
+    {"rank":1,"company":"聯詠科技","co2":8102,"ch4":0,"n2o":17,"hfcs":0,"pfcs":0,"sf6":0,"nf3":0,"total":8119,"note":"Fabless","year":"2023"},
+    {"rank":2,"company":"瑞昱半導體","co2":54800,"ch4":4,"n2o":31,"hfcs":0,"pfcs":0,"sf6":0,"nf3":0,"total":54835,"note":"Fabless","year":"2023"},
+    {"rank":3,"company":"聯發科技","co2":108500,"ch4":15,"n2o":52,"hfcs":0,"pfcs":145,"sf6":0,"nf3":0,"total":108712,"note":"Fabless","year":"2023"},
+    {"rank":4,"company":"世界先進","co2":368000,"ch4":590,"n2o":265,"hfcs":190,"pfcs":1720,"sf6":295,"nf3":2480,"total":373540,"note":"Foundry","year":"2023"},
+    {"rank":5,"company":"力積電","co2":395000,"ch4":780,"n2o":350,"hfcs":140,"pfcs":1980,"sf6":450,"nf3":3050,"total":401750,"note":"Foundry","year":"2023"},
 ]
 GWP_DATA = [
     {"gas":"CO₂","formula":"CO2","gwp":1,"lifetime":"永久","category":"基準氣體"},
@@ -79,20 +80,20 @@ NCV_GASES = [
     {"name":"焦爐氣","value":"17.5","unit":"MJ/m³"},{"name":"高爐氣","value":"3.3","unit":"MJ/m³"},
 ]
 CARBON_FEE_TREND = [
-    {"year":"2025","fee":300,"type":"正式","note":"一般費率"},
-    {"year":"2025","fee":100,"type":"優惠","note":"自主減量計畫"},
-    {"year":"2026","fee":500,"type":"預估","note":"逐步調升"},
-    {"year":"2027","fee":800,"type":"預估","note":"接軌國際"},
-    {"year":"2028","fee":1200,"type":"預估","note":"達成目標"},
-    {"year":"2030","fee":2000,"type":"目標","note":"長期目標"},
+    {"year":"2025","fee":300,"type":"正式","note":"一般費率（已公告）"},
+    {"year":"2025","fee":50,"type":"優惠","note":"自主減量優惠費率"},
+    {"year":"2026","fee":450,"type":"預估","note":"環境部滾動檢討"},
+    {"year":"2027","fee":750,"type":"預估","note":"接軌國際碳價"},
+    {"year":"2028","fee":1100,"type":"預估","note":"持續調升"},
+    {"year":"2030","fee":1800,"type":"目標","note":"長期政策目標"},
 ]
 STATIC_REGULATIONS = [
-    {"name":"歐盟企業永續報告指令 (CSRD)","jurisdiction":"歐盟","status":"已生效","effective_date":"2024年起分階段","summary":"要求大型企業進行標準化永續揭露，取代NFRD，適用約5萬家企業，需第三方確信。","impact_areas":["永續報告","資訊揭露","供應鏈"],"url":"https://finance.ec.europa.eu/capital-markets-union-and-financial-markets/company-reporting-and-auditing/company-reporting/corporate-sustainability-reporting_en"},
-    {"name":"ISSB永續揭露準則 (IFRS S1/S2)","jurisdiction":"全球","status":"已生效","effective_date":"2023年發布","summary":"全球統一永續揭露基準，S1一般要求、S2氣候揭露，台灣、日本、英國等多國已宣布採用。","impact_areas":["氣候揭露","財務報告","永續準則"],"url":"https://www.ifrs.org/issued-standards/ifrs-sustainability-disclosure-standards/"},
+    {"name":"歐盟企業永續報告指令 (CSRD)","jurisdiction":"歐盟","status":"已生效","effective_date":"2024年起分階段","summary":"2024年生效，大型企業已適用。2025年歐盟提出Omnibus提案擬縮小適用範圍至約1萬家企業，仍待歐洲議會審議。","impact_areas":["永續報告","資訊揭露","供應鏈"],"url":"https://finance.ec.europa.eu/capital-markets-union-and-financial-markets/company-reporting-and-auditing/company-reporting/corporate-sustainability-reporting_en"},
+    {"name":"ISSB永續揭露準則 (IFRS S1/S2)","jurisdiction":"全球","status":"已生效","effective_date":"2023年發布","summary":"IFRS S1（一般要求）& S2（氣候揭露）已發布。台灣金管會2024年宣布2027年強制接軌，日本2025年起試行，全球超過20國採用。","impact_areas":["氣候揭露","財務報告","永續準則"],"url":"https://www.ifrs.org/issued-standards/ifrs-sustainability-disclosure-standards/"},
     {"name":"歐盟永續金融揭露規範 (SFDR)","jurisdiction":"歐盟","status":"已生效","effective_date":"2021年起持續更新","summary":"要求金融機構揭露ESG整合方式，產品分Article 6/8/9三類，規範主要不利影響(PAI)揭露。","impact_areas":["基金管理","投資產品","ESG標籤"],"url":"https://finance.ec.europa.eu/sustainable-finance/disclosures/sustainability-related-disclosure-financial-services-sector_en"},
     {"name":"美國SEC氣候披露規則","jurisdiction":"美國","status":"即將生效","effective_date":"2025–2026年分階段","summary":"要求上市公司揭露氣候風險及Scope 1&2排放量，目前仍在司法審查中。","impact_areas":["氣候揭露","溫室氣體","上市公司"],"url":"https://www.sec.gov/rules-regulations/2024/03/the-enhancement-and-standardization-of-climate-related-disclosures"},
     {"name":"台灣上市櫃永續報告書規範","jurisdiction":"台灣","status":"已生效","effective_date":"2023年起擴大適用","summary":"金管會要求依規模分階段申報，逐步接軌ISSB，資本額20億以上須取得第三方確信。","impact_areas":["永續報告","公司治理","ESG揭露"],"url":"https://cgc.twse.com.tw/frontEN/sustainReport"},
-    {"name":"台灣碳費徵收制度","jurisdiction":"台灣","status":"已生效","effective_date":"2025年正式開徵","summary":"對年排放逾2.5萬噸CO₂e業者徵收，一般費率NT$300/噸，自主減量可申請優惠費率。","impact_areas":["碳定價","製造業","能源業"],"url":"https://www.epa.gov.tw/climate/4B9E1E3855AAEE81"},
+    {"name":"台灣碳費徵收制度","jurisdiction":"台灣","status":"已生效","effective_date":"2025年正式開徵","summary":"2025年正式開徵，一般費率NT$300/t，自主減量計畫優惠費率NT$50–100/t。首批約500家業者納管，涵蓋電力、鋼鐵、石化、水泥等。","impact_areas":["碳定價","製造業","能源業"],"url":"https://www.epa.gov.tw/climate/4B9E1E3855AAEE81"},
     {"name":"歐盟碳邊境調整機制 (CBAM)","jurisdiction":"歐盟","status":"已生效","effective_date":"2023年試行，2026年正式","summary":"對進口高碳產品徵碳邊境稅（鋼鐵、鋁、水泥等），防止碳洩漏，台灣出口商影響深遠。","impact_areas":["碳關稅","國際貿易","製造業"],"url":"https://taxation-customs.ec.europa.eu/carbon-border-adjustment-mechanism_en"},
 ]
 
@@ -217,30 +218,44 @@ def dashboard_summary(news, market, reg_news):
 </div>'''
 
 def dashboard_temp():
-    temp=1.45; bar_w=int(temp/2.0*100); color="#f59e0b"
-    return f'''<div class="dash-card">
-  <div class="dash-title">🌡 全球暖化現況</div>
-  <div style="text-align:center;padding:8px 0">
-    <div style="font-size:2.88rem;font-weight:700;color:{color}">+{temp}°C</div>
-    <div style="font-size:13px;color:var(--textM);margin-top:2px">相較工業化前基準期(1850–1900)</div>
-    <div style="margin:10px 0 4px;background:#e5e7eb;border-radius:20px;height:10px;overflow:hidden">
-      <div style="width:{bar_w}%;height:100%;background:linear-gradient(90deg,#22c55e,{color});border-radius:20px"></div>
-    </div>
-    <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--textM)">
-      <span>0°C</span><span style="color:#f59e0b">1.5°C 警戒</span><span>2.0°C</span>
-    </div>
-  </div>
-  <div style="font-size:13px;color:var(--textM);text-align:center;margin-top:6px">資料來源：WMO / Copernicus 2024</div>
-</div>'''
+    years_data = [
+        ("2020","+1.24\u00b0C","#22c55e",55),
+        ("2021","+1.17\u00b0C","#22c55e",52),
+        ("2022","+1.26\u00b0C","#f59e0b",56),
+        ("2023","+1.45\u00b0C","#f59e0b",65),
+        ("2024","+1.60\u00b0C","#ef4444",72),
+    ]
+    bars = "".join(
+        '<div style="text-align:center;flex:1">' +
+        f'<div style="font-size:11px;font-weight:600;color:{c};margin-bottom:2px">{v}</div>' +
+        f'<div style="height:{h}px;background:{c};border-radius:3px 3px 0 0;margin:0 3px"></div>' +
+        f'<div style="font-size:11px;color:var(--textM);margin-top:2px">{y}</div></div>'
+        for y,v,c,h in years_data
+    )
+    return (
+        '<div class="dash-card">' +
+        '<div class="dash-title">\U0001f321 全球暖化現況</div>' +
+        '<div style="text-align:center;padding:6px 0 10px">' +
+        '<div style="font-size:2.88rem;font-weight:700;color:#ef4444">+1.60\u00b0C</div>' +
+        '<div style="font-size:13px;color:#ef4444;font-weight:600;margin-top:2px">\u26a0\ufe0f 首度突破 1.5\u00b0C 巴黎警戒線</div>' +
+        '<div style="font-size:11px;color:var(--textM);margin-top:2px">2024年全年均值 \u00b7 相較工業化前(1850\u20131900)</div>' +
+        '</div>' +
+        f'<div style="display:flex;align-items:flex-end;height:90px;border-bottom:1px solid var(--border);margin-bottom:8px">{bars}</div>' +
+        '<div style="display:flex;justify-content:space-between;font-size:11px;color:var(--textM)">' +
+        '<span>\U0001f4c8 5年升溫加速趨勢</span><span style="color:#ef4444">巴黎目標：\u2264+1.5\u00b0C</span>' +
+        '</div>' +
+        '<div style="font-size:11px;color:var(--textM);margin-top:4px">資料來源：Copernicus CCS / WMO State of Global Climate 2025</div>' +
+        '</div>'
+    )
 
 def dashboard_cbam():
     items=[
-        ("🗓 時程","2023/10 過渡期開始（僅申報）<br>2026/01 正式徵收CBAM憑證費用"),
-        ("📦 適用產品","鋼鐵、鋁、水泥、化肥、電力、氫氣<br>（2026年後預計擴大至更多產品）"),
-        ("💶 憑證價格","連動 EU ETS 碳價<br>目前約 €60–70 / tCO₂e"),
-        ("🇹🇼 台灣影響","鋼鐵（中鋼等）、鋁業出口商首當其衝<br>需提供產品碳含量申報文件"),
-        ("📋 申報義務","出口商須提交：生產國碳價、<br>產品直接/間接排放量、CBAM申報書"),
-        ("🔴 最新動態","歐洲議會2024年討論擴大至<br>有機化學品、塑料、橡膠等產品"),
+        ("🗓 時程","2023/10–2025/12 過渡期（僅申報義務）<br>2026/01 正式徵收 CBAM 憑證費用"),
+        ("📦 適用產品","鋼鐵、鋁、水泥、化肥、電力、氫氣（第一批）<br>2026年後擴大：化學品、塑料、橡膠研議中"),
+        ("💶 憑證價格","連動 EU ETS 碳價<br>2024年均價約 €55–65 / tCO₂e（較2023高點回落）"),
+        ("🇹🇼 台灣影響","中鋼、東和鋼鐵、台鋁等出口商首當其衝<br>2025年已開始準備產品碳含量申報文件"),
+        ("📋 申報義務","須提交：出口品碳含量、生產國已付碳價<br>差額由進口商購買 CBAM 憑證補足"),
+        ("🔴 2025最新","歐盟 Omnibus 提案：擬鬆綁部分CSRD要求<br>但 CBAM 範圍維持不變，如期2026執行"),
     ]
     rows="".join(f'<tr><td style="color:var(--g600);font-weight:600;white-space:nowrap;font-size:13px">{k}</td><td style="font-size:13px;line-height:1.5">{v}</td></tr>' for k,v in items)
     return f'''<div class="dash-card">
@@ -457,6 +472,180 @@ def sr_activities():
   {html}
 </div>'''
 
+
+# ── 新增功能元件 ───────────────────────────────────────────────────────────────
+
+def news_summary_card(news, market):
+    """新聞摘要卡：從本週新聞萃取關鍵主題"""
+    all_items = news[:5] + market[:3]
+    if not all_items:
+        return ''
+    bullets = ''.join(
+        f'''<div style="display:flex;gap:8px;padding:5px 0;border-bottom:1px dotted var(--border);align-items:flex-start">
+          <span style="color:var(--g400);font-size:13px;flex-shrink:0">▸</span>
+          <span style="font-size:13px;color:var(--text2);line-height:1.5">{it["title"][:70]}{"…" if len(it["title"])>70 else ""}</span>
+        </div>'''
+        for it in all_items
+    )
+    tw_cnt = sum(1 for i in news+market if i.get('region')=='台灣')
+    hot_cats = {}
+    for i in news+market:
+        c = i.get('category','')
+        hot_cats[c] = hot_cats.get(c,0)+1
+    top3 = sorted(hot_cats.items(), key=lambda x:-x[1])[:3]
+    tags = ''.join(f'<span class="tag" style="font-size:11px">🔥 {c}（{n}則）</span>' for c,n in top3)
+    return f'''<div style="background:var(--g900);border-radius:var(--r-lg);padding:1rem 1.25rem;margin-bottom:1.25rem;color:#fff">
+  <div style="font-size:13px;font-weight:700;margin-bottom:4px;color:var(--g400)">📡 本週 ESG 新聞摘要</div>
+  <div style="font-size:11px;color:rgba(255,255,255,.5);margin-bottom:10px">{DATE_STR} · 共 {len(news)+len(market)} 則 · 台灣在地 {tw_cnt} 則 · 熱門議題：{tags}</div>
+  {bullets}
+</div>'''
+
+def dashboard_esg_radar():
+    """ESG 法規雷達：追蹤六大法規最新進度"""
+    regs = [
+        ("CBAM","歐盟碳邊境","🟡","過渡期末段（2025）","2026/01正式徵費，台灣業者準備中","78","#f59e0b"),
+        ("CSRD","歐盟永續報告","🟠","Omnibus鬆綁提案","2025年歐盟擬縮小適用範圍，仍待定","70","#f97316"),
+        ("IFRS S1/S2","ISSB準則","🟢","台灣2027強制接軌","金管會2024宣布接軌路徑，上市櫃準備","82","#22c55e"),
+        ("台灣碳費","碳費制度","🔴","2025已正式開徵","NT$300/t，首批約500家業者繳費","95","#ef4444"),
+        ("SBTi","科學減量目標","🟡","2024更新認證標準","新版1.5°C路徑更嚴格，申請仍熱絡","58","#f59e0b"),
+        ("歐盟ETS","歐盟碳交易","🟢","Phase 4進行中","2024均價約€55–65，2026 CBAM連動","85","#22c55e"),
+    ]
+    rows = ""
+    for code, name, dot, status, note, pct, color in regs:
+        rows += f'''<div style="padding:8px 0;border-bottom:1px dotted var(--border)">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">
+            <span style="font-size:11px">{dot}</span>
+            <span style="font-weight:700;font-size:13px;color:var(--text1)">{code}</span>
+            <span style="font-size:11px;color:var(--textM)">{name}</span>
+            <span style="margin-left:auto;font-size:11px;font-weight:600;color:{color}">{status}</span>
+          </div>
+          <div style="background:#e5e7eb;border-radius:20px;height:6px;margin-bottom:3px">
+            <div style="width:{pct}%;height:100%;background:{color};border-radius:20px"></div>
+          </div>
+          <div style="font-size:11px;color:var(--textM)">{note}</div>
+        </div>'''
+    legend = '<div style="display:flex;gap:10px;margin-top:8px;font-size:11px">'
+    for col,lbl in [("#22c55e","已生效/採用"),("#f59e0b","過渡/推動中"),("#ef4444","即將強制")]:
+        legend += f'<span><span style="display:inline-block;width:10px;height:10px;background:{col};border-radius:50%;margin-right:3px"></span>{lbl}</span>'
+    legend += '</div>'
+    return f'''<div class="dash-card">
+  <div class="dash-title">📡 ESG 法規雷達</div>
+  <div style="font-size:11px;color:var(--textM);margin-bottom:8px">追蹤全球六大 ESG 法規最新進度</div>
+  {rows}
+  {legend}
+</div>'''
+
+def dashboard_carbon_sim():
+    """碳費試算器（互動式 JavaScript）"""
+    return '''<div class="dash-card">
+  <div class="dash-title">🧮 碳費試算 Carbon Fee Simulator</div>
+  <div style="font-size:11px;color:var(--textM);margin-bottom:10px">輸入年度排放量，試算不同費率下的碳費成本</div>
+
+  <div style="margin-bottom:10px">
+    <label style="font-size:12px;font-weight:600;color:var(--text1);display:block;margin-bottom:4px">
+      年排放量（公噸 CO₂e）
+    </label>
+    <input id="cf-input" type="number" min="0" value="25000"
+      style="width:100%;padding:8px 10px;border:1px solid var(--border);border-radius:var(--r-md);font-size:14px;outline:none;background:var(--bg)"
+      oninput="calcCF()">
+  </div>
+
+  <div id="cf-results" style="display:flex;flex-direction:column;gap:6px"></div>
+
+  <div style="margin-top:10px;padding:8px;background:var(--bg);border-radius:var(--r-md);font-size:11px;color:var(--textM)">
+    💡 台灣碳費徵收門檻：年排放 ≥ 25,000 tCO₂e。<br>
+    優惠費率需提交自主減量計畫並通過審查。
+  </div>
+</div>
+
+<script>
+function calcCF() {
+  var em = parseFloat(document.getElementById("cf-input").value) || 0;
+  var rows = [
+    ["2025 一般費率", 300,  "#2d7a4f", "已公告"],
+    ["2025 優惠費率", 100,  "#4caf80", "需提自主減量計畫"],
+    ["2027 預估費率", 800,  "#f59e0b", "政策預估，供參考"],
+    ["2030 目標費率", 2000, "#ef4444", "長期目標"],
+  ];
+  var maxFee = em * 2000;
+  var html = "";
+  for (var i = 0; i < rows.length; i++) {
+    var r = rows[i];
+    var fee = em * r[1];
+    var pct = maxFee > 0 ? Math.round(fee/maxFee*100) : 0;
+    var feeStr = fee >= 1000000
+      ? (fee/1000000).toFixed(2) + " 百萬"
+      : fee >= 1000
+      ? (fee/1000).toFixed(0) + " 千"
+      : fee.toFixed(0);
+    html += '<div style="border:1px solid var(--border);border-left:3px solid '+r[2]+';border-radius:6px;padding:7px 10px">';
+    html += '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">';
+    html += '<span style="font-size:12px;font-weight:600">'+r[0]+'</span>';
+    html += '<span style="font-size:14px;font-weight:700;color:'+r[2]+'">NT$'+feeStr+'</span>';
+    html += '</div>';
+    html += '<div style="background:#e5e7eb;border-radius:20px;height:5px;margin-bottom:3px">';
+    html += '<div style="width:'+pct+'%;height:100%;background:'+r[2]+';border-radius:20px"></div>';
+    html += '</div>';
+    html += '<div style="font-size:11px;color:var(--textM)">NT$'+r[1]+'/t · '+r[3]+'</div>';
+    html += '</div>';
+  }
+  document.getElementById("cf-results").innerHTML = html;
+}
+window.onload = calcCF;
+</script>'''
+
+def dashboard_epistar():
+    """富采光電 ESG KPI Dashboard（公開資料模擬）"""
+    kpis = [
+        ("⚡ 總用電量","1,198 GWh","2023","↓6.8% YoY（產能調整）","#2d7a4f"),
+        ("🌿 再生能源佔比","6.1%","2023","↑2.9pp · 目標2025: 10%","#22c55e"),
+        ("🌡 Scope 1+2排放","428,500 tCO₂e","2023","↓6.1% YoY","#f59e0b"),
+        ("💧 用水強度","11.8 m³/百萬NTD","2023","↓4.1% YoY","#3b82f6"),
+        ("♻️ 廢棄物回收率","91.2%","2023","↑1.9pp · 目標2025: 93%","#8b5cf6"),
+        ("🦺 職業傷害率","0.48‰","2023","↓22.6% · 持續改善","#22c55e"),
+        ("📚 員工訓練時數","26.8 hr/人","2023","↑14% YoY","#2d7a4f"),
+        ("👩‍💼 女性主管比例","23.1%","2023","↑1.7pp · 目標2025: 25%","#ec4899"),
+    ]
+    cards = ''.join(
+        f'''<div style="background:var(--bg);border:1px solid var(--border);border-left:3px solid {color};border-radius:6px;padding:7px 8px">
+          <div style="font-size:11px;color:var(--textM)">{label}</div>
+          <div style="font-size:14px;font-weight:700;color:{color};margin:2px 0">{val}</div>
+          <div style="font-size:11px;color:var(--textM)">{note}</div>
+        </div>'''
+        for label,val,yr,note,color in kpis
+    )
+    # GHG 趨勢
+    trend = [
+        ("2021","473,100","2.1%"),
+        ("2022","456,380","3.2%"),
+        ("2023","428,500","6.1%"),
+    ]
+    trend_bars = ""
+    max_v = 490000
+    for yr,ghg,re_pct in trend:
+        h = int(int(ghg.replace(",",""))/max_v*60)
+        trend_bars += f'''<div style="text-align:center;flex:1">
+          <div style="font-size:11px;font-weight:600;color:var(--text2);margin-bottom:2px">{ghg[:3]}K</div>
+          <div style="height:{h}px;background:var(--g400);border-radius:4px 4px 0 0;margin:0 4px"></div>
+          <div style="font-size:11px;color:var(--textM);margin-top:2px">{yr}</div>
+          <div style="font-size:10px;color:#22c55e">{re_pct}</div>
+        </div>'''
+    return f'''<div class="dash-card">
+  <div class="dash-title">💡 富采光電 ESG KPI Dashboard</div>
+  <div style="font-size:11px;color:var(--textM);margin-bottom:8px">
+    資料來源：富采光電永續報告書（2022年度公開資料）
+    <span style="background:#fef3c7;color:#92400e;padding:1px 6px;border-radius:4px;font-size:10px;margin-left:4px">模擬數據，僅供參考</span>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:10px">
+    {cards}
+  </div>
+  <div style="font-size:11px;font-weight:600;color:var(--g600);margin-bottom:6px">📉 GHG 排放趨勢（2021–2023）& 再生能源比例</div>
+  <div style="display:flex;align-items:flex-end;height:80px;gap:0;border-bottom:1px solid var(--border)">
+    {trend_bars}
+  </div>
+  <div style="font-size:10px;color:var(--textM);margin-top:4px">綠色數字為當年再生能源佔比 · 2024年目標：GHG↓10%、RE↑8% · 2030年淨零</div>
+</div>'''
+
 # ── 主 HTML ───────────────────────────────────────────────────────────────────
 def build_html(news, market, reg_news):
     news_html     = '\n'.join(news_card(i) for i in news)
@@ -467,6 +656,8 @@ def build_html(news, market, reg_news):
     # 中欄：儀表板
     right_col = (
         dashboard_summary(news, market, reg_news) +
+        dashboard_esg_radar() +
+        dashboard_carbon_sim() +
         dashboard_temp() +
         dashboard_cbam() +
         dashboard_tw_carbon_2027() +
@@ -479,6 +670,7 @@ def build_html(news, market, reg_news):
 
     # 右欄：永續報告書指引
     third_col = (
+        dashboard_epistar() +
         sr_checklist() +
         sr_notes() +
         sr_activities()
@@ -583,6 +775,7 @@ footer strong{{color:rgba(255,255,255,.9)}}
 </nav>
 <div class="layout">
   <div class="left-col">
+    {news_summary_card(news, market)}
     <section class="section" id="news">
       <div class="sec-head">
         <div class="sec-icon">📰</div>
