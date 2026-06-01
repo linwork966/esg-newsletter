@@ -7,19 +7,19 @@
 <style>
 :root{--g900:#0d2e1a;--g800:#1a4d2e;--g600:#2d7a4f;--g400:#4caf80;--g100:#e8f5ee;--amber:#f59e0b;--amberL:#fef3c7;--blue:#2563eb;--blueL:#dbeafe;--text1:#1a2e1f;--text2:#4b6358;--textM:#7a9488;--border:#c8e6d4;--bg:#f5fbf7;--card:#fff;--r-lg:14px;--r-md:8px}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Noto Sans TC',system-ui,sans-serif;background:var(--bg);color:var(--text1);line-height:1.7;font-size:14px}
+body{font-family:'Noto Sans TC',system-ui,sans-serif;background:var(--bg);color:var(--text1);line-height:1.7;font-size:17px}
 .header{background:var(--g900);color:#fff;padding:2rem 2rem 1.5rem;text-align:center}
-.h-badge{display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:20px;padding:3px 12px;font-size:11px;letter-spacing:.06em;margin-bottom:.75rem}
-.header h1{font-size:clamp(1.5rem,3vw,2.2rem);font-weight:700;margin-bottom:.3rem}
+.h-badge{display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:20px;padding:3px 12px;font-size:13px;letter-spacing:.06em;margin-bottom:.75rem}
+.header h1{font-size:clamp(1.8rem,3.6vw,2.64rem);font-weight:700;margin-bottom:.3rem}
 .header h1 span{color:var(--g400)}
-.header p{opacity:.7;margin-bottom:1.5rem;font-size:13px}
+.header p{opacity:.7;margin-bottom:1.5rem;font-size:16px}
 .stats{display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap}
 .stat{text-align:center}
-.stat-n{font-size:1.6rem;font-weight:700;color:var(--g400);line-height:1}
-.stat-l{font-size:10px;opacity:.6;margin-top:2px}
-.free-badge{display:inline-block;background:rgba(76,175,128,.2);border:1px solid var(--g400);color:var(--g400);border-radius:20px;padding:2px 10px;font-size:11px;margin-top:.75rem}
+.stat-n{font-size:1.92rem;font-weight:700;color:var(--g400);line-height:1}
+.stat-l{font-size:12px;opacity:.6;margin-top:2px}
+.free-badge{display:inline-block;background:rgba(76,175,128,.2);border:1px solid var(--g400);color:var(--g400);border-radius:20px;padding:2px 10px;font-size:13px;margin-top:.75rem}
 nav{position:sticky;top:0;z-index:100;background:var(--card);border-bottom:1px solid var(--border);padding:0 1.5rem;display:flex;overflow-x:auto;box-shadow:0 2px 8px rgba(0,0,0,.06)}
-nav a{display:flex;align-items:center;gap:5px;padding:.75rem 1rem;color:var(--text2);text-decoration:none;font-size:13px;font-weight:500;white-space:nowrap;border-bottom:3px solid transparent;transition:.2s}
+nav a{display:flex;align-items:center;gap:5px;padding:.75rem 1rem;color:var(--text2);text-decoration:none;font-size:16px;font-weight:500;white-space:nowrap;border-bottom:3px solid transparent;transition:.2s}
 nav a:hover{color:var(--g600);border-color:var(--g400)}
 .layout{display:grid;grid-template-columns:1fr 340px 300px;gap:1.5rem;max-width:1440px;margin:0 auto;padding:1.5rem}
 @media(max-width:1100px){.layout{grid-template-columns:1fr 320px}}
@@ -27,53 +27,53 @@ nav a:hover{color:var(--g600);border-color:var(--g400)}
 .section{margin-bottom:2.5rem}
 .sec-head{display:flex;align-items:center;gap:10px;margin-bottom:1.25rem;padding-bottom:.75rem;border-bottom:2px solid var(--g100)}
 .sec-icon{width:38px;height:38px;background:var(--g100);border-radius:var(--r-md);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
-.sec-head h2{font-size:1.1rem;font-weight:700;color:var(--g900)}
-.sec-head p{font-size:11px;color:var(--textM);margin-top:1px}
-.sec-cnt{margin-left:auto;background:var(--g100);color:var(--g600);padding:2px 8px;border-radius:20px;font-size:11px;font-weight:600;white-space:nowrap}
+.sec-head h2{font-size:1.32rem;font-weight:700;color:var(--g900)}
+.sec-head p{font-size:13px;color:var(--textM);margin-top:1px}
+.sec-cnt{margin-left:auto;background:var(--g100);color:var(--g600);padding:2px 8px;border-radius:20px;font-size:13px;font-weight:600;white-space:nowrap}
 .cards{display:flex;flex-direction:column;gap:.75rem}
 .card{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--g400);border-radius:var(--r-lg);padding:1rem 1.25rem;display:flex;gap:.75rem;transition:.15s}
 .card:hover{transform:translateY(-1px);box-shadow:0 4px 16px rgba(45,122,79,.1)}
 .reg-card{border-left-color:var(--blue)}
-.card-rank{font-size:1.2rem;font-weight:800;color:var(--g100);min-width:36px;text-align:center;padding-top:1px;line-height:1}
+.card-rank{font-size:1.44rem;font-weight:800;color:var(--g100);min-width:36px;text-align:center;padding-top:1px;line-height:1}
 .card-body{flex:1;min-width:0}
 .card-meta{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:6px}
-.card-title{font-size:.9rem;font-weight:600;color:var(--text1);margin-bottom:4px;line-height:1.4}
-.card-summary{font-size:12px;color:var(--text2);line-height:1.6}
-.card-footer{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:8px;font-size:11px;color:var(--textM)}
+.card-title{font-size:1.08rem;font-weight:600;color:var(--text1);margin-bottom:4px;line-height:1.4}
+.card-summary{font-size:14px;color:var(--text2);line-height:1.6}
+.card-footer{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:8px;font-size:13px;color:var(--textM)}
 .areas{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}
-.badge{display:inline-block;padding:2px 7px;border-radius:20px;font-size:10px;font-weight:600}
+.badge{display:inline-block;padding:2px 7px;border-radius:20px;font-size:12px;font-weight:600}
 .badge-green{background:var(--g100);color:var(--g600)}
 .badge-amber{background:var(--amberL);color:#92400e}
 .badge-gray{background:#f1efeb;color:#5f5e5a}
 .badge-blue{background:var(--blueL);color:var(--blue)}
-.tag{display:inline-block;padding:2px 7px;background:var(--bg);border:1px solid var(--border);border-radius:20px;font-size:10px;color:var(--text2)}
-.read-more{color:var(--g600);text-decoration:none;font-weight:500;font-size:11px;margin-left:auto;white-space:nowrap}
+.tag{display:inline-block;padding:2px 7px;background:var(--bg);border:1px solid var(--border);border-radius:20px;font-size:12px;color:var(--text2)}
+.read-more{color:var(--g600);text-decoration:none;font-weight:500;font-size:13px;margin-left:auto;white-space:nowrap}
 .read-more:hover{text-decoration:underline}
-.divider{display:flex;align-items:center;gap:8px;margin:1rem 0;font-size:11px;color:var(--textM)}
+.divider{display:flex;align-items:center;gap:8px;margin:1rem 0;font-size:13px;color:var(--textM)}
 .divider::before,.divider::after{content:'';flex:1;border-top:1px dashed var(--border)}
-.empty{text-align:center;padding:1.5rem;color:var(--textM);font-size:13px}
+.empty{text-align:center;padding:1.5rem;color:var(--textM);font-size:16px}
 .right-col{display:flex;flex-direction:column;gap:1rem}
 .dash-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r-lg);padding:1rem 1.1rem}
-.dash-title{font-size:.85rem;font-weight:700;color:var(--g900);margin-bottom:.75rem;padding-bottom:.5rem;border-bottom:1px solid var(--g100)}
+.dash-title{font-size:1.02rem;font-weight:700;color:var(--g900);margin-bottom:.75rem;padding-bottom:.5rem;border-bottom:1px solid var(--g100)}
 .dash-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem;text-align:center}
 .ds-item{background:var(--bg);border-radius:var(--r-md);padding:.5rem .25rem}
-.ds-n{font-size:1.4rem;font-weight:700;color:var(--g600);line-height:1}
-.ds-l{font-size:10px;color:var(--textM);margin-top:2px}
-.dash-table{width:100%;border-collapse:collapse;font-size:12px}
-.dash-table th{background:var(--bg);padding:4px 6px;text-align:left;font-size:10px;color:var(--textM);font-weight:600;border-bottom:1px solid var(--border)}
+.ds-n{font-size:1.68rem;font-weight:700;color:var(--g600);line-height:1}
+.ds-l{font-size:12px;color:var(--textM);margin-top:2px}
+.dash-table{width:100%;border-collapse:collapse;font-size:14px}
+.dash-table th{background:var(--bg);padding:4px 6px;text-align:left;font-size:12px;color:var(--textM);font-weight:600;border-bottom:1px solid var(--border)}
 .dash-table td{padding:5px 6px;border-bottom:1px solid var(--g100);vertical-align:middle}
 .dash-table tr:last-child td{border-bottom:none}
-.rank-badge{display:inline-block;background:var(--g100);color:var(--g600);border-radius:4px;padding:1px 5px;font-size:10px;font-weight:700}
+.rank-badge{display:inline-block;background:var(--g100);color:var(--g600);border-radius:4px;padding:1px 5px;font-size:12px;font-weight:700}
 .ncv-tabs{display:flex;flex-direction:column;gap:.5rem}
-.ncv-label{font-size:10px;font-weight:600;color:var(--g600);background:var(--g100);padding:2px 8px;border-radius:4px;display:inline-block;margin-bottom:3px}
+.ncv-label{font-size:12px;font-weight:600;color:var(--g600);background:var(--g100);padding:2px 8px;border-radius:4px;display:inline-block;margin-bottom:3px}
 .bar-chart{display:flex;align-items:flex-end;gap:6px;height:140px;padding:4px 0}
 .bar-item{display:flex;flex-direction:column;align-items:center;flex:1;position:relative;cursor:default}
 .bar-item:hover .bar-tooltip{display:block}
-.bar-tooltip{display:none;position:absolute;bottom:100%;left:50%;transform:translateX(-50%);background:var(--g900);color:#fff;padding:4px 8px;border-radius:6px;font-size:10px;white-space:nowrap;z-index:10;margin-bottom:4px}
+.bar-tooltip{display:none;position:absolute;bottom:100%;left:50%;transform:translateX(-50%);background:var(--g900);color:#fff;padding:4px 8px;border-radius:6px;font-size:12px;white-space:nowrap;z-index:10;margin-bottom:4px}
 .bar-fill{width:100%;border-radius:4px 4px 0 0;min-height:4px}
-.bar-val{font-size:9px;font-weight:600;color:var(--text2);margin-top:2px}
-.bar-yr{font-size:9px;color:var(--textM)}
-footer{background:var(--g900);color:rgba(255,255,255,.6);text-align:center;padding:1.5rem;font-size:12px;margin-top:1rem}
+.bar-val{font-size:11px;font-weight:600;color:var(--text2);margin-top:2px}
+.bar-yr{font-size:11px;color:var(--textM)}
+footer{background:var(--g900);color:rgba(255,255,255,.6);text-align:center;padding:1.5rem;font-size:14px;margin-top:1rem}
 footer strong{color:rgba(255,255,255,.9)}
 </style>
 </head>
@@ -155,12 +155,20 @@ footer strong{color:rgba(255,255,255,.9)}
       <div class="card-rank">#7</div>
       <div class="card-body">
         <div class="card-meta"><span class="tag">🌍 氣候</span><span class="tag">🌐 全球</span></div>
+        <h3 class="card-title">Is SA making good on its climate promises? Our sums say ‘yes’ — at least so far - Bhekisisa</h3>
+        <p class="card-summary">Is SA making good on its climate promises? Our sums say ‘yes’ — at least so far Bhekisisa</p>
+        <div class="card-footer"><span>📰 Google News - 氣候變遷</span><span>🗓 2026/06/01</span><a href="https://news.google.com/rss/articles/CBMi1gFBVV95cUxQNEV1WG9DV19xMnM0NmdqaUg1bDV2T2ExX1JKSzhCUWZsWG9YUVdKM0hWMU9ULW1SQmYwQ0Z0NkdHai1zdkcxalE5d3czMFY3S1FwdmR2Q2ppb3pvZVhBRTNLazF0cGc0VDNkNWN4eU52LUNNQ2V0UjFYTXpzamdKMEdJUmIzYTBVLWNOLXRjdWJZaDlqU2FoYk82aWY4U2RyR2h2cHA4QUxvU25UZ0hKckNOMUs5MHpfUmpFMHIzdWZfSTNwNEdMLWQyXzJTQ0trQXZoZlB3?oc=5" target="_blank" rel="noopener" class="read-more">閱讀原文 →</a></div>
+      </div></div>
+<div class="card">
+      <div class="card-rank">#8</div>
+      <div class="card-body">
+        <div class="card-meta"><span class="tag">🌍 氣候</span><span class="tag">🌐 全球</span></div>
         <h3 class="card-title">Temporary carbon dioxide removal to offset short-lived climate forcers - Nature</h3>
         <p class="card-summary">Temporary carbon dioxide removal to offset short-lived climate forcers Nature</p>
         <div class="card-footer"><span>📰 Google News - 氣候變遷</span><span>🗓 2026/05/28</span><a href="https://news.google.com/rss/articles/CBMiX0FVX3lxTE5yRmxSWlBpYTkyRlp4Q1AtWGJlQm80T2VzaFpSbkhmT0RjVmpyYndWSTd0RFplbmdYdmN6LVdUbm96Y3pNRDd6MVhxUk1XZFh2dnhyM1VCQzVzUng1azI0?oc=5" target="_blank" rel="noopener" class="read-more">閱讀原文 →</a></div>
       </div></div>
 <div class="card">
-      <div class="card-rank">#8</div>
+      <div class="card-rank">#9</div>
       <div class="card-body">
         <div class="card-meta"><span class="tag">🌍 氣候</span><span class="tag">🌐 全球</span></div>
         <h3 class="card-title">Climate change - Greenhouse Gases, Carbon Emissions, Global Warming - Britannica</h3>
@@ -168,20 +176,12 @@ footer strong{color:rgba(255,255,255,.9)}
         <div class="card-footer"><span>📰 Google News - 氣候變遷</span><span>🗓 2026/05/28</span><a href="https://news.google.com/rss/articles/CBMidEFVX3lxTE9UOUtmdmRjaWxyQ3dPY0pVeGNvZzF1TEJkUEtVVUQyUmgzS2tZQ1BKU3duSmNENFhZb3hYS09yNmdoSHdsQWd6ZjBDWDlQT1Jma0E5MGduWS1xd3RfeWJBeVlRQnh2SWpZaFFlVnk5LVB0ZGlk?oc=5" target="_blank" rel="noopener" class="read-more">閱讀原文 →</a></div>
       </div></div>
 <div class="card">
-      <div class="card-rank">#9</div>
+      <div class="card-rank">#10</div>
       <div class="card-body">
         <div class="card-meta"><span class="tag">🌍 氣候</span><span class="tag">🌐 全球</span></div>
         <h3 class="card-title">Scientists have scrapped the worst-case climate scenario – because action is making a difference - The Conversation</h3>
         <p class="card-summary">Scientists have scrapped the worst-case climate scenario – because action is making a difference The Conversation</p>
         <div class="card-footer"><span>📰 Google News - 氣候變遷</span><span>🗓 2026/05/27</span><a href="https://news.google.com/rss/articles/CBMiyAFBVV95cUxNOHNpZjNmWVlSM1BLVExQT0t3aEhiV0REcFU0NVN4QjY1Y0FHQTRPWDVwSVN1QkhmSTZxSDBrUWJSbFd1N3lsSHFjYkliUW5wTFpBOWpWQ0xXLXlxUGp4MmFXMWZ6MnZyQ2FmNmRyakJBeHNFYlprRWFuRHlJdVVKQ1RQSGctZGlnUFNpRzhWYTZxY3lyMHdWWHU4d1pBaDBmTjhmNjVsbnFqNzJJTDBJUV9lOWk1bjFUS2t5N3NYYWVsTGF1Y2k2dg?oc=5" target="_blank" rel="noopener" class="read-more">閱讀原文 →</a></div>
-      </div></div>
-<div class="card">
-      <div class="card-rank">#10</div>
-      <div class="card-body">
-        <div class="card-meta"><span class="tag">🌍 氣候</span><span class="tag">🌐 全球</span></div>
-        <h3 class="card-title">SEC moves to repeal rule that requires companies to report greenhouse gas emissions and climate risk - WXXV News 25</h3>
-        <p class="card-summary">SEC moves to repeal rule that requires companies to report greenhouse gas emissions and climate risk WXXV News 25</p>
-        <div class="card-footer"><span>📰 Google News - 氣候變遷</span><span>🗓 2026/05/30</span><a href="https://news.google.com/rss/articles/CBMiwgFBVV95cUxOdWRCd3RwQkQ5R1piaUVNMEhqMzRRMDZ2TlhsSi1sS2NkT252RGZTMFRDVWlHLTVfMEVOeDAtdE0yeGJ3QVJDZFNWenUxX2ZXS0tnS2hRc182LVdrcWJIZWRoV0R3SUxUM0ZfMG4tbHBFT2ZHeTVUWXJNYWxDbjZIbkRVY3VSRlV2djh3VmlobjN4THFianNuOUlVNjFOZ20xbEVfRElfTWlNbUZHQmprV2x0eU9jaEplZy1pUmlTQXhEUQ?oc=5" target="_blank" rel="noopener" class="read-more">閱讀原文 →</a></div>
       </div></div></div>
     </section>
     <section class="section" id="market">
@@ -395,122 +395,122 @@ footer strong{color:rgba(255,255,255,.9)}
 </div><div class="dash-card">
   <div class="dash-title">🌡 全球暖化現況</div>
   <div style="text-align:center;padding:8px 0">
-    <div style="font-size:2.4rem;font-weight:700;color:#f59e0b">+1.45°C</div>
-    <div style="font-size:11px;color:var(--textM);margin-top:2px">相較工業化前基準期(1850–1900)</div>
+    <div style="font-size:2.88rem;font-weight:700;color:#f59e0b">+1.45°C</div>
+    <div style="font-size:13px;color:var(--textM);margin-top:2px">相較工業化前基準期(1850–1900)</div>
     <div style="margin:10px 0 4px;background:#e5e7eb;border-radius:20px;height:10px;overflow:hidden">
       <div style="width:72%;height:100%;background:linear-gradient(90deg,#22c55e,#f59e0b);border-radius:20px"></div>
     </div>
-    <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--textM)">
+    <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--textM)">
       <span>0°C</span><span style="color:#f59e0b">1.5°C 警戒</span><span>2.0°C</span>
     </div>
   </div>
-  <div style="font-size:11px;color:var(--textM);text-align:center;margin-top:6px">資料來源：WMO / Copernicus 2024</div>
+  <div style="font-size:13px;color:var(--textM);text-align:center;margin-top:6px">資料來源：WMO / Copernicus 2024</div>
 </div><div class="dash-card">
   <div class="dash-title">🌍 CBAM 碳邊境調整機制最新資訊</div>
-  <table class="dash-table"><tbody><tr><td style="color:var(--g600);font-weight:600;white-space:nowrap;font-size:11px">🗓 時程</td><td style="font-size:11px;line-height:1.5">2023/10 過渡期開始（僅申報）<br>2026/01 正式徵收CBAM憑證費用</td></tr><tr><td style="color:var(--g600);font-weight:600;white-space:nowrap;font-size:11px">📦 適用產品</td><td style="font-size:11px;line-height:1.5">鋼鐵、鋁、水泥、化肥、電力、氫氣<br>（2026年後預計擴大至更多產品）</td></tr><tr><td style="color:var(--g600);font-weight:600;white-space:nowrap;font-size:11px">💶 憑證價格</td><td style="font-size:11px;line-height:1.5">連動 EU ETS 碳價<br>目前約 €60–70 / tCO₂e</td></tr><tr><td style="color:var(--g600);font-weight:600;white-space:nowrap;font-size:11px">🇹🇼 台灣影響</td><td style="font-size:11px;line-height:1.5">鋼鐵（中鋼等）、鋁業出口商首當其衝<br>需提供產品碳含量申報文件</td></tr><tr><td style="color:var(--g600);font-weight:600;white-space:nowrap;font-size:11px">📋 申報義務</td><td style="font-size:11px;line-height:1.5">出口商須提交：生產國碳價、<br>產品直接/間接排放量、CBAM申報書</td></tr><tr><td style="color:var(--g600);font-weight:600;white-space:nowrap;font-size:11px">🔴 最新動態</td><td style="font-size:11px;line-height:1.5">歐洲議會2024年討論擴大至<br>有機化學品、塑料、橡膠等產品</td></tr></tbody></table>
-  <div style="font-size:10px;color:var(--textM);margin-top:6px">資料來源：歐盟官方公報・環境部・工業總會</div>
+  <table class="dash-table"><tbody><tr><td style="color:var(--g600);font-weight:600;white-space:nowrap;font-size:13px">🗓 時程</td><td style="font-size:13px;line-height:1.5">2023/10 過渡期開始（僅申報）<br>2026/01 正式徵收CBAM憑證費用</td></tr><tr><td style="color:var(--g600);font-weight:600;white-space:nowrap;font-size:13px">📦 適用產品</td><td style="font-size:13px;line-height:1.5">鋼鐵、鋁、水泥、化肥、電力、氫氣<br>（2026年後預計擴大至更多產品）</td></tr><tr><td style="color:var(--g600);font-weight:600;white-space:nowrap;font-size:13px">💶 憑證價格</td><td style="font-size:13px;line-height:1.5">連動 EU ETS 碳價<br>目前約 €60–70 / tCO₂e</td></tr><tr><td style="color:var(--g600);font-weight:600;white-space:nowrap;font-size:13px">🇹🇼 台灣影響</td><td style="font-size:13px;line-height:1.5">鋼鐵（中鋼等）、鋁業出口商首當其衝<br>需提供產品碳含量申報文件</td></tr><tr><td style="color:var(--g600);font-weight:600;white-space:nowrap;font-size:13px">📋 申報義務</td><td style="font-size:13px;line-height:1.5">出口商須提交：生產國碳價、<br>產品直接/間接排放量、CBAM申報書</td></tr><tr><td style="color:var(--g600);font-weight:600;white-space:nowrap;font-size:13px">🔴 最新動態</td><td style="font-size:13px;line-height:1.5">歐洲議會2024年討論擴大至<br>有機化學品、塑料、橡膠等產品</td></tr></tbody></table>
+  <div style="font-size:12px;color:var(--textM);margin-top:6px">資料來源：歐盟官方公報・環境部・工業總會</div>
 </div><div class="dash-card">
   <div class="dash-title">💰 2027 台灣碳費收費標準</div>
-  <div style="font-size:11px;color:var(--textM);margin-bottom:8px">徵收對象：年排放 ≥ 25,000 tCO₂e 業者</div>
-  <table class="dash-table"><thead><tr><th>費率類型</th><th>費率</th><th>年度</th></tr></thead><tbody><tr><td><span style="display:inline-block;width:8px;height:8px;background:#2d7a4f;border-radius:50%;margin-right:4px"></span><span style="font-size:11px">一般費率</span></td><td style="font-weight:700;font-size:12px;color:#2d7a4f">NT$300/t</td><td style="font-size:10px;color:var(--textM)">2025年</td></tr><tr><td><span style="display:inline-block;width:8px;height:8px;background:#4caf80;border-radius:50%;margin-right:4px"></span><span style="font-size:11px">優惠費率A</span></td><td style="font-weight:700;font-size:12px;color:#4caf80">NT$50/t</td><td style="font-size:10px;color:var(--textM)">2025年</td></tr><tr><td><span style="display:inline-block;width:8px;height:8px;background:#f59e0b;border-radius:50%;margin-right:4px"></span><span style="font-size:11px">一般費率</span></td><td style="font-weight:700;font-size:12px;color:#f59e0b">NT$500–800/t</td><td style="font-size:10px;color:var(--textM)">2026–2027年</td></tr><tr><td><span style="display:inline-block;width:8px;height:8px;background:#ef4444;border-radius:50%;margin-right:4px"></span><span style="font-size:11px">長期目標</span></td><td style="font-weight:700;font-size:12px;color:#ef4444">NT$1,200+/t</td><td style="font-size:10px;color:var(--textM)">2030年</td></tr></tbody></table>
-  <ul style="margin-top:8px;padding-left:4px;list-style:none"><li style="font-size:10px;color:var(--textM);margin-bottom:2px">一般費率 → 已公告，適用未提減量計畫者</li><li style="font-size:10px;color:var(--textM);margin-bottom:2px">優惠費率A → 提交自主減量計畫且達標</li><li style="font-size:10px;color:var(--textM);margin-bottom:2px">一般費率 → 預估，視減碳進展調升</li><li style="font-size:10px;color:var(--textM);margin-bottom:2px">長期目標 → 接軌歐盟碳價水準</li></ul>
-  <div style="font-size:10px;color:var(--textM);margin-top:6px">* 2026年後費率為政策預估值，以環境部正式公告為準</div>
+  <div style="font-size:13px;color:var(--textM);margin-bottom:8px">徵收對象：年排放 ≥ 25,000 tCO₂e 業者</div>
+  <table class="dash-table"><thead><tr><th>費率類型</th><th>費率</th><th>年度</th></tr></thead><tbody><tr><td><span style="display:inline-block;width:8px;height:8px;background:#2d7a4f;border-radius:50%;margin-right:4px"></span><span style="font-size:13px">一般費率</span></td><td style="font-weight:700;font-size:14px;color:#2d7a4f">NT$300/t</td><td style="font-size:12px;color:var(--textM)">2025年</td></tr><tr><td><span style="display:inline-block;width:8px;height:8px;background:#4caf80;border-radius:50%;margin-right:4px"></span><span style="font-size:13px">優惠費率A</span></td><td style="font-weight:700;font-size:14px;color:#4caf80">NT$50/t</td><td style="font-size:12px;color:var(--textM)">2025年</td></tr><tr><td><span style="display:inline-block;width:8px;height:8px;background:#f59e0b;border-radius:50%;margin-right:4px"></span><span style="font-size:13px">一般費率</span></td><td style="font-weight:700;font-size:14px;color:#f59e0b">NT$500–800/t</td><td style="font-size:12px;color:var(--textM)">2026–2027年</td></tr><tr><td><span style="display:inline-block;width:8px;height:8px;background:#ef4444;border-radius:50%;margin-right:4px"></span><span style="font-size:13px">長期目標</span></td><td style="font-weight:700;font-size:14px;color:#ef4444">NT$1,200+/t</td><td style="font-size:12px;color:var(--textM)">2030年</td></tr></tbody></table>
+  <ul style="margin-top:8px;padding-left:4px;list-style:none"><li style="font-size:12px;color:var(--textM);margin-bottom:2px">一般費率 → 已公告，適用未提減量計畫者</li><li style="font-size:12px;color:var(--textM);margin-bottom:2px">優惠費率A → 提交自主減量計畫且達標</li><li style="font-size:12px;color:var(--textM);margin-bottom:2px">一般費率 → 預估，視減碳進展調升</li><li style="font-size:12px;color:var(--textM);margin-bottom:2px">長期目標 → 接軌歐盟碳價水準</li></ul>
+  <div style="font-size:12px;color:var(--textM);margin-top:6px">* 2026年後費率為政策預估值，以環境部正式公告為準</div>
 </div><div class="dash-card">
   <div class="dash-title">🏢 企業因應碳費六大行動</div>
   <div style="border:1px solid var(--border);border-left:3px solid #2d7a4f;border-radius:6px;padding:7px 10px;margin-bottom:6px">
           <div style="display:flex;align-items:center;gap:6px;margin-bottom:3px">
-            <span style="background:#2d7a4f;color:#fff;border-radius:50%;width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0">1</span>
-            <span style="font-weight:600;font-size:12px">完成碳盤查</span>
-            <span style="margin-left:auto;background:#2d7a4f22;color:#2d7a4f;border-radius:10px;padding:1px 7px;font-size:10px;font-weight:600">立即</span>
+            <span style="background:#2d7a4f;color:#fff;border-radius:50%;width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0">1</span>
+            <span style="font-weight:600;font-size:14px">完成碳盤查</span>
+            <span style="margin-left:auto;background:#2d7a4f22;color:#2d7a4f;border-radius:10px;padding:1px 7px;font-size:12px;font-weight:600">立即</span>
           </div>
-          <div style="font-size:11px;color:var(--text2);line-height:1.5;padding-left:24px">依 ISO 14064-1 盤查 Scope 1+2+3<br>取得第三方查驗，建立排放基準年</div>
+          <div style="font-size:13px;color:var(--text2);line-height:1.5;padding-left:24px">依 ISO 14064-1 盤查 Scope 1+2+3<br>取得第三方查驗，建立排放基準年</div>
         </div><div style="border:1px solid var(--border);border-left:3px solid #f59e0b;border-radius:6px;padding:7px 10px;margin-bottom:6px">
           <div style="display:flex;align-items:center;gap:6px;margin-bottom:3px">
-            <span style="background:#f59e0b;color:#fff;border-radius:50%;width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0">2</span>
-            <span style="font-weight:600;font-size:12px">申請優惠費率</span>
-            <span style="margin-left:auto;background:#f59e0b22;color:#f59e0b;border-radius:10px;padding:1px 7px;font-size:10px;font-weight:600">短期</span>
+            <span style="background:#f59e0b;color:#fff;border-radius:50%;width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0">2</span>
+            <span style="font-weight:600;font-size:14px">申請優惠費率</span>
+            <span style="margin-left:auto;background:#f59e0b22;color:#f59e0b;border-radius:10px;padding:1px 7px;font-size:12px;font-weight:600">短期</span>
           </div>
-          <div style="font-size:11px;color:var(--text2);line-height:1.5;padding-left:24px">向環境部提交自主減量計畫<br>費率可從 NT$300 降至 NT$50/t</div>
+          <div style="font-size:13px;color:var(--text2);line-height:1.5;padding-left:24px">向環境部提交自主減量計畫<br>費率可從 NT$300 降至 NT$50/t</div>
         </div><div style="border:1px solid var(--border);border-left:3px solid #f59e0b;border-radius:6px;padding:7px 10px;margin-bottom:6px">
           <div style="display:flex;align-items:center;gap:6px;margin-bottom:3px">
-            <span style="background:#f59e0b;color:#fff;border-radius:50%;width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0">3</span>
-            <span style="font-weight:600;font-size:12px">購買綠電/憑證</span>
-            <span style="margin-left:auto;background:#f59e0b22;color:#f59e0b;border-radius:10px;padding:1px 7px;font-size:10px;font-weight:600">短期</span>
+            <span style="background:#f59e0b;color:#fff;border-radius:50%;width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0">3</span>
+            <span style="font-weight:600;font-size:14px">購買綠電/憑證</span>
+            <span style="margin-left:auto;background:#f59e0b22;color:#f59e0b;border-radius:10px;padding:1px 7px;font-size:12px;font-weight:600">短期</span>
           </div>
-          <div style="font-size:11px;color:var(--text2);line-height:1.5;padding-left:24px">簽訂企業購電協議(CPPA)<br>採購再生能源憑證(T-REC/I-REC)</div>
+          <div style="font-size:13px;color:var(--text2);line-height:1.5;padding-left:24px">簽訂企業購電協議(CPPA)<br>採購再生能源憑證(T-REC/I-REC)</div>
         </div><div style="border:1px solid var(--border);border-left:3px solid #8b5cf6;border-radius:6px;padding:7px 10px;margin-bottom:6px">
           <div style="display:flex;align-items:center;gap:6px;margin-bottom:3px">
-            <span style="background:#8b5cf6;color:#fff;border-radius:50%;width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0">4</span>
-            <span style="font-weight:600;font-size:12px">設定 SBTi 目標</span>
-            <span style="margin-left:auto;background:#8b5cf622;color:#8b5cf6;border-radius:10px;padding:1px 7px;font-size:10px;font-weight:600">中期</span>
+            <span style="background:#8b5cf6;color:#fff;border-radius:50%;width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0">4</span>
+            <span style="font-weight:600;font-size:14px">設定 SBTi 目標</span>
+            <span style="margin-left:auto;background:#8b5cf622;color:#8b5cf6;border-radius:10px;padding:1px 7px;font-size:12px;font-weight:600">中期</span>
           </div>
-          <div style="font-size:11px;color:var(--text2);line-height:1.5;padding-left:24px">加入科學基礎減量目標倡議<br>取得國際認可，強化品牌形象</div>
+          <div style="font-size:13px;color:var(--text2);line-height:1.5;padding-left:24px">加入科學基礎減量目標倡議<br>取得國際認可，強化品牌形象</div>
         </div><div style="border:1px solid var(--border);border-left:3px solid #8b5cf6;border-radius:6px;padding:7px 10px;margin-bottom:6px">
           <div style="display:flex;align-items:center;gap:6px;margin-bottom:3px">
-            <span style="background:#8b5cf6;color:#fff;border-radius:50%;width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0">5</span>
-            <span style="font-weight:600;font-size:12px">供應鏈碳管理</span>
-            <span style="margin-left:auto;background:#8b5cf622;color:#8b5cf6;border-radius:10px;padding:1px 7px;font-size:10px;font-weight:600">中期</span>
+            <span style="background:#8b5cf6;color:#fff;border-radius:50%;width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0">5</span>
+            <span style="font-weight:600;font-size:14px">供應鏈碳管理</span>
+            <span style="margin-left:auto;background:#8b5cf622;color:#8b5cf6;border-radius:10px;padding:1px 7px;font-size:12px;font-weight:600">中期</span>
           </div>
-          <div style="font-size:11px;color:var(--text2);line-height:1.5;padding-left:24px">要求供應商申報碳足跡<br>建立低碳採購標準</div>
+          <div style="font-size:13px;color:var(--text2);line-height:1.5;padding-left:24px">要求供應商申報碳足跡<br>建立低碳採購標準</div>
         </div><div style="border:1px solid var(--border);border-left:3px solid #8b5cf6;border-radius:6px;padding:7px 10px;margin-bottom:6px">
           <div style="display:flex;align-items:center;gap:6px;margin-bottom:3px">
-            <span style="background:#8b5cf6;color:#fff;border-radius:50%;width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0">6</span>
-            <span style="font-weight:600;font-size:12px">碳權抵換準備</span>
-            <span style="margin-left:auto;background:#8b5cf622;color:#8b5cf6;border-radius:10px;padding:1px 7px;font-size:10px;font-weight:600">長期</span>
+            <span style="background:#8b5cf6;color:#fff;border-radius:50%;width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0">6</span>
+            <span style="font-weight:600;font-size:14px">碳權抵換準備</span>
+            <span style="margin-left:auto;background:#8b5cf622;color:#8b5cf6;border-radius:10px;padding:1px 7px;font-size:12px;font-weight:600">長期</span>
           </div>
-          <div style="font-size:11px;color:var(--text2);line-height:1.5;padding-left:24px">參與台灣自願減量額度(VCS/Gold)<br>預備碳信用買賣抵換機制</div>
+          <div style="font-size:13px;color:var(--text2);line-height:1.5;padding-left:24px">參與台灣自願減量額度(VCS/Gold)<br>預備碳信用買賣抵換機制</div>
         </div>
-  <div style="font-size:10px;color:var(--textM);margin-top:4px">資料來源：環境部・工業局・SBTi</div>
+  <div style="font-size:12px;color:var(--textM);margin-top:4px">資料來源：環境部・工業局・SBTi</div>
 </div><div class="dash-card">
   <div class="dash-title">🏭 台灣半導體溫室氣體排放</div>
-  <div style="font-size:11px;color:var(--textM);margin-bottom:8px">總排放量最少前5名｜單位：公噸CO₂e｜<span class="tag" style="font-size:10px">CO₂</span><span class="tag" style="font-size:10px">CH₄</span><span class="tag" style="font-size:10px">N₂O</span><span class="tag" style="font-size:10px">HFCs</span><span class="tag" style="font-size:10px">PFCs</span><span class="tag" style="font-size:10px">SF₆</span><span class="tag" style="font-size:10px">NF₃</span></div>
+  <div style="font-size:13px;color:var(--textM);margin-bottom:8px">總排放量最少前5名｜單位：公噸CO₂e｜<span class="tag" style="font-size:12px">CO₂</span><span class="tag" style="font-size:12px">CH₄</span><span class="tag" style="font-size:12px">N₂O</span><span class="tag" style="font-size:12px">HFCs</span><span class="tag" style="font-size:12px">PFCs</span><span class="tag" style="font-size:12px">SF₆</span><span class="tag" style="font-size:12px">NF₃</span></div>
   <table class="dash-table">
     <thead><tr><th>排名</th><th>企業</th><th>總量(t)</th><th>比例</th></tr></thead>
     <tbody><tr>
           <td><span class="rank-badge">#1</span></td>
-          <td><strong>聯詠科技</strong><br><span style="font-size:10px;color:var(--textM)">Fabless</span></td>
+          <td><strong>聯詠科技</strong><br><span style="font-size:12px;color:var(--textM)">Fabless</span></td>
           <td style="text-align:right">7,836</td>
           <td style="width:80px"><div style="background:#e5e7eb;border-radius:4px;height:6px"><div style="width:1%;height:100%;background:var(--g400);border-radius:4px"></div></div></td>
         </tr><tr>
           <td><span class="rank-badge">#2</span></td>
-          <td><strong>瑞昱半導體</strong><br><span style="font-size:10px;color:var(--textM)">Fabless</span></td>
+          <td><strong>瑞昱半導體</strong><br><span style="font-size:12px;color:var(--textM)">Fabless</span></td>
           <td style="text-align:right">52,331</td>
           <td style="width:80px"><div style="background:#e5e7eb;border-radius:4px;height:6px"><div style="width:12%;height:100%;background:var(--g400);border-radius:4px"></div></div></td>
         </tr><tr>
           <td><span class="rank-badge">#3</span></td>
-          <td><strong>聯發科技</strong><br><span style="font-size:10px;color:var(--textM)">Fabless</span></td>
+          <td><strong>聯發科技</strong><br><span style="font-size:12px;color:var(--textM)">Fabless</span></td>
           <td style="text-align:right">98,577</td>
           <td style="width:80px"><div style="background:#e5e7eb;border-radius:4px;height:6px"><div style="width:23%;height:100%;background:var(--g400);border-radius:4px"></div></div></td>
         </tr><tr>
           <td><span class="rank-badge">#4</span></td>
-          <td><strong>力積電</strong><br><span style="font-size:10px;color:var(--textM)">Foundry</span></td>
+          <td><strong>力積電</strong><br><span style="font-size:12px;color:var(--textM)">Foundry</span></td>
           <td style="text-align:right">419,130</td>
           <td style="width:80px"><div style="background:#e5e7eb;border-radius:4px;height:6px"><div style="width:100%;height:100%;background:var(--g400);border-radius:4px"></div></div></td>
         </tr><tr>
           <td><span class="rank-badge">#5</span></td>
-          <td><strong>世界先進</strong><br><span style="font-size:10px;color:var(--textM)">Foundry</span></td>
+          <td><strong>世界先進</strong><br><span style="font-size:12px;color:var(--textM)">Foundry</span></td>
           <td style="text-align:right">390,000</td>
           <td style="width:80px"><div style="background:#e5e7eb;border-radius:4px;height:6px"><div style="width:93%;height:100%;background:var(--g400);border-radius:4px"></div></div></td>
         </tr></tbody>
   </table>
-  <div style="font-size:10px;color:var(--textM);margin-top:6px">資料來源：各企業永續報告書（2022年度）</div>
+  <div style="font-size:12px;color:var(--textM);margin-top:6px">資料來源：各企業永續報告書（2022年度）</div>
 </div><div class="dash-card">
   <div class="dash-title">⚗️ GWP 數值（IPCC AR6，100年期）</div>
   <table class="dash-table">
     <thead><tr><th>氣體</th><th>化學式</th><th>GWP</th><th>大氣壽命</th></tr></thead>
-    <tbody><tr><td><strong>CO₂</strong></td><td style="font-family:monospace;font-size:11px">CO2</td><td style="text-align:right;font-weight:600;color:#22c55e">1</td><td style="font-size:10px;color:var(--textM)">永久</td></tr><tr><td><strong>甲烷</strong></td><td style="font-family:monospace;font-size:11px">CH₄</td><td style="text-align:right;font-weight:600;color:#f59e0b">27.9</td><td style="font-size:10px;color:var(--textM)">11.8年</td></tr><tr><td><strong>氧化亞氮</strong></td><td style="font-family:monospace;font-size:11px">N₂O</td><td style="text-align:right;font-weight:600;color:#f97316">273</td><td style="font-size:10px;color:var(--textM)">109年</td></tr><tr><td><strong>HFC-134a</strong></td><td style="font-family:monospace;font-size:11px">CH₂FCF₃</td><td style="text-align:right;font-weight:600;color:#8b5cf6">1,526</td><td style="font-size:10px;color:var(--textM)">14年</td></tr><tr><td><strong>HFC-125</strong></td><td style="font-family:monospace;font-size:11px">CHF₂CF₃</td><td style="text-align:right;font-weight:600;color:#8b5cf6">3,740</td><td style="font-size:10px;color:var(--textM)">30年</td></tr><tr><td><strong>HFC-23</strong></td><td style="font-family:monospace;font-size:11px">CHF₃</td><td style="text-align:right;font-weight:600;color:#8b5cf6">14,600</td><td style="font-size:10px;color:var(--textM)">228年</td></tr><tr><td><strong>CF₄（PFC）</strong></td><td style="font-family:monospace;font-size:11px">CF₄</td><td style="text-align:right;font-weight:600;color:#ec4899">7,380</td><td style="font-size:10px;color:var(--textM)">50000年</td></tr><tr><td><strong>C₂F₆（PFC）</strong></td><td style="font-family:monospace;font-size:11px">C₂F₆</td><td style="text-align:right;font-weight:600;color:#ec4899">12,400</td><td style="font-size:10px;color:var(--textM)">10000年</td></tr><tr><td><strong>六氟化硫</strong></td><td style="font-family:monospace;font-size:11px">SF₆</td><td style="text-align:right;font-weight:600;color:#ef4444">25,200</td><td style="font-size:10px;color:var(--textM)">3200年</td></tr><tr><td><strong>三氟化氮</strong></td><td style="font-family:monospace;font-size:11px">NF₃</td><td style="text-align:right;font-weight:600;color:#dc2626">17,400</td><td style="font-size:10px;color:var(--textM)">569年</td></tr></tbody>
+    <tbody><tr><td><strong>CO₂</strong></td><td style="font-family:monospace;font-size:13px">CO2</td><td style="text-align:right;font-weight:600;color:#22c55e">1</td><td style="font-size:12px;color:var(--textM)">永久</td></tr><tr><td><strong>甲烷</strong></td><td style="font-family:monospace;font-size:13px">CH₄</td><td style="text-align:right;font-weight:600;color:#f59e0b">27.9</td><td style="font-size:12px;color:var(--textM)">11.8年</td></tr><tr><td><strong>氧化亞氮</strong></td><td style="font-family:monospace;font-size:13px">N₂O</td><td style="text-align:right;font-weight:600;color:#f97316">273</td><td style="font-size:12px;color:var(--textM)">109年</td></tr><tr><td><strong>HFC-134a</strong></td><td style="font-family:monospace;font-size:13px">CH₂FCF₃</td><td style="text-align:right;font-weight:600;color:#8b5cf6">1,526</td><td style="font-size:12px;color:var(--textM)">14年</td></tr><tr><td><strong>HFC-125</strong></td><td style="font-family:monospace;font-size:13px">CHF₂CF₃</td><td style="text-align:right;font-weight:600;color:#8b5cf6">3,740</td><td style="font-size:12px;color:var(--textM)">30年</td></tr><tr><td><strong>HFC-23</strong></td><td style="font-family:monospace;font-size:13px">CHF₃</td><td style="text-align:right;font-weight:600;color:#8b5cf6">14,600</td><td style="font-size:12px;color:var(--textM)">228年</td></tr><tr><td><strong>CF₄（PFC）</strong></td><td style="font-family:monospace;font-size:13px">CF₄</td><td style="text-align:right;font-weight:600;color:#ec4899">7,380</td><td style="font-size:12px;color:var(--textM)">50000年</td></tr><tr><td><strong>C₂F₆（PFC）</strong></td><td style="font-family:monospace;font-size:13px">C₂F₆</td><td style="text-align:right;font-weight:600;color:#ec4899">12,400</td><td style="font-size:12px;color:var(--textM)">10000年</td></tr><tr><td><strong>六氟化硫</strong></td><td style="font-family:monospace;font-size:13px">SF₆</td><td style="text-align:right;font-weight:600;color:#ef4444">25,200</td><td style="font-size:12px;color:var(--textM)">3200年</td></tr><tr><td><strong>三氟化氮</strong></td><td style="font-family:monospace;font-size:13px">NF₃</td><td style="text-align:right;font-weight:600;color:#dc2626">17,400</td><td style="font-size:12px;color:var(--textM)">569年</td></tr></tbody>
   </table>
 </div><div class="dash-card">
   <div class="dash-title">🔥 淨熱值（低位發熱值）</div>
-  <div style="font-size:11px;color:var(--textM);margin-bottom:6px">資料來源：IPCC 2006/2019 GL、IEA、EPA</div>
+  <div style="font-size:13px;color:var(--textM);margin-bottom:6px">資料來源：IPCC 2006/2019 GL、IEA、EPA</div>
   <div class="ncv-tabs">
-    <div class="ncv-group"><div class="ncv-label">固體</div><table class="dash-table"><tbody><tr><td>煙煤</td><td style="text-align:right;font-weight:600">25.8</td><td style="color:var(--textM);font-size:11px">GJ/t</td></tr><tr><td>褐煤</td><td style="text-align:right;font-weight:600">11.9</td><td style="color:var(--textM);font-size:11px">GJ/t</td></tr><tr><td>焦炭</td><td style="text-align:right;font-weight:600">28.2</td><td style="color:var(--textM);font-size:11px">GJ/t</td></tr><tr><td>木材（乾）</td><td style="text-align:right;font-weight:600">15.6</td><td style="color:var(--textM);font-size:11px">GJ/t</td></tr><tr><td>都市固廢</td><td style="text-align:right;font-weight:600">10.0</td><td style="color:var(--textM);font-size:11px">GJ/t</td></tr><tr><td>生質炭</td><td style="text-align:right;font-weight:600">29.5</td><td style="color:var(--textM);font-size:11px">GJ/t</td></tr></tbody></table></div>
-    <div class="ncv-group"><div class="ncv-label">液體</div><table class="dash-table"><tbody><tr><td>汽油</td><td style="text-align:right;font-weight:600">44.3</td><td style="color:var(--textM);font-size:11px">GJ/t</td></tr><tr><td>柴油</td><td style="text-align:right;font-weight:600">43.0</td><td style="color:var(--textM);font-size:11px">GJ/t</td></tr><tr><td>燃料油</td><td style="text-align:right;font-weight:600">40.4</td><td style="color:var(--textM);font-size:11px">GJ/t</td></tr><tr><td>液化石油氣(LPG)</td><td style="text-align:right;font-weight:600">47.3</td><td style="color:var(--textM);font-size:11px">GJ/t</td></tr><tr><td>航空燃油</td><td style="text-align:right;font-weight:600">44.1</td><td style="color:var(--textM);font-size:11px">GJ/t</td></tr><tr><td>石腦油</td><td style="text-align:right;font-weight:600">44.5</td><td style="color:var(--textM);font-size:11px">GJ/t</td></tr></tbody></table></div>
-    <div class="ncv-group"><div class="ncv-label">氣體</div><table class="dash-table"><tbody><tr><td>天然氣</td><td style="text-align:right;font-weight:600">48.0</td><td style="color:var(--textM);font-size:11px">GJ/t</td></tr><tr><td>天然氣</td><td style="text-align:right;font-weight:600">36.0</td><td style="color:var(--textM);font-size:11px">MJ/m³</td></tr><tr><td>液化天然氣(LNG)</td><td style="text-align:right;font-weight:600">44.2</td><td style="color:var(--textM);font-size:11px">GJ/t</td></tr><tr><td>氫氣</td><td style="text-align:right;font-weight:600">120.0</td><td style="color:var(--textM);font-size:11px">GJ/t</td></tr><tr><td>焦爐氣</td><td style="text-align:right;font-weight:600">17.5</td><td style="color:var(--textM);font-size:11px">MJ/m³</td></tr><tr><td>高爐氣</td><td style="text-align:right;font-weight:600">3.3</td><td style="color:var(--textM);font-size:11px">MJ/m³</td></tr></tbody></table></div>
+    <div class="ncv-group"><div class="ncv-label">固體</div><table class="dash-table"><tbody><tr><td>煙煤</td><td style="text-align:right;font-weight:600">25.8</td><td style="color:var(--textM);font-size:13px">GJ/t</td></tr><tr><td>褐煤</td><td style="text-align:right;font-weight:600">11.9</td><td style="color:var(--textM);font-size:13px">GJ/t</td></tr><tr><td>焦炭</td><td style="text-align:right;font-weight:600">28.2</td><td style="color:var(--textM);font-size:13px">GJ/t</td></tr><tr><td>木材（乾）</td><td style="text-align:right;font-weight:600">15.6</td><td style="color:var(--textM);font-size:13px">GJ/t</td></tr><tr><td>都市固廢</td><td style="text-align:right;font-weight:600">10.0</td><td style="color:var(--textM);font-size:13px">GJ/t</td></tr><tr><td>生質炭</td><td style="text-align:right;font-weight:600">29.5</td><td style="color:var(--textM);font-size:13px">GJ/t</td></tr></tbody></table></div>
+    <div class="ncv-group"><div class="ncv-label">液體</div><table class="dash-table"><tbody><tr><td>汽油</td><td style="text-align:right;font-weight:600">44.3</td><td style="color:var(--textM);font-size:13px">GJ/t</td></tr><tr><td>柴油</td><td style="text-align:right;font-weight:600">43.0</td><td style="color:var(--textM);font-size:13px">GJ/t</td></tr><tr><td>燃料油</td><td style="text-align:right;font-weight:600">40.4</td><td style="color:var(--textM);font-size:13px">GJ/t</td></tr><tr><td>液化石油氣(LPG)</td><td style="text-align:right;font-weight:600">47.3</td><td style="color:var(--textM);font-size:13px">GJ/t</td></tr><tr><td>航空燃油</td><td style="text-align:right;font-weight:600">44.1</td><td style="color:var(--textM);font-size:13px">GJ/t</td></tr><tr><td>石腦油</td><td style="text-align:right;font-weight:600">44.5</td><td style="color:var(--textM);font-size:13px">GJ/t</td></tr></tbody></table></div>
+    <div class="ncv-group"><div class="ncv-label">氣體</div><table class="dash-table"><tbody><tr><td>天然氣</td><td style="text-align:right;font-weight:600">48.0</td><td style="color:var(--textM);font-size:13px">GJ/t</td></tr><tr><td>天然氣</td><td style="text-align:right;font-weight:600">36.0</td><td style="color:var(--textM);font-size:13px">MJ/m³</td></tr><tr><td>液化天然氣(LNG)</td><td style="text-align:right;font-weight:600">44.2</td><td style="color:var(--textM);font-size:13px">GJ/t</td></tr><tr><td>氫氣</td><td style="text-align:right;font-weight:600">120.0</td><td style="color:var(--textM);font-size:13px">GJ/t</td></tr><tr><td>焦爐氣</td><td style="text-align:right;font-weight:600">17.5</td><td style="color:var(--textM);font-size:13px">MJ/m³</td></tr><tr><td>高爐氣</td><td style="text-align:right;font-weight:600">3.3</td><td style="color:var(--textM);font-size:13px">MJ/m³</td></tr></tbody></table></div>
   </div>
 </div><div class="dash-card">
   <div class="dash-title">💰 台灣碳費收費趨勢（至2030）</div>
-  <div style="font-size:11px;color:var(--textM);margin-bottom:10px">單位：NT$/公噸CO₂e｜資料來源：環境部</div>
+  <div style="font-size:13px;color:var(--textM);margin-bottom:10px">單位：NT$/公噸CO₂e｜資料來源：環境部</div>
   <div class="bar-chart"><div class="bar-item">
           <div class="bar-tooltip">NT$300/t<br>一般費率</div>
           <div class="bar-fill" style="height:18px;background:#2d7a4f"></div>
@@ -542,140 +542,140 @@ footer strong{color:rgba(255,255,255,.9)}
           <div class="bar-val">NT$2K</div>
           <div class="bar-yr">2030</div>
         </div></div>
-  <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;font-size:10px"><span><span style="display:inline-block;width:10px;height:10px;background:#2d7a4f;border-radius:2px;margin-right:3px"></span>正式費率</span><span><span style="display:inline-block;width:10px;height:10px;background:#4caf80;border-radius:2px;margin-right:3px"></span>優惠費率</span><span><span style="display:inline-block;width:10px;height:10px;background:#f59e0b;border-radius:2px;margin-right:3px"></span>預估值</span><span><span style="display:inline-block;width:10px;height:10px;background:#ef4444;border-radius:2px;margin-right:3px"></span>長期目標</span></div>
+  <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;font-size:12px"><span><span style="display:inline-block;width:10px;height:10px;background:#2d7a4f;border-radius:2px;margin-right:3px"></span>正式費率</span><span><span style="display:inline-block;width:10px;height:10px;background:#4caf80;border-radius:2px;margin-right:3px"></span>優惠費率</span><span><span style="display:inline-block;width:10px;height:10px;background:#f59e0b;border-radius:2px;margin-right:3px"></span>預估值</span><span><span style="display:inline-block;width:10px;height:10px;background:#ef4444;border-radius:2px;margin-right:3px"></span>長期目標</span></div>
 </div></div>
   <div class="right-col"><div class="dash-card">
   <div class="dash-title">📝 永續報告書內容清單</div>
   <div style="margin-bottom:10px">
-          <div style="font-size:11px;font-weight:700;color:var(--g600);background:var(--g100);padding:3px 8px;border-radius:4px;margin-bottom:4px">📋 基本資訊</div>
-          <ul style="list-style:none;padding:0"><li style="font-size:11px;color:var(--text2);padding:2px 0;border-bottom:1px dotted var(--border)">公司概況與治理架構</li><li style="font-size:11px;color:var(--text2);padding:2px 0;border-bottom:1px dotted var(--border)">報告書範疇與邊界</li><li style="font-size:11px;color:var(--text2);padding:2px 0;border-bottom:1px dotted var(--border)">重大性議題鑑別矩陣</li><li style="font-size:11px;color:var(--text2);padding:2px 0;border-bottom:1px dotted var(--border)">利害關係人溝通方式</li><li style="font-size:11px;color:var(--text2);padding:2px 0;border-bottom:1px dotted var(--border)">永續策略與目標</li></ul>
+          <div style="font-size:13px;font-weight:700;color:var(--g600);background:var(--g100);padding:3px 8px;border-radius:4px;margin-bottom:4px">📋 基本資訊</div>
+          <ul style="list-style:none;padding:0"><li style="font-size:13px;color:var(--text2);padding:2px 0;border-bottom:1px dotted var(--border)">公司概況與治理架構</li><li style="font-size:13px;color:var(--text2);padding:2px 0;border-bottom:1px dotted var(--border)">報告書範疇與邊界</li><li style="font-size:13px;color:var(--text2);padding:2px 0;border-bottom:1px dotted var(--border)">重大性議題鑑別矩陣</li><li style="font-size:13px;color:var(--text2);padding:2px 0;border-bottom:1px dotted var(--border)">利害關係人溝通方式</li><li style="font-size:13px;color:var(--text2);padding:2px 0;border-bottom:1px dotted var(--border)">永續策略與目標</li></ul>
         </div><div style="margin-bottom:10px">
-          <div style="font-size:11px;font-weight:700;color:var(--g600);background:var(--g100);padding:3px 8px;border-radius:4px;margin-bottom:4px">🌍 環境面(E)</div>
-          <ul style="list-style:none;padding:0"><li style="font-size:11px;color:var(--text2);padding:2px 0;border-bottom:1px dotted var(--border)">溫室氣體盤查(Scope 1/2/3)</li><li style="font-size:11px;color:var(--text2);padding:2px 0;border-bottom:1px dotted var(--border)">能源使用與再生能源比例</li><li style="font-size:11px;color:var(--text2);padding:2px 0;border-bottom:1px dotted var(--border)">用水量與水資源管理</li><li style="font-size:11px;color:var(--text2);padding:2px 0;border-bottom:1px dotted var(--border)">廢棄物產生與處置</li><li style="font-size:11px;color:var(--text2);padding:2px 0;border-bottom:1px dotted var(--border)">生物多樣性影響評估</li><li style="font-size:11px;color:var(--text2);padding:2px 0;border-bottom:1px dotted var(--border)">產品碳足跡/水足跡</li></ul>
+          <div style="font-size:13px;font-weight:700;color:var(--g600);background:var(--g100);padding:3px 8px;border-radius:4px;margin-bottom:4px">🌍 環境面(E)</div>
+          <ul style="list-style:none;padding:0"><li style="font-size:13px;color:var(--text2);padding:2px 0;border-bottom:1px dotted var(--border)">溫室氣體盤查(Scope 1/2/3)</li><li style="font-size:13px;color:var(--text2);padding:2px 0;border-bottom:1px dotted var(--border)">能源使用與再生能源比例</li><li style="font-size:13px;color:var(--text2);padding:2px 0;border-bottom:1px dotted var(--border)">用水量與水資源管理</li><li style="font-size:13px;color:var(--text2);padding:2px 0;border-bottom:1px dotted var(--border)">廢棄物產生與處置</li><li style="font-size:13px;color:var(--text2);padding:2px 0;border-bottom:1px dotted var(--border)">生物多樣性影響評估</li><li style="font-size:13px;color:var(--text2);padding:2px 0;border-bottom:1px dotted var(--border)">產品碳足跡/水足跡</li></ul>
         </div><div style="margin-bottom:10px">
-          <div style="font-size:11px;font-weight:700;color:var(--g600);background:var(--g100);padding:3px 8px;border-radius:4px;margin-bottom:4px">👥 社會面(S)</div>
-          <ul style="list-style:none;padding:0"><li style="font-size:11px;color:var(--text2);padding:2px 0;border-bottom:1px dotted var(--border)">員工人數/離職率/多元化</li><li style="font-size:11px;color:var(--text2);padding:2px 0;border-bottom:1px dotted var(--border)">薪酬結構與性別薪酬差距</li><li style="font-size:11px;color:var(--text2);padding:2px 0;border-bottom:1px dotted var(--border)">教育訓練時數與費用</li><li style="font-size:11px;color:var(--text2);padding:2px 0;border-bottom:1px dotted var(--border)">職業安全衛生數據</li><li style="font-size:11px;color:var(--text2);padding:2px 0;border-bottom:1px dotted var(--border)">供應鏈人權盡職調查</li><li style="font-size:11px;color:var(--text2);padding:2px 0;border-bottom:1px dotted var(--border)">社區投資與公益支出</li><li style="font-size:11px;color:var(--text2);padding:2px 0;border-bottom:1px dotted var(--border)">客戶隱私與資料安全</li></ul>
+          <div style="font-size:13px;font-weight:700;color:var(--g600);background:var(--g100);padding:3px 8px;border-radius:4px;margin-bottom:4px">👥 社會面(S)</div>
+          <ul style="list-style:none;padding:0"><li style="font-size:13px;color:var(--text2);padding:2px 0;border-bottom:1px dotted var(--border)">員工人數/離職率/多元化</li><li style="font-size:13px;color:var(--text2);padding:2px 0;border-bottom:1px dotted var(--border)">薪酬結構與性別薪酬差距</li><li style="font-size:13px;color:var(--text2);padding:2px 0;border-bottom:1px dotted var(--border)">教育訓練時數與費用</li><li style="font-size:13px;color:var(--text2);padding:2px 0;border-bottom:1px dotted var(--border)">職業安全衛生數據</li><li style="font-size:13px;color:var(--text2);padding:2px 0;border-bottom:1px dotted var(--border)">供應鏈人權盡職調查</li><li style="font-size:13px;color:var(--text2);padding:2px 0;border-bottom:1px dotted var(--border)">社區投資與公益支出</li><li style="font-size:13px;color:var(--text2);padding:2px 0;border-bottom:1px dotted var(--border)">客戶隱私與資料安全</li></ul>
         </div><div style="margin-bottom:10px">
-          <div style="font-size:11px;font-weight:700;color:var(--g600);background:var(--g100);padding:3px 8px;border-radius:4px;margin-bottom:4px">🏛 治理面(G)</div>
-          <ul style="list-style:none;padding:0"><li style="font-size:11px;color:var(--text2);padding:2px 0;border-bottom:1px dotted var(--border)">董事會組成與獨立性</li><li style="font-size:11px;color:var(--text2);padding:2px 0;border-bottom:1px dotted var(--border)">女性董事比例</li><li style="font-size:11px;color:var(--text2);padding:2px 0;border-bottom:1px dotted var(--border)">高階主管薪酬揭露</li><li style="font-size:11px;color:var(--text2);padding:2px 0;border-bottom:1px dotted var(--border)">反貪腐與商業倫理政策</li><li style="font-size:11px;color:var(--text2);padding:2px 0;border-bottom:1px dotted var(--border)">稅務透明度</li><li style="font-size:11px;color:var(--text2);padding:2px 0;border-bottom:1px dotted var(--border)">風險管理機制</li><li style="font-size:11px;color:var(--text2);padding:2px 0;border-bottom:1px dotted var(--border)">法規遵循紀錄</li></ul>
+          <div style="font-size:13px;font-weight:700;color:var(--g600);background:var(--g100);padding:3px 8px;border-radius:4px;margin-bottom:4px">🏛 治理面(G)</div>
+          <ul style="list-style:none;padding:0"><li style="font-size:13px;color:var(--text2);padding:2px 0;border-bottom:1px dotted var(--border)">董事會組成與獨立性</li><li style="font-size:13px;color:var(--text2);padding:2px 0;border-bottom:1px dotted var(--border)">女性董事比例</li><li style="font-size:13px;color:var(--text2);padding:2px 0;border-bottom:1px dotted var(--border)">高階主管薪酬揭露</li><li style="font-size:13px;color:var(--text2);padding:2px 0;border-bottom:1px dotted var(--border)">反貪腐與商業倫理政策</li><li style="font-size:13px;color:var(--text2);padding:2px 0;border-bottom:1px dotted var(--border)">稅務透明度</li><li style="font-size:13px;color:var(--text2);padding:2px 0;border-bottom:1px dotted var(--border)">風險管理機制</li><li style="font-size:13px;color:var(--text2);padding:2px 0;border-bottom:1px dotted var(--border)">法規遵循紀錄</li></ul>
         </div><div style="margin-bottom:10px">
-          <div style="font-size:11px;font-weight:700;color:var(--g600);background:var(--g100);padding:3px 8px;border-radius:4px;margin-bottom:4px">📊 對齊框架</div>
-          <ul style="list-style:none;padding:0"><li style="font-size:11px;color:var(--text2);padding:2px 0;border-bottom:1px dotted var(--border)">GRI準則對應表</li><li style="font-size:11px;color:var(--text2);padding:2px 0;border-bottom:1px dotted var(--border)">SASB指標</li><li style="font-size:11px;color:var(--text2);padding:2px 0;border-bottom:1px dotted var(--border)">TCFD氣候相關揭露</li><li style="font-size:11px;color:var(--text2);padding:2px 0;border-bottom:1px dotted var(--border)">SDGs貢獻對應</li><li style="font-size:11px;color:var(--text2);padding:2px 0;border-bottom:1px dotted var(--border)">ISSB S1/S2（新版要求）</li></ul>
+          <div style="font-size:13px;font-weight:700;color:var(--g600);background:var(--g100);padding:3px 8px;border-radius:4px;margin-bottom:4px">📊 對齊框架</div>
+          <ul style="list-style:none;padding:0"><li style="font-size:13px;color:var(--text2);padding:2px 0;border-bottom:1px dotted var(--border)">GRI準則對應表</li><li style="font-size:13px;color:var(--text2);padding:2px 0;border-bottom:1px dotted var(--border)">SASB指標</li><li style="font-size:13px;color:var(--text2);padding:2px 0;border-bottom:1px dotted var(--border)">TCFD氣候相關揭露</li><li style="font-size:13px;color:var(--text2);padding:2px 0;border-bottom:1px dotted var(--border)">SDGs貢獻對應</li><li style="font-size:13px;color:var(--text2);padding:2px 0;border-bottom:1px dotted var(--border)">ISSB S1/S2（新版要求）</li></ul>
         </div>
-  <div style="font-size:10px;color:var(--textM);margin-top:4px">對標 GRI Standards・ISSB・TCFD・金管會規範</div>
+  <div style="font-size:12px;color:var(--textM);margin-top:4px">對標 GRI Standards・ISSB・TCFD・金管會規範</div>
 </div><div class="dash-card">
   <div class="dash-title">⚠️ 撰寫注意事項</div>
   <div style="display:flex;gap:6px;padding:5px 0;border-bottom:1px dotted var(--border);align-items:flex-start">
-      <span style="font-size:11px;flex-shrink:0">🔴 必須注意</span>
-      <span style="font-size:11px;color:var(--text2);line-height:1.5">重大性鑑別不能自己決定，需透過利害關係人調查產出矩陣</span>
+      <span style="font-size:13px;flex-shrink:0">🔴 必須注意</span>
+      <span style="font-size:13px;color:var(--text2);line-height:1.5">重大性鑑別不能自己決定，需透過利害關係人調查產出矩陣</span>
     </div><div style="display:flex;gap:6px;padding:5px 0;border-bottom:1px dotted var(--border);align-items:flex-start">
-      <span style="font-size:11px;flex-shrink:0">🔴 必須注意</span>
-      <span style="font-size:11px;color:var(--text2);line-height:1.5">數據需具可比較性：同口徑、同邊界、歷年一致</span>
+      <span style="font-size:13px;flex-shrink:0">🔴 必須注意</span>
+      <span style="font-size:13px;color:var(--text2);line-height:1.5">數據需具可比較性：同口徑、同邊界、歷年一致</span>
     </div><div style="display:flex;gap:6px;padding:5px 0;border-bottom:1px dotted var(--border);align-items:flex-start">
-      <span style="font-size:11px;flex-shrink:0">🔴 必須注意</span>
-      <span style="font-size:11px;color:var(--text2);line-height:1.5">資本額20億以上須取得第三方確信（有限確信或合理確信）</span>
+      <span style="font-size:13px;flex-shrink:0">🔴 必須注意</span>
+      <span style="font-size:13px;color:var(--text2);line-height:1.5">資本額20億以上須取得第三方確信（有限確信或合理確信）</span>
     </div><div style="display:flex;gap:6px;padding:5px 0;border-bottom:1px dotted var(--border);align-items:flex-start">
-      <span style="font-size:11px;flex-shrink:0">🟡 容易出錯</span>
-      <span style="font-size:11px;color:var(--text2);line-height:1.5">Scope 3 常被低估：員工通勤、差旅、上下游供應鏈皆需納入</span>
+      <span style="font-size:13px;flex-shrink:0">🟡 容易出錯</span>
+      <span style="font-size:13px;color:var(--text2);line-height:1.5">Scope 3 常被低估：員工通勤、差旅、上下游供應鏈皆需納入</span>
     </div><div style="display:flex;gap:6px;padding:5px 0;border-bottom:1px dotted var(--border);align-items:flex-start">
-      <span style="font-size:11px;flex-shrink:0">🟡 容易出錯</span>
-      <span style="font-size:11px;color:var(--text2);line-height:1.5">薪酬差距計算需說明方法論，不能只寫「符合法規」</span>
+      <span style="font-size:13px;flex-shrink:0">🟡 容易出錯</span>
+      <span style="font-size:13px;color:var(--text2);line-height:1.5">薪酬差距計算需說明方法論，不能只寫「符合法規」</span>
     </div><div style="display:flex;gap:6px;padding:5px 0;border-bottom:1px dotted var(--border);align-items:flex-start">
-      <span style="font-size:11px;flex-shrink:0">🟡 容易出錯</span>
-      <span style="font-size:11px;color:var(--text2);line-height:1.5">目標需 SMART：可量化、有時程、有基準年</span>
+      <span style="font-size:13px;flex-shrink:0">🟡 容易出錯</span>
+      <span style="font-size:13px;color:var(--text2);line-height:1.5">目標需 SMART：可量化、有時程、有基準年</span>
     </div><div style="display:flex;gap:6px;padding:5px 0;border-bottom:1px dotted var(--border);align-items:flex-start">
-      <span style="font-size:11px;flex-shrink:0">🟢 加分項目</span>
-      <span style="font-size:11px;color:var(--text2);line-height:1.5">設定科學基礎減量目標(SBTi)並取得認可</span>
+      <span style="font-size:13px;flex-shrink:0">🟢 加分項目</span>
+      <span style="font-size:13px;color:var(--text2);line-height:1.5">設定科學基礎減量目標(SBTi)並取得認可</span>
     </div><div style="display:flex;gap:6px;padding:5px 0;border-bottom:1px dotted var(--border);align-items:flex-start">
-      <span style="font-size:11px;flex-shrink:0">🟢 加分項目</span>
-      <span style="font-size:11px;color:var(--text2);line-height:1.5">參考 SASB 產業標準，揭露產業特定指標</span>
+      <span style="font-size:13px;flex-shrink:0">🟢 加分項目</span>
+      <span style="font-size:13px;color:var(--text2);line-height:1.5">參考 SASB 產業標準，揭露產業特定指標</span>
     </div><div style="display:flex;gap:6px;padding:5px 0;border-bottom:1px dotted var(--border);align-items:flex-start">
-      <span style="font-size:11px;flex-shrink:0">🟢 加分項目</span>
-      <span style="font-size:11px;color:var(--text2);line-height:1.5">董事會層級設置永續委員會，強化治理</span>
+      <span style="font-size:13px;flex-shrink:0">🟢 加分項目</span>
+      <span style="font-size:13px;color:var(--text2);line-height:1.5">董事會層級設置永續委員會，強化治理</span>
     </div><div style="display:flex;gap:6px;padding:5px 0;border-bottom:1px dotted var(--border);align-items:flex-start">
-      <span style="font-size:11px;flex-shrink:0">🟢 加分項目</span>
-      <span style="font-size:11px;color:var(--text2);line-height:1.5">納入氣候情境分析(TCFD)：1.5°C / 2°C 兩種情境</span>
+      <span style="font-size:13px;flex-shrink:0">🟢 加分項目</span>
+      <span style="font-size:13px;color:var(--text2);line-height:1.5">納入氣候情境分析(TCFD)：1.5°C / 2°C 兩種情境</span>
     </div><div style="display:flex;gap:6px;padding:5px 0;border-bottom:1px dotted var(--border);align-items:flex-start">
-      <span style="font-size:11px;flex-shrink:0">💡 撰寫原則</span>
-      <span style="font-size:11px;color:var(--text2);line-height:1.5">避免漂綠：數據需有來源，成效需有證明</span>
+      <span style="font-size:13px;flex-shrink:0">💡 撰寫原則</span>
+      <span style="font-size:13px;color:var(--text2);line-height:1.5">避免漂綠：數據需有來源，成效需有證明</span>
     </div><div style="display:flex;gap:6px;padding:5px 0;border-bottom:1px dotted var(--border);align-items:flex-start">
-      <span style="font-size:11px;flex-shrink:0">💡 撰寫原則</span>
-      <span style="font-size:11px;color:var(--text2);line-height:1.5">報告書應與年報/財報資訊一致，避免矛盾</span>
+      <span style="font-size:13px;flex-shrink:0">💡 撰寫原則</span>
+      <span style="font-size:13px;color:var(--text2);line-height:1.5">報告書應與年報/財報資訊一致，避免矛盾</span>
     </div>
 </div><div class="dash-card">
   <div class="dash-title">🎯 員工ESG參與活動建議</div>
-  <div style="font-size:11px;color:var(--textM);margin-bottom:8px">從生活中落實，讓ESG成為企業文化</div>
+  <div style="font-size:13px;color:var(--textM);margin-bottom:8px">從生活中落實，讓ESG成為企業文化</div>
   <div style="margin-bottom:12px">
-          <div style="font-size:11px;font-weight:700;color:#fff;background:#22c55e;padding:4px 10px;border-radius:6px;margin-bottom:6px">🌿 環境面(E)</div>
+          <div style="font-size:13px;font-weight:700;color:#fff;background:#22c55e;padding:4px 10px;border-radius:6px;margin-bottom:6px">🌿 環境面(E)</div>
           <div style="display:flex;gap:6px;padding:4px 0;border-bottom:1px dotted var(--border);align-items:flex-start">
-          <span style="background:#22c55e22;color:#22c55e;border-radius:4px;padding:1px 5px;font-size:9px;font-weight:700;flex-shrink:0;margin-top:2px">每月</span>
-          <span style="font-size:11px;color:var(--text2);line-height:1.4">無紙化挑戰：辦公室列印量減少X%目標</span>
+          <span style="background:#22c55e22;color:#22c55e;border-radius:4px;padding:1px 5px;font-size:11px;font-weight:700;flex-shrink:0;margin-top:2px">每月</span>
+          <span style="font-size:13px;color:var(--text2);line-height:1.4">無紙化挑戰：辦公室列印量減少X%目標</span>
         </div><div style="display:flex;gap:6px;padding:4px 0;border-bottom:1px dotted var(--border);align-items:flex-start">
-          <span style="background:#22c55e22;color:#22c55e;border-radius:4px;padding:1px 5px;font-size:9px;font-weight:700;flex-shrink:0;margin-top:2px">每季</span>
-          <span style="font-size:11px;color:var(--text2);line-height:1.4">員工碳足跡計算工具（通勤+飲食+購物）</span>
+          <span style="background:#22c55e22;color:#22c55e;border-radius:4px;padding:1px 5px;font-size:11px;font-weight:700;flex-shrink:0;margin-top:2px">每季</span>
+          <span style="font-size:13px;color:var(--text2);line-height:1.4">員工碳足跡計算工具（通勤+飲食+購物）</span>
         </div><div style="display:flex;gap:6px;padding:4px 0;border-bottom:1px dotted var(--border);align-items:flex-start">
-          <span style="background:#22c55e22;color:#22c55e;border-radius:4px;padding:1px 5px;font-size:9px;font-weight:700;flex-shrink:0;margin-top:2px">每年</span>
-          <span style="font-size:11px;color:var(--text2);line-height:1.4">植樹造林活動 / 認養城市綠地</span>
+          <span style="background:#22c55e22;color:#22c55e;border-radius:4px;padding:1px 5px;font-size:11px;font-weight:700;flex-shrink:0;margin-top:2px">每年</span>
+          <span style="font-size:13px;color:var(--text2);line-height:1.4">植樹造林活動 / 認養城市綠地</span>
         </div><div style="display:flex;gap:6px;padding:4px 0;border-bottom:1px dotted var(--border);align-items:flex-start">
-          <span style="background:#22c55e22;color:#22c55e;border-radius:4px;padding:1px 5px;font-size:9px;font-weight:700;flex-shrink:0;margin-top:2px">持續</span>
-          <span style="font-size:11px;color:var(--text2);line-height:1.4">綠色通勤：步行/自行車/大眾運輸獎勵</span>
+          <span style="background:#22c55e22;color:#22c55e;border-radius:4px;padding:1px 5px;font-size:11px;font-weight:700;flex-shrink:0;margin-top:2px">持續</span>
+          <span style="font-size:13px;color:var(--text2);line-height:1.4">綠色通勤：步行/自行車/大眾運輸獎勵</span>
         </div><div style="display:flex;gap:6px;padding:4px 0;border-bottom:1px dotted var(--border);align-items:flex-start">
-          <span style="background:#22c55e22;color:#22c55e;border-radius:4px;padding:1px 5px;font-size:9px;font-weight:700;flex-shrink:0;margin-top:2px">持續</span>
-          <span style="font-size:11px;color:var(--text2);line-height:1.4">辦公室節電競賽，部門用電排行看板</span>
+          <span style="background:#22c55e22;color:#22c55e;border-radius:4px;padding:1px 5px;font-size:11px;font-weight:700;flex-shrink:0;margin-top:2px">持續</span>
+          <span style="font-size:13px;color:var(--text2);line-height:1.4">辦公室節電競賽，部門用電排行看板</span>
         </div><div style="display:flex;gap:6px;padding:4px 0;border-bottom:1px dotted var(--border);align-items:flex-start">
-          <span style="background:#22c55e22;color:#22c55e;border-radius:4px;padding:1px 5px;font-size:9px;font-weight:700;flex-shrink:0;margin-top:2px">持續</span>
-          <span style="font-size:11px;color:var(--text2);line-height:1.4">廚餘堆肥 / 舊物循環二手市集</span>
+          <span style="background:#22c55e22;color:#22c55e;border-radius:4px;padding:1px 5px;font-size:11px;font-weight:700;flex-shrink:0;margin-top:2px">持續</span>
+          <span style="font-size:13px;color:var(--text2);line-height:1.4">廚餘堆肥 / 舊物循環二手市集</span>
         </div><div style="display:flex;gap:6px;padding:4px 0;border-bottom:1px dotted var(--border);align-items:flex-start">
-          <span style="background:#22c55e22;color:#22c55e;border-radius:4px;padding:1px 5px;font-size:9px;font-weight:700;flex-shrink:0;margin-top:2px">特殊</span>
-          <span style="font-size:11px;color:var(--text2);line-height:1.4">淨灘/淨山志工日 / 生態導覽體驗</span>
+          <span style="background:#22c55e22;color:#22c55e;border-radius:4px;padding:1px 5px;font-size:11px;font-weight:700;flex-shrink:0;margin-top:2px">特殊</span>
+          <span style="font-size:13px;color:var(--text2);line-height:1.4">淨灘/淨山志工日 / 生態導覽體驗</span>
         </div>
         </div><div style="margin-bottom:12px">
-          <div style="font-size:11px;font-weight:700;color:#fff;background:#3b82f6;padding:4px 10px;border-radius:6px;margin-bottom:6px">👥 社會面(S)</div>
+          <div style="font-size:13px;font-weight:700;color:#fff;background:#3b82f6;padding:4px 10px;border-radius:6px;margin-bottom:6px">👥 社會面(S)</div>
           <div style="display:flex;gap:6px;padding:4px 0;border-bottom:1px dotted var(--border);align-items:flex-start">
-          <span style="background:#3b82f622;color:#3b82f6;border-radius:4px;padding:1px 5px;font-size:9px;font-weight:700;flex-shrink:0;margin-top:2px">每月</span>
-          <span style="font-size:11px;color:var(--text2);line-height:1.4">多元共融午餐會：不同文化背景員工分享</span>
+          <span style="background:#3b82f622;color:#3b82f6;border-radius:4px;padding:1px 5px;font-size:11px;font-weight:700;flex-shrink:0;margin-top:2px">每月</span>
+          <span style="font-size:13px;color:var(--text2);line-height:1.4">多元共融午餐會：不同文化背景員工分享</span>
         </div><div style="display:flex;gap:6px;padding:4px 0;border-bottom:1px dotted var(--border);align-items:flex-start">
-          <span style="background:#3b82f622;color:#3b82f6;border-radius:4px;padding:1px 5px;font-size:9px;font-weight:700;flex-shrink:0;margin-top:2px">每季</span>
-          <span style="font-size:11px;color:var(--text2);line-height:1.4">技能共享課程：員工教員工（內部講師）</span>
+          <span style="background:#3b82f622;color:#3b82f6;border-radius:4px;padding:1px 5px;font-size:11px;font-weight:700;flex-shrink:0;margin-top:2px">每季</span>
+          <span style="font-size:13px;color:var(--text2);line-height:1.4">技能共享課程：員工教員工（內部講師）</span>
         </div><div style="display:flex;gap:6px;padding:4px 0;border-bottom:1px dotted var(--border);align-items:flex-start">
-          <span style="background:#3b82f622;color:#3b82f6;border-radius:4px;padding:1px 5px;font-size:9px;font-weight:700;flex-shrink:0;margin-top:2px">每年</span>
-          <span style="font-size:11px;color:var(--text2);line-height:1.4">供應商稽核志工：了解供應鏈人權議題</span>
+          <span style="background:#3b82f622;color:#3b82f6;border-radius:4px;padding:1px 5px;font-size:11px;font-weight:700;flex-shrink:0;margin-top:2px">每年</span>
+          <span style="font-size:13px;color:var(--text2);line-height:1.4">供應商稽核志工：了解供應鏈人權議題</span>
         </div><div style="display:flex;gap:6px;padding:4px 0;border-bottom:1px dotted var(--border);align-items:flex-start">
-          <span style="background:#3b82f622;color:#3b82f6;border-radius:4px;padding:1px 5px;font-size:9px;font-weight:700;flex-shrink:0;margin-top:2px">持續</span>
-          <span style="font-size:11px;color:var(--text2);line-height:1.4">閱讀角設置 / 書本交換平台</span>
+          <span style="background:#3b82f622;color:#3b82f6;border-radius:4px;padding:1px 5px;font-size:11px;font-weight:700;flex-shrink:0;margin-top:2px">持續</span>
+          <span style="font-size:13px;color:var(--text2);line-height:1.4">閱讀角設置 / 書本交換平台</span>
         </div><div style="display:flex;gap:6px;padding:4px 0;border-bottom:1px dotted var(--border);align-items:flex-start">
-          <span style="background:#3b82f622;color:#3b82f6;border-radius:4px;padding:1px 5px;font-size:9px;font-weight:700;flex-shrink:0;margin-top:2px">持續</span>
-          <span style="font-size:11px;color:var(--text2);line-height:1.4">身心健康計畫：正念冥想、心理諮詢</span>
+          <span style="background:#3b82f622;color:#3b82f6;border-radius:4px;padding:1px 5px;font-size:11px;font-weight:700;flex-shrink:0;margin-top:2px">持續</span>
+          <span style="font-size:13px;color:var(--text2);line-height:1.4">身心健康計畫：正念冥想、心理諮詢</span>
         </div><div style="display:flex;gap:6px;padding:4px 0;border-bottom:1px dotted var(--border);align-items:flex-start">
-          <span style="background:#3b82f622;color:#3b82f6;border-radius:4px;padding:1px 5px;font-size:9px;font-weight:700;flex-shrink:0;margin-top:2px">特殊</span>
-          <span style="font-size:11px;color:var(--text2);line-height:1.4">偏鄉教育志工 / 銀髮數位培訓</span>
+          <span style="background:#3b82f622;color:#3b82f6;border-radius:4px;padding:1px 5px;font-size:11px;font-weight:700;flex-shrink:0;margin-top:2px">特殊</span>
+          <span style="font-size:13px;color:var(--text2);line-height:1.4">偏鄉教育志工 / 銀髮數位培訓</span>
         </div><div style="display:flex;gap:6px;padding:4px 0;border-bottom:1px dotted var(--border);align-items:flex-start">
-          <span style="background:#3b82f622;color:#3b82f6;border-radius:4px;padding:1px 5px;font-size:9px;font-weight:700;flex-shrink:0;margin-top:2px">特殊</span>
-          <span style="font-size:11px;color:var(--text2);line-height:1.4">捐血活動 / 物資募集公益日</span>
+          <span style="background:#3b82f622;color:#3b82f6;border-radius:4px;padding:1px 5px;font-size:11px;font-weight:700;flex-shrink:0;margin-top:2px">特殊</span>
+          <span style="font-size:13px;color:var(--text2);line-height:1.4">捐血活動 / 物資募集公益日</span>
         </div>
         </div><div style="margin-bottom:12px">
-          <div style="font-size:11px;font-weight:700;color:#fff;background:#8b5cf6;padding:4px 10px;border-radius:6px;margin-bottom:6px">🏛 治理面(G)</div>
+          <div style="font-size:13px;font-weight:700;color:#fff;background:#8b5cf6;padding:4px 10px;border-radius:6px;margin-bottom:6px">🏛 治理面(G)</div>
           <div style="display:flex;gap:6px;padding:4px 0;border-bottom:1px dotted var(--border);align-items:flex-start">
-          <span style="background:#8b5cf622;color:#8b5cf6;border-radius:4px;padding:1px 5px;font-size:9px;font-weight:700;flex-shrink:0;margin-top:2px">每月</span>
-          <span style="font-size:11px;color:var(--text2);line-height:1.4">ESG小學堂：15分鐘法規與趨勢分享</span>
+          <span style="background:#8b5cf622;color:#8b5cf6;border-radius:4px;padding:1px 5px;font-size:11px;font-weight:700;flex-shrink:0;margin-top:2px">每月</span>
+          <span style="font-size:13px;color:var(--text2);line-height:1.4">ESG小學堂：15分鐘法規與趨勢分享</span>
         </div><div style="display:flex;gap:6px;padding:4px 0;border-bottom:1px dotted var(--border);align-items:flex-start">
-          <span style="background:#8b5cf622;color:#8b5cf6;border-radius:4px;padding:1px 5px;font-size:9px;font-weight:700;flex-shrink:0;margin-top:2px">每季</span>
-          <span style="font-size:11px;color:var(--text2);line-height:1.4">員工誠信宣誓 / 反貪腐教育訓練</span>
+          <span style="background:#8b5cf622;color:#8b5cf6;border-radius:4px;padding:1px 5px;font-size:11px;font-weight:700;flex-shrink:0;margin-top:2px">每季</span>
+          <span style="font-size:13px;color:var(--text2);line-height:1.4">員工誠信宣誓 / 反貪腐教育訓練</span>
         </div><div style="display:flex;gap:6px;padding:4px 0;border-bottom:1px dotted var(--border);align-items:flex-start">
-          <span style="background:#8b5cf622;color:#8b5cf6;border-radius:4px;padding:1px 5px;font-size:9px;font-weight:700;flex-shrink:0;margin-top:2px">每年</span>
-          <span style="font-size:11px;color:var(--text2);line-height:1.4">ESG提案競賽：員工提出改善方案</span>
+          <span style="background:#8b5cf622;color:#8b5cf6;border-radius:4px;padding:1px 5px;font-size:11px;font-weight:700;flex-shrink:0;margin-top:2px">每年</span>
+          <span style="font-size:13px;color:var(--text2);line-height:1.4">ESG提案競賽：員工提出改善方案</span>
         </div><div style="display:flex;gap:6px;padding:4px 0;border-bottom:1px dotted var(--border);align-items:flex-start">
-          <span style="background:#8b5cf622;color:#8b5cf6;border-radius:4px;padding:1px 5px;font-size:9px;font-weight:700;flex-shrink:0;margin-top:2px">持續</span>
-          <span style="font-size:11px;color:var(--text2);line-height:1.4">吹哨者保護管道宣導（匿名舉報系統）</span>
+          <span style="background:#8b5cf622;color:#8b5cf6;border-radius:4px;padding:1px 5px;font-size:11px;font-weight:700;flex-shrink:0;margin-top:2px">持續</span>
+          <span style="font-size:13px;color:var(--text2);line-height:1.4">吹哨者保護管道宣導（匿名舉報系統）</span>
         </div><div style="display:flex;gap:6px;padding:4px 0;border-bottom:1px dotted var(--border);align-items:flex-start">
-          <span style="background:#8b5cf622;color:#8b5cf6;border-radius:4px;padding:1px 5px;font-size:9px;font-weight:700;flex-shrink:0;margin-top:2px">持續</span>
-          <span style="font-size:11px;color:var(--text2);line-height:1.4">ESG績效目標納入各部門KPI</span>
+          <span style="background:#8b5cf622;color:#8b5cf6;border-radius:4px;padding:1px 5px;font-size:11px;font-weight:700;flex-shrink:0;margin-top:2px">持續</span>
+          <span style="font-size:13px;color:var(--text2);line-height:1.4">ESG績效目標納入各部門KPI</span>
         </div><div style="display:flex;gap:6px;padding:4px 0;border-bottom:1px dotted var(--border);align-items:flex-start">
-          <span style="background:#8b5cf622;color:#8b5cf6;border-radius:4px;padding:1px 5px;font-size:9px;font-weight:700;flex-shrink:0;margin-top:2px">特殊</span>
-          <span style="font-size:11px;color:var(--text2);line-height:1.4">股東會模擬：讓員工了解公司治理運作</span>
+          <span style="background:#8b5cf622;color:#8b5cf6;border-radius:4px;padding:1px 5px;font-size:11px;font-weight:700;flex-shrink:0;margin-top:2px">特殊</span>
+          <span style="font-size:13px;color:var(--text2);line-height:1.4">股東會模擬：讓員工了解公司治理運作</span>
         </div><div style="display:flex;gap:6px;padding:4px 0;border-bottom:1px dotted var(--border);align-items:flex-start">
-          <span style="background:#8b5cf622;color:#8b5cf6;border-radius:4px;padding:1px 5px;font-size:9px;font-weight:700;flex-shrink:0;margin-top:2px">特殊</span>
-          <span style="font-size:11px;color:var(--text2);line-height:1.4">ESG參訪：拜訪標竿企業或永續農場</span>
+          <span style="background:#8b5cf622;color:#8b5cf6;border-radius:4px;padding:1px 5px;font-size:11px;font-weight:700;flex-shrink:0;margin-top:2px">特殊</span>
+          <span style="font-size:13px;color:var(--text2);line-height:1.4">ESG參訪：拜訪標竿企業或永續農場</span>
         </div>
         </div>
 </div></div>
