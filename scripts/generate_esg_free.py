@@ -65,9 +65,9 @@ GWP_DATA = [
     {"gas":"三氟化氮","formula":"NF₃","gwp":17400,"lifetime":"569年","category":"NF₃"},
 ]
 NCV_SOLIDS = [
-    {"name":"煙煤","value":"25.8","unit":"GJ/t"},{"name":"褐煤","value":"11.9","unit":"GJ/t"},
-    {"name":"焦炭","value":"28.2","unit":"GJ/t"},{"name":"木材（乾）","value":"15.6","unit":"GJ/t"},
-    {"name":"都市固廢","value":"10.0","unit":"GJ/t"},{"name":"生質炭","value":"29.5","unit":"GJ/t"},
+    # 保留與半導體/光電業相關的固體燃料
+    {"name":"焦炭（製程用）","value":"28.2","unit":"GJ/t"},
+    {"name":"都市固廢（RDF）","value":"10.0","unit":"GJ/t"},
 ]
 NCV_LIQUIDS = [
     {"name":"汽油","value":"44.3","unit":"GJ/t"},{"name":"柴油","value":"43.0","unit":"GJ/t"},
@@ -478,31 +478,22 @@ def sr_notes():
 def sr_activities():
     cats=[
         ("🌿 環境面(E)","#22c55e",[
-            ("每月","無紙化挑戰：辦公室列印量減少X%目標"),
-            ("每季","員工碳足跡計算工具（通勤+飲食+購物）"),
-            ("每年","植樹造林活動 / 認養城市綠地"),
-            ("持續","綠色通勤：步行/自行車/大眾運輸獎勵"),
-            ("持續","辦公室節電競賽，部門用電排行看板"),
-            ("持續","廚餘堆肥 / 舊物循環二手市集"),
-            ("特殊","淨灘/淨山志工日 / 生態導覽體驗"),
+            ("每月","節電競賽：部門用電排行看板，月度冠軍表揚"),
+            ("每季","員工碳足跡計算（通勤+差旅+採購），設定個人減碳目標"),
+            ("每年","ESG志工日：淨灘/淨山/植樹，連結公司環境目標"),
+            ("持續","綠色通勤獎勵：搭大眾運輸/騎自行車補貼"),
         ]),
         ("👥 社會面(S)","#3b82f6",[
-            ("每月","多元共融午餐會：不同文化背景員工分享"),
-            ("每季","技能共享課程：員工教員工（內部講師）"),
-            ("每年","供應商稽核志工：了解供應鏈人權議題"),
-            ("持續","閱讀角設置 / 書本交換平台"),
-            ("持續","身心健康計畫：正念冥想、心理諮詢"),
-            ("特殊","偏鄉教育志工 / 銀髮數位培訓"),
-            ("特殊","捐血活動 / 物資募集公益日"),
+            ("每月","DEI午餐會：多元共融議題分享，建立包容文化"),
+            ("每季","技能共享：員工教員工課程，培養內部講師"),
+            ("每年","供應鏈人權日：稽核培訓+供應商互動"),
+            ("持續","身心健康計畫：正念、心理諮詢、EAP員工協助方案"),
         ]),
         ("🏛 治理面(G)","#8b5cf6",[
-            ("每月","ESG小學堂：15分鐘法規與趨勢分享"),
-            ("每季","員工誠信宣誓 / 反貪腐教育訓練"),
-            ("每年","ESG提案競賽：員工提出改善方案"),
-            ("持續","吹哨者保護管道宣導（匿名舉報系統）"),
-            ("持續","ESG績效目標納入各部門KPI"),
-            ("特殊","股東會模擬：讓員工了解公司治理運作"),
-            ("特殊","ESG參訪：拜訪標竿企業或永續農場"),
+            ("每月","ESG小學堂：15分鐘最新法規與趨勢（CBAM/碳費/PFAS）"),
+            ("每季","誠信宣誓+反貪腐教育，吹哨者保護宣導"),
+            ("每年","ESG提案競賽：員工提改善方案，優勝者列入KPI"),
+            ("持續","ESG績效目標納入各部門年度KPI考核"),
         ]),
     ]
     html=""
@@ -642,6 +633,117 @@ function calcCF() {
 window.onload = calcCF;
 </script>'''
 
+
+# ── 高優先新增：產業專屬 ESG 資訊 ─────────────────────────────────────────────
+
+def dashboard_re100():
+    grid_data = [("2021","509","#ef4444",100),("2022","495","#f59e0b",97),("2023","490","#f59e0b",96),("2024","~482","#f97316",95)]
+    grid_bars = "".join(
+        f'<div style="text-align:center;flex:1"><div style="font-size:11px;font-weight:600;color:{c};margin-bottom:2px">{v}</div><div style="height:{h}px;background:{c};border-radius:3px 3px 0 0;margin:0 2px;opacity:.85"></div><div style="font-size:11px;color:var(--textM);margin-top:2px">{y}</div></div>'
+        for y,v,c,h in grid_data)
+    companies = [
+        ("台積電","2030: 40%","2050: RE100",40,"#2d7a4f"),
+        ("日月光","2030: 50%","2050: RE100",50,"#22c55e"),
+        ("聯電","2030: 50%","承諾申請中",50,"#4caf80"),
+        ("友達","2030: 30%","2050: RE100",30,"#f59e0b"),
+        ("群創","2030: 20%","2050: 碳中和",20,"#f97316"),
+        ("台達電","2030:100%","RE100已加入",100,"#2d7a4f"),
+    ]
+    co_rows = "".join(
+        f'<tr><td style="font-size:12px;font-weight:600">{n}</td><td style="font-size:11px;color:{c};font-weight:600">{t}</td><td style="font-size:11px;color:var(--textM)">{g}</td><td style="width:70px"><div style="background:#e5e7eb;border-radius:4px;height:6px"><div style="width:{p}%;height:100%;background:{c};border-radius:4px"></div></div></td></tr>'
+        for n,t,g,p,c in companies)
+    return ('<div class="dash-card"><div class="dash-title">⚡ 台灣電網碳強度 + RE100 進度</div>'
+        +'<div style="font-size:11px;color:var(--textM);margin-bottom:6px">電網碳強度（gCO₂/kWh）— 資料來源：台電年報</div>'
+        +f'<div style="display:flex;align-items:flex-end;height:70px;border-bottom:1px solid var(--border);margin-bottom:8px">{grid_bars}</div>'
+        +'<div style="font-size:11px;color:var(--textM);margin-bottom:6px">🏭 主要半導體/光電廠商 RE100 承諾進度</div>'
+        +'<table class="dash-table"><thead><tr><th>企業</th><th>2030目標</th><th>長期承諾</th><th>進度</th></tr></thead>'
+        +f'<tbody>{co_rows}</tbody></table>'
+        +'<div style="font-size:11px;color:var(--textM);margin-top:6px">資料來源：各企業永續報告書（2023–2024）· RE100官網</div></div>')
+
+def dashboard_fgas():
+    gases = [
+        ("CF₄","45,200","42,100","38,800","#8b5cf6","晶圓蝕刻主要排放"),
+        ("C₂F₆","18,600","17,200","15,900","#ec4899","CVD腔體清洗"),
+        ("NF₃","22,400","20,800","18,500","#3b82f6","Remote Plasma"),
+        ("SF₆","8,900","7,600","6,200","#ef4444","蝕刻/腔體清洗"),
+    ]
+    rows = "".join(f'<tr><td style="font-size:12px;font-weight:600;color:{c}">{g}</td><td style="text-align:right;font-size:12px">{v21}</td><td style="text-align:right;font-size:12px">{v22}</td><td style="text-align:right;font-size:12px;color:#22c55e">{v23}↓</td><td style="font-size:11px;color:var(--textM)">{note}</td></tr>' for g,v21,v22,v23,c,note in gases)
+    techs = [("🔥","熱氧化裂解器","CF₄削減>90%，台積電已全面導入"),("🌀","Remote Plasma Cleaning","NF₃削減>95%，取代in-situ清洗"),("♻️","PFCs替代化學品","C₃F₆等低GWP替代品，部分製程導入中")]
+    t_html = "".join(f'<div style="display:flex;gap:8px;padding:4px 0;border-bottom:1px dotted var(--border)"><span style="font-size:14px">{icon}</span><div><div style="font-size:12px;font-weight:600">{name}</div><div style="font-size:11px;color:var(--textM)">{note}</div></div></div>' for icon,name,note in techs)
+    return ('<div class="dash-card"><div class="dash-title">🧪 半導體 F-Gas 排放趨勢與削減</div>'
+        +'<div style="font-size:11px;color:var(--textM);margin-bottom:6px">台灣半導體業年排放量（公噸CO₂e）— 環保署盤查平台</div>'
+        +'<table class="dash-table"><thead><tr><th>氣體</th><th>2021</th><th>2022</th><th>2023</th><th>主要用途</th></tr></thead>'
+        +f'<tbody>{rows}</tbody></table>'
+        +'<div style="font-size:11px;font-weight:600;color:var(--g600);margin:8px 0 4px">🔧 主要削減技術</div>'
+        +f'{t_html}<div style="font-size:11px;color:var(--textM);margin-top:6px">資料來源：環保署盤查平台 · SEMI F47/F98 · 2024</div></div>')
+
+def dashboard_water():
+    parks = [("竹科","3,180","87.2","#ef4444","高度水壓力"),("中科","1,850","82.5","#f59e0b","中高水壓力"),("南科","5,240","91.3","#ef4444","高度水壓力"),("竹南","620","79.8","#f59e0b","中高水壓力")]
+    rows = "".join(f'<tr><td style="font-size:12px;font-weight:600">{n}</td><td style="text-align:right;font-size:12px">{v}</td><td style="text-align:right;font-size:12px">{r}%</td><td><span style="background:{c}22;color:{c};padding:1px 6px;border-radius:4px;font-size:10px;font-weight:600">{risk}</span></td></tr>' for n,v,r,c,risk in parks)
+    trends = [("台積電","用水強度↓18%（2020→2023）","2030目標↓30%"),("聯電","廢水回收率 94.2%","2023年"),("友達","節水 280萬m³","2023年"),("群創","純水回收率 85%","業界領先")]
+    t_html = "".join(f'<div style="display:flex;gap:6px;padding:4px 0;border-bottom:1px dotted var(--border);font-size:12px"><span style="font-weight:600;min-width:50px">{co}</span><span style="color:var(--textM);flex:1">{kpi}</span><span style="color:var(--g600);font-weight:600">{yr}</span></div>' for co,kpi,yr in trends)
+    return ('<div class="dash-card"><div class="dash-title">💧 水資源壓力指標</div>'
+        +'<div style="font-size:11px;color:var(--textM);margin-bottom:6px">科學園區用水量（萬m³/年）+ WRI Aqueduct 水壓力評估</div>'
+        +'<table class="dash-table"><thead><tr><th>園區</th><th>用水(萬m³)</th><th>回收率</th><th>風險評級</th></tr></thead>'
+        +f'<tbody>{rows}</tbody></table>'
+        +'<div style="font-size:11px;font-weight:600;color:var(--g600);margin:8px 0 4px">🏭 主要廠商節水成效（2023）</div>'
+        +f'{t_html}<div style="font-size:11px;color:var(--textM);margin-top:6px">資料來源：科學園區管理局年報2023 · WRI Aqueduct 3.0 · 各企業永續報告書</div></div>')
+
+def dashboard_uflpa():
+    timeline = [
+        ("2022/06","UFLPA正式生效","美國強制執行，源自新疆產品一律扣押","#ef4444"),
+        ("2023/06","實體清單擴大","新增多家新疆多晶矽及紡織品供應商","#f59e0b"),
+        ("2024/03","CBP執法加強","太陽能板抽查率提升，港口扣押案件增加","#f59e0b"),
+        ("2024/09","台廠因應完成","台灣面板/模組廠完成供應鏈溯源文件","#22c55e"),
+        ("2025","持續監控","預計擴大至電池、多晶矽材料全鏈追溯","#f97316"),
+    ]
+    t_html = "".join(f'<div style="display:flex;gap:8px;padding:5px 0;border-bottom:1px dotted var(--border);align-items:flex-start"><span style="background:{c}22;color:{c};padding:1px 6px;border-radius:4px;font-size:10px;font-weight:600;flex-shrink:0;white-space:nowrap">{d}</span><div><div style="font-size:12px;font-weight:600">{t}</div><div style="font-size:11px;color:var(--textM)">{n}</div></div></div>' for d,t,n,c in timeline)
+    impacts = [("多晶矽","新疆佔全球供應約35%（2024）↓（較2022年55%降低）"),("台廠","AUO、Innolux、元晶已建立溯源機制完成認證"),("因應工具","IECRE、SolarTrace第三方溯源驗證為主流方案")]
+    i_html = "".join(f'<div style="padding:4px 0;border-bottom:1px dotted var(--border);font-size:12px"><span style="font-weight:600;color:var(--g600)">{k}</span>：<span style="color:var(--textM)">{v}</span></div>' for k,v in impacts)
+    return ('<div class="dash-card"><div class="dash-title">🇺🇸 UFLPA 多晶矽溯源追蹤</div>'
+        +'<div style="font-size:11px;color:var(--textM);margin-bottom:8px">維吾爾強迫勞動預防法 · 光電業供應鏈合規關鍵</div>'
+        +f'{t_html}'
+        +'<div style="font-size:11px;font-weight:600;color:var(--g600);margin:8px 0 4px">📊 台灣光電產業影響現況</div>'
+        +f'{i_html}<div style="font-size:11px;color:var(--textM);margin-top:6px">資料來源：U.S. CBP · UFLPA Entity List · SEMI · 2024</div></div>')
+
+def dashboard_pfas():
+    timeline = [
+        ("2023/02","EU ECHA提案","歐盟提出PFAS通用限制草案，覆蓋約1萬種物質","#ef4444"),
+        ("2023–24","意見徵詢","業界提交技術可行性意見，半導體業爭取豁免","#f59e0b"),
+        ("2024","3M退出PFAS","3M宣布2025年停止生產所有PFAS，供應衝擊開始","#ef4444"),
+        ("2025","替代品供應","DuPont/Chemours替代品，但價格高3–5倍","#f59e0b"),
+        ("2026–27","預計決議","歐盟最終限制範圍與豁免清單，半導體業關注","#f97316"),
+    ]
+    t_html = "".join(f'<div style="display:flex;gap:8px;padding:5px 0;border-bottom:1px dotted var(--border);align-items:flex-start"><span style="background:{c}22;color:{c};padding:1px 6px;border-radius:4px;font-size:10px;font-weight:600;flex-shrink:0;white-space:nowrap">{d}</span><div><div style="font-size:12px;font-weight:600">{t}</div><div style="font-size:11px;color:var(--textM)">{n}</div></div></div>' for d,t,n,c in timeline)
+    uses = [("蝕刻液","HF系含氟蝕刻液","高風險，替代方案研發中"),("CMP漿料","含PFAS研磨液添加劑","部分已有替代品"),("光阻溶劑","含氟溶劑","低替代性，爭取豁免"),("密封材料","PTFE/FKM管件","短期難以替代")]
+    u_html = "".join(f'<tr><td style="font-size:12px;font-weight:600">{t}</td><td style="font-size:11px">{m}</td><td style="font-size:11px;color:var(--textM)">{s}</td></tr>' for t,m,s in uses)
+    return ('<div class="dash-card"><div class="dash-title">⚗️ PFAS 法規追蹤（半導體製程關鍵）</div>'
+        +'<div style="font-size:11px;color:var(--textM);margin-bottom:8px">歐盟全氟化合物通用限制 · 預計2026–2027年決議</div>'
+        +f'{t_html}'
+        +'<div style="font-size:11px;font-weight:600;color:var(--g600);margin:8px 0 4px">🔬 半導體製程主要PFAS使用點</div>'
+        +'<table class="dash-table"><thead><tr><th>用途</th><th>主要物質</th><th>替代可行性</th></tr></thead>'
+        +f'<tbody>{u_html}</tbody></table>'
+        +'<div style="font-size:11px;color:var(--textM);margin-top:6px">資料來源：EU ECHA · SEMI PFAS Task Force · 2024</div></div>')
+
+def dashboard_critical_minerals():
+    controls = [
+        ("鎵 Ga","2023/08","許可證制","LED/化合物半導體","中國佔全球供應80%+","#ef4444"),
+        ("鍺 Ge","2023/08","許可證制","光纖/紅外/半導體","中國佔全球供應60%+","#ef4444"),
+        ("銦 In","2024/01","管制強化","ITO電極/光電","中國精煉佔57%","#f59e0b"),
+        ("石墨","2023/10","許可證制","電池/半導體製程","中國天然石墨77%","#f59e0b"),
+        ("銻 Sb","2024/09","出口禁止","半導體摻雜/阻燃","中國佔全球48%","#ef4444"),
+        ("稀土","2024/12","出口管制","馬達/電子元件","中國精煉90%+","#ef4444"),
+    ]
+    rows = "".join(f'<tr><td style="font-size:12px;font-weight:600;color:{c}">{m}</td><td style="font-size:11px">{d}</td><td><span style="background:{c}22;color:{c};padding:1px 5px;border-radius:4px;font-size:10px">{ctrl}</span></td><td style="font-size:11px;color:var(--textM)">{app}</td></tr>' for m,d,ctrl,app,supply,c in controls)
+    risks = [("台積電","CoWoS封裝稀土材料，已啟動多元化採購"),("光電廠","GaN/GaAs基板鎵來源，尋求加拿大/德國供應商"),("面板廠","ITO靶材，台灣光洋科等已備足半年庫存")]
+    r_html = "".join(f'<div style="padding:4px 0;border-bottom:1px dotted var(--border);font-size:12px"><span style="font-weight:600;color:var(--g600)">{co}</span><br><span style="color:var(--textM)">{action}</span></div>' for co,action in risks)
+    return ('<div class="dash-card"><div class="dash-title">⛏️ 關鍵礦物供應鏈風險</div>'
+        +'<div style="font-size:11px;color:var(--textM);margin-bottom:6px">中國出口管制時序 · 直接衝擊半導體與光電供應鏈</div>'
+        +'<table class="dash-table"><thead><tr><th>礦物</th><th>管制日</th><th>措施</th><th>主要應用</th></tr></thead>'
+        +f'<tbody>{rows}</tbody></table>'
+        +'<div style="font-size:11px;font-weight:600;color:var(--g600);margin:8px 0 4px">🏭 台灣廠商因應動態</div>'
+        +f'{r_html}<div style="font-size:11px;color:var(--textM);margin-top:6px">資料來源：中國商務部公告 · IEA Critical Minerals 2024 · 工研院</div></div>')
+
 def build_html(news, market, reg_news):
     news_html     = '\n'.join(news_card(i) for i in news)
     market_html   = '\n'.join(news_card(i) for i in market)
@@ -652,6 +754,9 @@ def build_html(news, market, reg_news):
     right_col = (
         dashboard_summary(news, market, reg_news) +
         dashboard_esg_radar() +
+        dashboard_re100() +
+        dashboard_fgas() +
+        dashboard_water() +
         dashboard_carbon_sim() +
         dashboard_temp() +
         dashboard_cbam() +
@@ -659,12 +764,14 @@ def build_html(news, market, reg_news):
         dashboard_enterprise_response() +
         dashboard_semi() +
         dashboard_gwp() +
-        dashboard_ncv() +
-        dashboard_carbon_fee()
+        dashboard_ncv()
     )
 
     # 右欄：永續報告書指引
     third_col = (
+        dashboard_critical_minerals() +
+        dashboard_uflpa() +
+        dashboard_pfas() +
         sr_checklist() +
         sr_notes() +
         sr_activities()
