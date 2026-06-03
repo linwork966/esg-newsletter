@@ -288,24 +288,24 @@ def dashboard_temp():
     ]
     bars = "".join(
         '<div style="text-align:center;flex:1">' +
-        f'<div style="font-size:11px;font-weight:600;color:{c};margin-bottom:2px">{v}</div>' +
+        f'<div style="font-size:14px;font-weight:600;color:{c};margin-bottom:2px">{v}</div>' +
         f'<div style="height:{h}px;background:{c};border-radius:3px 3px 0 0;margin:0 3px"></div>' +
-        f'<div style="font-size:11px;color:var(--textM);margin-top:2px">{y}</div></div>'
+        f'<div style="font-size:14px;color:var(--textM);margin-top:2px">{y}</div></div>'
         for y,v,c,h in years_data
     )
     return (
         '<div class="dash-card">' +
         '<div class="dash-title">\U0001f321 全球暖化現況</div>' +
         '<div style="text-align:center;padding:6px 0 10px">' +
-        '<div style="font-size:2.88rem;font-weight:700;color:#ef4444">+1.60\u00b0C</div>' +
-        '<div style="font-size:13px;color:#ef4444;font-weight:600;margin-top:2px">\u26a0\ufe0f 首度突破 1.5\u00b0C 巴黎警戒線</div>' +
-        '<div style="font-size:11px;color:var(--textM);margin-top:2px">2024年全年均值 \u00b7 相較工業化前(1850\u20131900)</div>' +
+        '<div style="font-size:3.6rem;font-weight:700;color:#ef4444">+1.60\u00b0C</div>' +
+        '<div style="font-size:16px;color:#ef4444;font-weight:600;margin-top:2px">\u26a0\ufe0f 首度突破 1.5\u00b0C 巴黎警戒線</div>' +
+        '<div style="font-size:14px;color:var(--textM);margin-top:2px">2024年全年均值 \u00b7 相較工業化前(1850\u20131900)</div>' +
         '</div>' +
-        f'<div style="display:flex;align-items:flex-end;height:90px;border-bottom:1px solid var(--border);margin-bottom:8px">{bars}</div>' +
-        '<div style="display:flex;justify-content:space-between;font-size:11px;color:var(--textM)">' +
+        f'<div style="display:flex;align-items:flex-end;height:100px;border-bottom:1px solid var(--border);margin-bottom:8px;padding:4px 0 0">{bars}</div>' +
+        '<div style="display:flex;justify-content:space-between;font-size:14px;color:var(--textM)">' +
         '<span>\U0001f4c8 5年升溫加速趨勢</span><span style="color:#ef4444">巴黎目標：\u2264+1.5\u00b0C</span>' +
         '</div>' +
-        '<div style="font-size:11px;color:var(--textM);margin-top:4px">資料來源：Copernicus CCS / WMO State of Global Climate 2025</div>' +
+        '<div style="font-size:14px;color:var(--textM);margin-top:4px">資料來源：Copernicus CCS / WMO State of Global Climate 2025</div>' +
         '</div>'
     )
 
@@ -318,11 +318,11 @@ def dashboard_cbam():
         ("📋 申報義務","須提交：出口品碳含量、生產國已付碳價<br>差額由進口商購買 CBAM 憑證補足"),
         ("🔴 2025最新","歐盟 Omnibus 提案：擬鬆綁部分CSRD要求<br>但 CBAM 範圍維持不變，如期2026執行"),
     ]
-    rows="".join(f'<tr><td style="color:var(--g600);font-weight:600;white-space:nowrap;font-size:13px">{k}</td><td style="font-size:13px;line-height:1.5">{v}</td></tr>' for k,v in items)
+    rows="".join(f'<tr><td style="color:var(--g600);font-weight:600;white-space:nowrap;font-size:16px">{k}</td><td style="font-size:16px;line-height:1.5">{v}</td></tr>' for k,v in items)
     return f'''<div class="dash-card">
   <div class="dash-title">🌍 CBAM 碳邊境調整機制最新資訊</div>
   <table class="dash-table"><tbody>{rows}</tbody></table>
-  <div style="font-size:12px;color:var(--textM);margin-top:6px">資料來源：歐盟官方公報・環境部・工業總會</div>
+  <div style="font-size:15px;color:var(--textM);margin-top:6px">資料來源：歐盟官方公報・環境部・工業總會</div>
 </div>'''
 
 def dashboard_tw_carbon_2027():
@@ -332,14 +332,14 @@ def dashboard_tw_carbon_2027():
         ("#f59e0b","一般費率","NT$500–800/t","2026–2027年","預估，視減碳進展調升"),
         ("#ef4444","長期目標","NT$1,200+/t","2030年","接軌歐盟碳價水準"),
     ]
-    rows="".join(f'<tr><td><span style="display:inline-block;width:8px;height:8px;background:{c};border-radius:50%;margin-right:4px"></span><span style="font-size:13px">{n}</span></td><td style="font-weight:700;font-size:14px;color:{c}">{f}</td><td style="font-size:12px;color:var(--textM)">{y}</td></tr>' for c,n,f,y,_ in tiers)
-    notes="".join(f'<li style="font-size:12px;color:var(--textM);margin-bottom:2px">{n} → {d}</li>' for _,n,f,y,d in tiers)
+    rows="".join(f'<tr><td><span style="display:inline-block;width:8px;height:8px;background:{c};border-radius:50%;margin-right:4px"></span><span style="font-size:16px">{n}</span></td><td style="font-weight:700;font-size:18px;color:{c}">{f}</td><td style="font-size:15px;color:var(--textM)">{y}</td></tr>' for c,n,f,y,_ in tiers)
+    notes="".join(f'<li style="font-size:15px;color:var(--textM);margin-bottom:2px">{n} → {d}</li>' for _,n,f,y,d in tiers)
     return f'''<div class="dash-card">
   <div class="dash-title">💰 台灣碳費費率（2025–2030）</div>
-  <div style="font-size:13px;color:var(--textM);margin-bottom:8px">徵收對象：年排放 ≥ 25,000 tCO₂e 業者</div>
+  <div style="font-size:16px;color:var(--textM);margin-bottom:8px">徵收對象：年排放 ≥ 25,000 tCO₂e 業者</div>
   <table class="dash-table"><thead><tr><th>費率類型</th><th>費率</th><th>年度</th></tr></thead><tbody>{rows}</tbody></table>
   <ul style="margin-top:8px;padding-left:4px;list-style:none">{notes}</ul>
-  <div style="font-size:12px;color:var(--textM);margin-top:6px">* 2026年後費率為政策預估值，以環境部正式公告為準</div>
+  <div style="font-size:15px;color:var(--textM);margin-top:6px">* 2026年後費率為政策預估值，以環境部正式公告為準</div>
 </div>'''
 
 def dashboard_enterprise_response():
@@ -356,16 +356,16 @@ def dashboard_enterprise_response():
         color="#2d7a4f" if timing=="立即" else "#f59e0b" if timing=="短期" else "#8b5cf6"
         cards+=f'''<div style="border:1px solid var(--border);border-left:3px solid {color};border-radius:6px;padding:7px 10px;margin-bottom:6px">
           <div style="display:flex;align-items:center;gap:6px;margin-bottom:3px">
-            <span style="background:{color};color:#fff;border-radius:50%;width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0">{no}</span>
-            <span style="font-weight:600;font-size:14px">{title}</span>
-            <span style="margin-left:auto;background:{color}22;color:{color};border-radius:10px;padding:1px 7px;font-size:12px;font-weight:600">{timing}</span>
+            <span style="background:{color};color:#fff;border-radius:50%;width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;flex-shrink:0">{no}</span>
+            <span style="font-weight:600;font-size:18px">{title}</span>
+            <span style="margin-left:auto;background:{color}22;color:{color};border-radius:10px;padding:1px 7px;font-size:15px;font-weight:600">{timing}</span>
           </div>
-          <div style="font-size:13px;color:var(--text2);line-height:1.5;padding-left:24px">{desc}</div>
+          <div style="font-size:16px;color:var(--text2);line-height:1.5;padding-left:24px">{desc}</div>
         </div>'''
     return f'''<div class="dash-card">
   <div class="dash-title">🏢 企業因應碳費六大行動</div>
   {cards}
-  <div style="font-size:12px;color:var(--textM);margin-top:4px">資料來源：環境部・工業局・SBTi</div>
+  <div style="font-size:15px;color:var(--textM);margin-top:4px">資料來源：環境部・工業局・SBTi</div>
 </div>'''
 
 def dashboard_semi():
@@ -375,19 +375,19 @@ def dashboard_semi():
         pct=int(d['total']/max_val*100)
         rows+=f'''<tr>
           <td><span class="rank-badge">#{d["rank"]}</span></td>
-          <td><strong>{d["company"]}</strong><br><span style="font-size:12px;color:var(--textM)">{d["note"]}</span></td>
+          <td><strong>{d["company"]}</strong><br><span style="font-size:15px;color:var(--textM)">{d["note"]}</span></td>
           <td style="text-align:right">{d["total"]:,}</td>
           <td style="width:80px"><div style="background:#e5e7eb;border-radius:4px;height:6px"><div style="width:{pct}%;height:100%;background:var(--g400);border-radius:4px"></div></div></td>
         </tr>'''
-    gas_badges="".join(f'<span class="tag" style="font-size:12px">{g}</span>' for g in ["CO₂","CH₄","N₂O","HFCs","PFCs","SF₆","NF₃"])
+    gas_badges="".join(f'<span class="tag" style="font-size:15px">{g}</span>' for g in ["CO₂","CH₄","N₂O","HFCs","PFCs","SF₆","NF₃"])
     return f'''<div class="dash-card">
   <div class="dash-title">🏭 台灣半導體溫室氣體排放</div>
-  <div style="font-size:13px;color:var(--textM);margin-bottom:8px">總排放量最少前5名｜單位：公噸CO₂e｜{gas_badges}</div>
+  <div style="font-size:16px;color:var(--textM);margin-bottom:8px">總排放量最少前5名｜單位：公噸CO₂e｜{gas_badges}</div>
   <table class="dash-table">
     <thead><tr><th>排名</th><th>企業</th><th>總量(t)</th><th>比例</th></tr></thead>
     <tbody>{rows}</tbody>
   </table>
-  <div style="font-size:12px;color:var(--textM);margin-top:6px">資料來源：各企業永續報告書（2023年度，部分為估算值）</div>
+  <div style="font-size:15px;color:var(--textM);margin-top:6px">資料來源：各企業永續報告書（2023年度，部分為估算值）</div>
 </div>'''
 
 def dashboard_gwp():  # IPCC AR6 (2021) 為目前最新官方GWP標準，預計AR7約2027年發布
@@ -396,7 +396,7 @@ def dashboard_gwp():  # IPCC AR6 (2021) 為目前最新官方GWP標準，預計A
     for g in GWP_DATA:
         c=cat_color.get(g['category'],'#6b7280')
         gwp_str=f"{g['gwp']:,}" if isinstance(g['gwp'],int) else str(g['gwp'])
-        rows+=f'<tr><td><strong>{g["gas"]}</strong></td><td style="font-family:monospace;font-size:13px">{g["formula"]}</td><td style="text-align:right;font-weight:600;color:{c}">{gwp_str}</td><td style="font-size:12px;color:var(--textM)">{g["lifetime"]}</td></tr>'
+        rows+=f'<tr><td><strong>{g["gas"]}</strong></td><td style="font-family:monospace;font-size:16px">{g["formula"]}</td><td style="text-align:right;font-weight:600;color:{c}">{gwp_str}</td><td style="font-size:15px;color:var(--textM)">{g["lifetime"]}</td></tr>'
     return f'''<div class="dash-card">
   <div class="dash-title">⚗️ GWP 數值（IPCC AR6，100年期）</div>
   <table class="dash-table">
@@ -407,10 +407,10 @@ def dashboard_gwp():  # IPCC AR6 (2021) 為目前最新官方GWP標準，預計A
 
 def dashboard_ncv():
     def rows_html(data):
-        return "".join(f'<tr><td>{d["name"]}</td><td style="text-align:right;font-weight:600">{d["value"]}</td><td style="color:var(--textM);font-size:13px">{d["unit"]}</td></tr>' for d in data)
+        return "".join(f'<tr><td>{d["name"]}</td><td style="text-align:right;font-weight:600">{d["value"]}</td><td style="color:var(--textM);font-size:16px">{d["unit"]}</td></tr>' for d in data)
     return f'''<div class="dash-card">
   <div class="dash-title">🔥 淨熱值（低位發熱值）</div>
-  <div style="font-size:13px;color:var(--textM);margin-bottom:6px">資料來源：IPCC 2019 Refinement GL（現行最新）、IEA 2023、EPA 2024</div>
+  <div style="font-size:16px;color:var(--textM);margin-bottom:6px">資料來源：IPCC 2019 Refinement GL（現行最新）、IEA 2023、EPA 2024</div>
   <div class="ncv-tabs">
     <div class="ncv-group"><div class="ncv-label">固體</div><table class="dash-table"><tbody>{rows_html(NCV_SOLIDS)}</tbody></table></div>
     <div class="ncv-group"><div class="ncv-label">液體</div><table class="dash-table"><tbody>{rows_html(NCV_LIQUIDS)}</tbody></table></div>
@@ -430,13 +430,13 @@ def dashboard_carbon_fee():
           <div class="bar-val">NT${d["fee"]//1000 if d["fee"]>=1000 else d["fee"]}{"K" if d["fee"]>=1000 else ""}</div>
           <div class="bar-yr">{d["year"]}</div>
         </div>'''
-    legend='<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;font-size:12px">'
+    legend='<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;font-size:15px">'
     for col,lbl in [("#2d7a4f","正式費率"),("#4caf80","優惠費率"),("#f59e0b","預估值"),("#ef4444","長期目標")]:
         legend+=f'<span><span style="display:inline-block;width:10px;height:10px;background:{col};border-radius:2px;margin-right:3px"></span>{lbl}</span>'
     legend+='</div>'
     return f'''<div class="dash-card">
   <div class="dash-title">💰 台灣碳費收費趨勢（至2030）</div>
-  <div style="font-size:13px;color:var(--textM);margin-bottom:10px">單位：NT$/公噸CO₂e｜資料來源：環境部</div>
+  <div style="font-size:16px;color:var(--textM);margin-bottom:10px">單位：NT$/公噸CO₂e｜資料來源：環境部</div>
   <div class="bar-chart">{bars}</div>
   {legend}
 </div>'''
@@ -452,15 +452,15 @@ def sr_checklist():
     ]
     html=""
     for title,items in sections:
-        lis="".join(f'<li style="font-size:13px;color:var(--text2);padding:2px 0;border-bottom:1px dotted var(--border)">{i}</li>' for i in items)
+        lis="".join(f'<li style="font-size:16px;color:var(--text2);padding:2px 0;border-bottom:1px dotted var(--border)">{i}</li>' for i in items)
         html+=f'''<div style="margin-bottom:10px">
-          <div style="font-size:13px;font-weight:700;color:var(--g600);background:var(--g100);padding:3px 8px;border-radius:4px;margin-bottom:4px">{title}</div>
+          <div style="font-size:16px;font-weight:700;color:var(--g600);background:var(--g100);padding:3px 8px;border-radius:4px;margin-bottom:4px">{title}</div>
           <ul style="list-style:none;padding:0">{lis}</ul>
         </div>'''
     return f'''<div class="dash-card">
   <div class="dash-title">📝 永續報告書內容清單</div>
   {html}
-  <div style="font-size:12px;color:var(--textM);margin-top:4px">對標 GRI Standards・ISSB・TCFD・金管會規範</div>
+  <div style="font-size:15px;color:var(--textM);margin-top:4px">對標 GRI Standards・ISSB・TCFD・金管會規範</div>
 </div>'''
 
 def sr_notes():
@@ -479,8 +479,8 @@ def sr_notes():
         ("💡 撰寫原則","報告書應與年報/財報資訊一致，避免矛盾"),
     ]
     html="".join(f'''<div style="display:flex;gap:6px;padding:5px 0;border-bottom:1px dotted var(--border);align-items:flex-start">
-      <span style="font-size:13px;flex-shrink:0">{badge}</span>
-      <span style="font-size:13px;color:var(--text2);line-height:1.5">{text}</span>
+      <span style="font-size:16px;flex-shrink:0">{badge}</span>
+      <span style="font-size:16px;color:var(--text2);line-height:1.5">{text}</span>
     </div>''' for badge,text in notes)
     return f'''<div class="dash-card">
   <div class="dash-title">⚠️ 撰寫注意事項</div>
@@ -511,16 +511,16 @@ def sr_activities():
     html=""
     for title,color,activities in cats:
         items="".join(f'''<div style="display:flex;gap:6px;padding:4px 0;border-bottom:1px dotted var(--border);align-items:flex-start">
-          <span style="background:{color}22;color:{color};border-radius:4px;padding:1px 5px;font-size:11px;font-weight:700;flex-shrink:0;margin-top:2px">{freq}</span>
-          <span style="font-size:13px;color:var(--text2);line-height:1.4">{act}</span>
+          <span style="background:{color}22;color:{color};border-radius:4px;padding:1px 5px;font-size:14px;font-weight:700;flex-shrink:0;margin-top:2px">{freq}</span>
+          <span style="font-size:16px;color:var(--text2);line-height:1.4">{act}</span>
         </div>''' for freq,act in activities)
         html+=f'''<div style="margin-bottom:12px">
-          <div style="font-size:13px;font-weight:700;color:#fff;background:{color};padding:4px 10px;border-radius:6px;margin-bottom:6px">{title}</div>
+          <div style="font-size:16px;font-weight:700;color:#fff;background:{color};padding:4px 10px;border-radius:6px;margin-bottom:6px">{title}</div>
           {items}
         </div>'''
     return f'''<div class="dash-card">
   <div class="dash-title">🎯 員工ESG參與活動建議</div>
-  <div style="font-size:13px;color:var(--textM);margin-bottom:8px">從生活中落實，讓ESG成為企業文化</div>
+  <div style="font-size:16px;color:var(--textM);margin-bottom:8px">從生活中落實，讓ESG成為企業文化</div>
   {html}
 </div>'''
 
@@ -534,8 +534,8 @@ def news_summary_card(news, market):
         return ''
     bullets = ''.join(
         f'''<div style="display:flex;gap:8px;padding:5px 0;border-bottom:1px dotted var(--border);align-items:flex-start">
-          <span style="color:var(--g400);font-size:13px;flex-shrink:0">▸</span>
-          <span style="font-size:13px;color:var(--text2);line-height:1.5">{it["title"][:70]}{"…" if len(it["title"])>70 else ""}</span>
+          <span style="color:var(--g400);font-size:16px;flex-shrink:0">▸</span>
+          <span style="font-size:16px;color:var(--text2);line-height:1.5">{it["title"][:70]}{"…" if len(it["title"])>70 else ""}</span>
         </div>'''
         for it in all_items
     )
@@ -545,12 +545,18 @@ def news_summary_card(news, market):
         c = i.get('category','')
         hot_cats[c] = hot_cats.get(c,0)+1
     top3 = sorted(hot_cats.items(), key=lambda x:-x[1])[:3]
-    tags = ''.join(f'<span class="tag" style="font-size:11px">🔥 {c}（{n}則）</span>' for c,n in top3)
-    return f'''<div style="background:var(--g900);border-radius:var(--r-lg);padding:1rem 1.25rem;margin-bottom:1.25rem;color:#fff">
-  <div style="font-size:13px;font-weight:700;margin-bottom:4px;color:var(--g400)">📡 本週 ESG 新聞摘要</div>
-  <div style="font-size:11px;color:rgba(255,255,255,.5);margin-bottom:10px">{DATE_STR} · 共 {len(news)+len(market)} 則 · 台灣在地 {tw_cnt} 則 · 熱門議題：{tags}</div>
-  {bullets}
-</div>'''
+    tags = ''.join(f'<span class="tag" style="font-size:14px">🔥 {c}（{n}則）</span>' for c,n in top3)
+    return (
+        f'<div style="background:#ffffff;border:2px solid var(--g400);border-left:7px solid var(--g600);border-radius:var(--r-lg);padding:1.4rem 1.6rem;margin-bottom:1.5rem;box-shadow:0 3px 16px rgba(45,122,79,.12)">' +
+        f'<div style="display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:10px">' +
+        f'<span style="background:var(--g900);color:var(--g400);padding:5px 16px;border-radius:20px;font-size:16px;font-weight:700">📡 本週 ESG 新聞摘要</span>' +
+        f'<span style="font-size:15px;color:var(--textM)">{DATE_STR} · {len(news)+len(market)} 則</span>' +
+        f'<span style="margin-left:auto;font-size:15px;color:var(--textM)">台灣在地 {tw_cnt} 則</span>' +
+        f'</div>' +
+        f'<div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px">{tags}</div>' +
+        f'<div style="border-top:2px solid var(--g100);padding-top:10px">{bullets}</div>' +
+        f'</div>'
+    )
 
 def dashboard_esg_radar():
     """ESG 法規雷達：追蹤六大法規最新進度"""
@@ -567,24 +573,24 @@ def dashboard_esg_radar():
         rows += (
             f'<div style="padding:8px 0;border-bottom:1px dotted var(--border)">' +
             f'<div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">' +
-            f'<span style="font-size:11px">{dot}</span>' +
-            f'<a href="{url}" target="_blank" style="font-weight:700;font-size:13px;color:var(--g600);text-decoration:none">{code} ↗</a>' +
-            f'<span style="font-size:11px;color:var(--textM)">{name}</span>' +
-            f'<span style="margin-left:auto;font-size:11px;font-weight:600;color:{color}">{status}</span>' +
+            f'<span style="font-size:14px">{dot}</span>' +
+            f'<a href="{url}" target="_blank" style="font-weight:700;font-size:16px;color:var(--g600);text-decoration:none">{code} ↗</a>' +
+            f'<span style="font-size:14px;color:var(--textM)">{name}</span>' +
+            f'<span style="margin-left:auto;font-size:14px;font-weight:600;color:{color}">{status}</span>' +
             f'</div>' +
             f'<div style="background:#e5e7eb;border-radius:20px;height:6px;margin-bottom:3px">' +
             f'<div style="width:{pct}%;height:100%;background:{color};border-radius:20px"></div>' +
             f'</div>' +
-            f'<div style="font-size:11px;color:var(--textM)">{note}</div>' +
+            f'<div style="font-size:14px;color:var(--textM)">{note}</div>' +
             f'</div>'
         )
-    legend = '<div style="display:flex;gap:10px;margin-top:8px;font-size:11px">'
+    legend = '<div style="display:flex;gap:10px;margin-top:8px;font-size:14px">'
     for col,lbl in [("#22c55e","已生效/採用"),("#f59e0b","過渡/推動中"),("#ef4444","即將強制")]:
         legend += f'<span><span style="display:inline-block;width:10px;height:10px;background:{col};border-radius:50%;margin-right:3px"></span>{lbl}</span>'
     legend += '</div>'
     return f'''<div class="dash-card">
   <div class="dash-title">📡 ESG 法規雷達</div>
-  <div style="font-size:11px;color:var(--textM);margin-bottom:8px">追蹤全球六大 ESG 法規最新進度</div>
+  <div style="font-size:14px;color:var(--textM);margin-bottom:8px">追蹤全球六大 ESG 法規最新進度</div>
   {rows}
   {legend}
 </div>'''
@@ -593,20 +599,20 @@ def dashboard_carbon_sim():
     """碳費試算器（互動式 JavaScript）"""
     return '''<div class="dash-card">
   <div class="dash-title">🧮 碳費試算 Carbon Fee Simulator</div>
-  <div style="font-size:11px;color:var(--textM);margin-bottom:10px">輸入年度排放量，試算不同費率下的碳費成本</div>
+  <div style="font-size:14px;color:var(--textM);margin-bottom:10px">輸入年度排放量，試算不同費率下的碳費成本</div>
 
   <div style="margin-bottom:10px">
-    <label style="font-size:12px;font-weight:600;color:var(--text1);display:block;margin-bottom:4px">
+    <label style="font-size:15px;font-weight:600;color:var(--text1);display:block;margin-bottom:4px">
       年排放量（公噸 CO₂e）
     </label>
     <input id="cf-input" type="number" min="0" value="25000"
-      style="width:100%;padding:8px 10px;border:1px solid var(--border);border-radius:var(--r-md);font-size:14px;outline:none;background:var(--bg)"
+      style="width:100%;padding:8px 10px;border:1px solid var(--border);border-radius:var(--r-md);font-size:18px;outline:none;background:var(--bg)"
       oninput="calcCF()">
   </div>
 
   <div id="cf-results" style="display:flex;flex-direction:column;gap:6px"></div>
 
-  <div style="margin-top:10px;padding:8px;background:var(--bg);border-radius:var(--r-md);font-size:11px;color:var(--textM)">
+  <div style="margin-top:10px;padding:8px;background:var(--bg);border-radius:var(--r-md);font-size:14px;color:var(--textM)">
     💡 2025年正式開徵 · 門檻：年排放 ≥ 25,000 tCO₂e<br>優惠費率 NT$50/t 需提交自主減量計畫通過環境部審查<br>資料來源：環境部 2025 公告
   </div>
 </div>
@@ -633,13 +639,13 @@ function calcCF() {
       : fee.toFixed(0);
     html += '<div style="border:1px solid var(--border);border-left:3px solid '+r[2]+';border-radius:6px;padding:7px 10px">';
     html += '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">';
-    html += '<span style="font-size:12px;font-weight:600">'+r[0]+'</span>';
-    html += '<span style="font-size:14px;font-weight:700;color:'+r[2]+'">NT$'+feeStr+'</span>';
+    html += '<span style="font-size:15px;font-weight:600">'+r[0]+'</span>';
+    html += '<span style="font-size:18px;font-weight:700;color:'+r[2]+'">NT$'+feeStr+'</span>';
     html += '</div>';
     html += '<div style="background:#e5e7eb;border-radius:20px;height:5px;margin-bottom:3px">';
     html += '<div style="width:'+pct+'%;height:100%;background:'+r[2]+';border-radius:20px"></div>';
     html += '</div>';
-    html += '<div style="font-size:11px;color:var(--textM)">NT$'+r[1]+'/t · '+r[3]+'</div>';
+    html += '<div style="font-size:14px;color:var(--textM)">NT$'+r[1]+'/t · '+r[3]+'</div>';
     html += '</div>';
   }
   document.getElementById("cf-results").innerHTML = html;
@@ -651,9 +657,13 @@ window.onload = calcCF;
 # ── 高優先新增：產業專屬 ESG 資訊 ─────────────────────────────────────────────
 
 def dashboard_re100():
-    grid_data = [("2021","509","#ef4444",100),("2022","495","#f59e0b",97),("2023","490","#f59e0b",96),("2024","~482","#f97316",95)]
+    grid_data = [("2021","509","#ef4444",55),("2022","495","#f59e0b",48),("2023","490","#f59e0b",44),("2024","~482","#f97316",38)]
     grid_bars = "".join(
-        f'<div style="text-align:center;flex:1"><div style="font-size:11px;font-weight:600;color:{c};margin-bottom:2px">{v}</div><div style="height:{h}px;background:{c};border-radius:3px 3px 0 0;margin:0 2px;opacity:.85"></div><div style="font-size:11px;color:var(--textM);margin-top:2px">{y}</div></div>'
+        f'<div style="text-align:center;flex:1">'
+        f'<div style="font-size:16px;font-weight:700;color:{c};margin-bottom:4px">{v}</div>'
+        f'<div style="height:{h}px;background:{c};border-radius:4px 4px 0 0;margin:0 3px"></div>'
+        f'<div style="font-size:15px;color:var(--textM);margin-top:4px;font-weight:500">{y}</div>'
+        f'</div>'
         for y,v,c,h in grid_data)
     companies = [
         ("台積電","2030: 40%","2050: RE100",40,"#2d7a4f"),
@@ -664,15 +674,15 @@ def dashboard_re100():
         ("台達電","2030:100%","RE100已加入",100,"#2d7a4f"),
     ]
     co_rows = "".join(
-        f'<tr><td style="font-size:12px;font-weight:600">{n}</td><td style="font-size:11px;color:{c};font-weight:600">{t}</td><td style="font-size:11px;color:var(--textM)">{g}</td><td style="width:70px"><div style="background:#e5e7eb;border-radius:4px;height:6px"><div style="width:{p}%;height:100%;background:{c};border-radius:4px"></div></div></td></tr>'
+        f'<tr><td style="font-size:15px;font-weight:600">{n}</td><td style="font-size:14px;color:{c};font-weight:600">{t}</td><td style="font-size:14px;color:var(--textM)">{g}</td><td style="width:70px"><div style="background:#e5e7eb;border-radius:4px;height:6px"><div style="width:{p}%;height:100%;background:{c};border-radius:4px"></div></div></td></tr>'
         for n,t,g,p,c in companies)
     return ('<div class="dash-card"><div class="dash-title">⚡ 台灣電網碳強度 + RE100 進度</div>'
-        +'<div style="font-size:11px;color:var(--textM);margin-bottom:6px">電網碳強度（gCO₂/kWh）— 資料來源：台電年報</div>'
-        +f'<div style="display:flex;align-items:flex-end;height:70px;border-bottom:1px solid var(--border);margin-bottom:8px">{grid_bars}</div>'
-        +'<div style="font-size:11px;color:var(--textM);margin-bottom:6px">🏭 主要半導體/光電廠商 RE100 承諾進度</div>'
+        +'<div style="font-size:14px;color:var(--textM);margin-bottom:6px">電網碳強度（gCO₂/kWh）— 資料來源：台電年報</div>'
+        +f'<div style="display:flex;align-items:flex-end;height:90px;border-bottom:1px solid var(--border);margin-bottom:8px;padding:0 4px">{grid_bars}</div>'
+        +'<div style="font-size:14px;color:var(--textM);margin-bottom:6px">🏭 主要半導體/光電廠商 RE100 承諾進度</div>'
         +'<table class="dash-table"><thead><tr><th>企業</th><th>2030目標</th><th>長期承諾</th><th>進度</th></tr></thead>'
         +f'<tbody>{co_rows}</tbody></table>'
-        +'<div style="font-size:11px;color:var(--textM);margin-top:6px">資料來源：各企業永續報告書（2023–2024）· RE100官網</div></div>')
+        +'<div style="font-size:14px;color:var(--textM);margin-top:6px">資料來源：各企業永續報告書（2023–2024）· RE100官網</div></div>')
 
 def dashboard_fgas():
     gases = [
@@ -681,27 +691,27 @@ def dashboard_fgas():
         ("NF₃","22,400","20,800","18,500","#3b82f6","Remote Plasma"),
         ("SF₆","8,900","7,600","6,200","#ef4444","蝕刻/腔體清洗"),
     ]
-    rows = "".join(f'<tr><td style="font-size:12px;font-weight:600;color:{c}">{g}</td><td style="text-align:right;font-size:12px">{v21}</td><td style="text-align:right;font-size:12px">{v22}</td><td style="text-align:right;font-size:12px;color:#22c55e">{v23}↓</td><td style="font-size:11px;color:var(--textM)">{note}</td></tr>' for g,v21,v22,v23,c,note in gases)
+    rows = "".join(f'<tr><td style="font-size:15px;font-weight:600;color:{c}">{g}</td><td style="text-align:right;font-size:15px">{v21}</td><td style="text-align:right;font-size:15px">{v22}</td><td style="text-align:right;font-size:15px;color:#22c55e">{v23}↓</td><td style="font-size:14px;color:var(--textM)">{note}</td></tr>' for g,v21,v22,v23,c,note in gases)
     techs = [("🔥","熱氧化裂解器","CF₄削減>90%，台積電已全面導入"),("🌀","Remote Plasma Cleaning","NF₃削減>95%，取代in-situ清洗"),("♻️","PFCs替代化學品","C₃F₆等低GWP替代品，部分製程導入中")]
-    t_html = "".join(f'<div style="display:flex;gap:8px;padding:4px 0;border-bottom:1px dotted var(--border)"><span style="font-size:14px">{icon}</span><div><div style="font-size:12px;font-weight:600">{name}</div><div style="font-size:11px;color:var(--textM)">{note}</div></div></div>' for icon,name,note in techs)
+    t_html = "".join(f'<div style="display:flex;gap:8px;padding:4px 0;border-bottom:1px dotted var(--border)"><span style="font-size:18px">{icon}</span><div><div style="font-size:15px;font-weight:600">{name}</div><div style="font-size:14px;color:var(--textM)">{note}</div></div></div>' for icon,name,note in techs)
     return ('<div class="dash-card"><div class="dash-title">🧪 半導體 F-Gas 排放趨勢與削減</div>'
-        +'<div style="font-size:11px;color:var(--textM);margin-bottom:6px">台灣半導體業年排放量（公噸CO₂e）— 環保署盤查平台</div>'
+        +'<div style="font-size:14px;color:var(--textM);margin-bottom:6px">台灣半導體業年排放量（公噸CO₂e）— 環保署盤查平台</div>'
         +'<table class="dash-table"><thead><tr><th>氣體</th><th>2021</th><th>2022</th><th>2023</th><th>主要用途</th></tr></thead>'
         +f'<tbody>{rows}</tbody></table>'
-        +'<div style="font-size:11px;font-weight:600;color:var(--g600);margin:8px 0 4px">🔧 主要削減技術</div>'
-        +f'{t_html}<div style="font-size:11px;color:var(--textM);margin-top:6px">資料來源：環保署盤查平台 · SEMI F47/F98 · 2024</div></div>')
+        +'<div style="font-size:14px;font-weight:600;color:var(--g600);margin:8px 0 4px">🔧 主要削減技術</div>'
+        +f'{t_html}<div style="font-size:14px;color:var(--textM);margin-top:6px">資料來源：環保署盤查平台 · SEMI F47/F98 · 2024</div></div>')
 
 def dashboard_water():
     parks = [("竹科","3,180","87.2","#ef4444","高度水壓力"),("中科","1,850","82.5","#f59e0b","中高水壓力"),("南科","5,240","91.3","#ef4444","高度水壓力"),("竹南","620","79.8","#f59e0b","中高水壓力")]
-    rows = "".join(f'<tr><td style="font-size:12px;font-weight:600">{n}</td><td style="text-align:right;font-size:12px">{v}</td><td style="text-align:right;font-size:12px">{r}%</td><td><span style="background:{c}22;color:{c};padding:1px 6px;border-radius:4px;font-size:10px;font-weight:600">{risk}</span></td></tr>' for n,v,r,c,risk in parks)
+    rows = "".join(f'<tr><td style="font-size:15px;font-weight:600">{n}</td><td style="text-align:right;font-size:15px">{v}</td><td style="text-align:right;font-size:15px">{r}%</td><td><span style="background:{c}22;color:{c};padding:1px 6px;border-radius:4px;font-size:12px;font-weight:600">{risk}</span></td></tr>' for n,v,r,c,risk in parks)
     trends = [("台積電","用水強度↓18%（2020→2023）","2030目標↓30%"),("聯電","廢水回收率 94.2%","2023年"),("友達","節水 280萬m³","2023年"),("群創","純水回收率 85%","業界領先")]
-    t_html = "".join(f'<div style="display:flex;gap:6px;padding:4px 0;border-bottom:1px dotted var(--border);font-size:12px"><span style="font-weight:600;min-width:50px">{co}</span><span style="color:var(--textM);flex:1">{kpi}</span><span style="color:var(--g600);font-weight:600">{yr}</span></div>' for co,kpi,yr in trends)
+    t_html = "".join(f'<div style="display:flex;gap:6px;padding:4px 0;border-bottom:1px dotted var(--border);font-size:15px"><span style="font-weight:600;min-width:50px">{co}</span><span style="color:var(--textM);flex:1">{kpi}</span><span style="color:var(--g600);font-weight:600">{yr}</span></div>' for co,kpi,yr in trends)
     return ('<div class="dash-card"><div class="dash-title">💧 水資源壓力指標</div>'
-        +'<div style="font-size:11px;color:var(--textM);margin-bottom:6px">科學園區用水量（萬m³/年）+ WRI Aqueduct 水壓力評估</div>'
+        +'<div style="font-size:14px;color:var(--textM);margin-bottom:6px">科學園區用水量（萬m³/年）+ WRI Aqueduct 水壓力評估</div>'
         +'<table class="dash-table"><thead><tr><th>園區</th><th>用水(萬m³)</th><th>回收率</th><th>風險評級</th></tr></thead>'
         +f'<tbody>{rows}</tbody></table>'
-        +'<div style="font-size:11px;font-weight:600;color:var(--g600);margin:8px 0 4px">🏭 主要廠商節水成效（2023）</div>'
-        +f'{t_html}<div style="font-size:11px;color:var(--textM);margin-top:6px">資料來源：科學園區管理局年報2023 · WRI Aqueduct 3.0 · 各企業永續報告書</div></div>')
+        +'<div style="font-size:14px;font-weight:600;color:var(--g600);margin:8px 0 4px">🏭 主要廠商節水成效（2023）</div>'
+        +f'{t_html}<div style="font-size:14px;color:var(--textM);margin-top:6px">資料來源：科學園區管理局年報2023 · WRI Aqueduct 3.0 · 各企業永續報告書</div></div>')
 
 def dashboard_uflpa():
     timeline = [
@@ -711,14 +721,14 @@ def dashboard_uflpa():
         ("2024/09","台廠因應完成","台灣面板/模組廠完成供應鏈溯源文件","#22c55e"),
         ("2025","持續監控","預計擴大至電池、多晶矽材料全鏈追溯","#f97316"),
     ]
-    t_html = "".join(f'<div style="display:flex;gap:8px;padding:5px 0;border-bottom:1px dotted var(--border);align-items:flex-start"><span style="background:{c}22;color:{c};padding:1px 6px;border-radius:4px;font-size:10px;font-weight:600;flex-shrink:0;white-space:nowrap">{d}</span><div><div style="font-size:12px;font-weight:600">{t}</div><div style="font-size:11px;color:var(--textM)">{n}</div></div></div>' for d,t,n,c in timeline)
+    t_html = "".join(f'<div style="display:flex;gap:8px;padding:5px 0;border-bottom:1px dotted var(--border);align-items:flex-start"><span style="background:{c}22;color:{c};padding:1px 6px;border-radius:4px;font-size:12px;font-weight:600;flex-shrink:0;white-space:nowrap">{d}</span><div><div style="font-size:15px;font-weight:600">{t}</div><div style="font-size:14px;color:var(--textM)">{n}</div></div></div>' for d,t,n,c in timeline)
     impacts = [("多晶矽","新疆佔全球供應約35%（2024）↓（較2022年55%降低）"),("台廠","AUO、Innolux、元晶已建立溯源機制完成認證"),("因應工具","IECRE、SolarTrace第三方溯源驗證為主流方案")]
-    i_html = "".join(f'<div style="padding:4px 0;border-bottom:1px dotted var(--border);font-size:12px"><span style="font-weight:600;color:var(--g600)">{k}</span>：<span style="color:var(--textM)">{v}</span></div>' for k,v in impacts)
+    i_html = "".join(f'<div style="padding:4px 0;border-bottom:1px dotted var(--border);font-size:15px"><span style="font-weight:600;color:var(--g600)">{k}</span>：<span style="color:var(--textM)">{v}</span></div>' for k,v in impacts)
     return ('<div class="dash-card"><div class="dash-title">🇺🇸 UFLPA 多晶矽溯源追蹤</div>'
-        +'<div style="font-size:11px;color:var(--textM);margin-bottom:8px">維吾爾強迫勞動預防法 · 光電業供應鏈合規關鍵</div>'
+        +'<div style="font-size:14px;color:var(--textM);margin-bottom:8px">維吾爾強迫勞動預防法 · 光電業供應鏈合規關鍵</div>'
         +f'{t_html}'
-        +'<div style="font-size:11px;font-weight:600;color:var(--g600);margin:8px 0 4px">📊 台灣光電產業影響現況</div>'
-        +f'{i_html}<div style="font-size:11px;color:var(--textM);margin-top:6px">資料來源：U.S. CBP · UFLPA Entity List · SEMI · 2024</div></div>')
+        +'<div style="font-size:14px;font-weight:600;color:var(--g600);margin:8px 0 4px">📊 台灣光電產業影響現況</div>'
+        +f'{i_html}<div style="font-size:14px;color:var(--textM);margin-top:6px">資料來源：U.S. CBP · UFLPA Entity List · SEMI · 2024</div></div>')
 
 def dashboard_pfas():
     timeline = [
@@ -728,16 +738,16 @@ def dashboard_pfas():
         ("2025","替代品供應","DuPont/Chemours替代品，但價格高3–5倍","#f59e0b"),
         ("2026–27","預計決議","歐盟最終限制範圍與豁免清單，半導體業關注","#f97316"),
     ]
-    t_html = "".join(f'<div style="display:flex;gap:8px;padding:5px 0;border-bottom:1px dotted var(--border);align-items:flex-start"><span style="background:{c}22;color:{c};padding:1px 6px;border-radius:4px;font-size:10px;font-weight:600;flex-shrink:0;white-space:nowrap">{d}</span><div><div style="font-size:12px;font-weight:600">{t}</div><div style="font-size:11px;color:var(--textM)">{n}</div></div></div>' for d,t,n,c in timeline)
+    t_html = "".join(f'<div style="display:flex;gap:8px;padding:5px 0;border-bottom:1px dotted var(--border);align-items:flex-start"><span style="background:{c}22;color:{c};padding:1px 6px;border-radius:4px;font-size:12px;font-weight:600;flex-shrink:0;white-space:nowrap">{d}</span><div><div style="font-size:15px;font-weight:600">{t}</div><div style="font-size:14px;color:var(--textM)">{n}</div></div></div>' for d,t,n,c in timeline)
     uses = [("蝕刻液","HF系含氟蝕刻液","高風險，替代方案研發中"),("CMP漿料","含PFAS研磨液添加劑","部分已有替代品"),("光阻溶劑","含氟溶劑","低替代性，爭取豁免"),("密封材料","PTFE/FKM管件","短期難以替代")]
-    u_html = "".join(f'<tr><td style="font-size:12px;font-weight:600">{t}</td><td style="font-size:11px">{m}</td><td style="font-size:11px;color:var(--textM)">{s}</td></tr>' for t,m,s in uses)
+    u_html = "".join(f'<tr><td style="font-size:15px;font-weight:600">{t}</td><td style="font-size:14px">{m}</td><td style="font-size:14px;color:var(--textM)">{s}</td></tr>' for t,m,s in uses)
     return ('<div class="dash-card"><div class="dash-title">⚗️ PFAS 法規追蹤（半導體製程關鍵）</div>'
-        +'<div style="font-size:11px;color:var(--textM);margin-bottom:8px">歐盟全氟化合物通用限制 · 預計2026–2027年決議</div>'
+        +'<div style="font-size:14px;color:var(--textM);margin-bottom:8px">歐盟全氟化合物通用限制 · 預計2026–2027年決議</div>'
         +f'{t_html}'
-        +'<div style="font-size:11px;font-weight:600;color:var(--g600);margin:8px 0 4px">🔬 半導體製程主要PFAS使用點</div>'
+        +'<div style="font-size:14px;font-weight:600;color:var(--g600);margin:8px 0 4px">🔬 半導體製程主要PFAS使用點</div>'
         +'<table class="dash-table"><thead><tr><th>用途</th><th>主要物質</th><th>替代可行性</th></tr></thead>'
         +f'<tbody>{u_html}</tbody></table>'
-        +'<div style="font-size:11px;color:var(--textM);margin-top:6px">資料來源：EU ECHA · SEMI PFAS Task Force · 2024</div></div>')
+        +'<div style="font-size:14px;color:var(--textM);margin-top:6px">資料來源：EU ECHA · SEMI PFAS Task Force · 2024</div></div>')
 
 def dashboard_critical_minerals():
     controls = [
@@ -748,15 +758,15 @@ def dashboard_critical_minerals():
         ("銻 Sb","2024/09","出口禁止","半導體摻雜/阻燃","中國佔全球48%","#ef4444"),
         ("稀土","2024/12","出口管制","馬達/電子元件","中國精煉90%+","#ef4444"),
     ]
-    rows = "".join(f'<tr><td style="font-size:12px;font-weight:600;color:{c}">{m}</td><td style="font-size:11px">{d}</td><td><span style="background:{c}22;color:{c};padding:1px 5px;border-radius:4px;font-size:10px">{ctrl}</span></td><td style="font-size:11px;color:var(--textM)">{app}</td></tr>' for m,d,ctrl,app,supply,c in controls)
+    rows = "".join(f'<tr><td style="font-size:15px;font-weight:600;color:{c}">{m}</td><td style="font-size:14px">{d}</td><td><span style="background:{c}22;color:{c};padding:1px 5px;border-radius:4px;font-size:12px">{ctrl}</span></td><td style="font-size:14px;color:var(--textM)">{app}</td></tr>' for m,d,ctrl,app,supply,c in controls)
     risks = [("台積電","CoWoS封裝稀土材料，已啟動多元化採購"),("光電廠","GaN/GaAs基板鎵來源，尋求加拿大/德國供應商"),("面板廠","ITO靶材，台灣光洋科等已備足半年庫存")]
-    r_html = "".join(f'<div style="padding:4px 0;border-bottom:1px dotted var(--border);font-size:12px"><span style="font-weight:600;color:var(--g600)">{co}</span><br><span style="color:var(--textM)">{action}</span></div>' for co,action in risks)
+    r_html = "".join(f'<div style="padding:4px 0;border-bottom:1px dotted var(--border);font-size:15px"><span style="font-weight:600;color:var(--g600)">{co}</span><br><span style="color:var(--textM)">{action}</span></div>' for co,action in risks)
     return ('<div class="dash-card"><div class="dash-title">⛏️ 關鍵礦物供應鏈風險</div>'
-        +'<div style="font-size:11px;color:var(--textM);margin-bottom:6px">中國出口管制時序 · 直接衝擊半導體與光電供應鏈</div>'
+        +'<div style="font-size:14px;color:var(--textM);margin-bottom:6px">中國出口管制時序 · 直接衝擊半導體與光電供應鏈</div>'
         +'<table class="dash-table"><thead><tr><th>礦物</th><th>管制日</th><th>措施</th><th>主要應用</th></tr></thead>'
         +f'<tbody>{rows}</tbody></table>'
-        +'<div style="font-size:11px;font-weight:600;color:var(--g600);margin:8px 0 4px">🏭 台灣廠商因應動態</div>'
-        +f'{r_html}<div style="font-size:11px;color:var(--textM);margin-top:6px">資料來源：中國商務部公告 · IEA Critical Minerals 2024 · 工研院</div></div>')
+        +'<div style="font-size:14px;font-weight:600;color:var(--g600);margin:8px 0 4px">🏭 台灣廠商因應動態</div>'
+        +f'{r_html}<div style="font-size:14px;color:var(--textM);margin-top:6px">資料來源：中國商務部公告 · IEA Critical Minerals 2024 · 工研院</div></div>')
 
 
 # ── 本週法規變動 ───────────────────────────────────────────────────────────────
@@ -798,23 +808,23 @@ def dashboard_reg_updates():
         cards += (
             f'<div style="border:1px solid var(--border);border-left:4px solid {u["color"]};border-radius:8px;padding:10px 12px;margin-bottom:8px">' +
             f'<div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">' +
-            f'<span style="font-size:16px">{u["icon"]}</span>' +
-            f'<span style="font-weight:700;font-size:13px;color:{u["color"]}">{u["reg"]}</span>' +
-            f'<span style="background:{u["color"]}22;color:{u["color"]};padding:1px 8px;border-radius:20px;font-size:11px;margin-left:auto">{u["status"]}</span>' +
+            f'<span style="font-size:20px">{u["icon"]}</span>' +
+            f'<span style="font-weight:700;font-size:16px;color:{u["color"]}">{u["reg"]}</span>' +
+            f'<span style="background:{u["color"]}22;color:{u["color"]};padding:1px 8px;border-radius:20px;font-size:14px;margin-left:auto">{u["status"]}</span>' +
             f'</div>' +
-            f'<p style="font-size:12px;color:var(--text2);line-height:1.6;margin-bottom:6px">{u["update"]}</p>' +
+            f'<p style="font-size:15px;color:var(--text2);line-height:1.6;margin-bottom:6px">{u["update"]}</p>' +
             f'<div style="display:flex;gap:8px;align-items:center">' +
-            f'<span style="font-size:11px;color:var(--textM)">半導體：</span><span style="background:{semi_col}22;color:{semi_col};padding:1px 6px;border-radius:4px;font-size:11px;font-weight:600">{u["semi_impact"]}</span>' +
-            f'<span style="font-size:11px;color:var(--textM)">光電：</span><span style="background:{solar_col}22;color:{solar_col};padding:1px 6px;border-radius:4px;font-size:11px;font-weight:600">{u["solar_impact"]}</span>' +
-            f'<a href="{u["url"]}" target="_blank" style="margin-left:auto;font-size:11px;color:var(--g600);text-decoration:none;font-weight:500">官方資訊 →</a>' +
+            f'<span style="font-size:14px;color:var(--textM)">半導體：</span><span style="background:{semi_col}22;color:{semi_col};padding:1px 6px;border-radius:4px;font-size:14px;font-weight:600">{u["semi_impact"]}</span>' +
+            f'<span style="font-size:14px;color:var(--textM)">光電：</span><span style="background:{solar_col}22;color:{solar_col};padding:1px 6px;border-radius:4px;font-size:14px;font-weight:600">{u["solar_impact"]}</span>' +
+            f'<a href="{u["url"]}" target="_blank" style="margin-left:auto;font-size:14px;color:var(--g600);text-decoration:none;font-weight:500">官方資訊 →</a>' +
             f'</div></div>'
         )
     return (
         '<div class="dash-card">' +
         '<div class="dash-title">📰 本週法規變動</div>' +
-        '<div style="font-size:11px;color:var(--textM);margin-bottom:10px">CBAM · 台灣碳費 · CSRD · ISSB 最新進度</div>' +
+        '<div style="font-size:14px;color:var(--textM);margin-bottom:10px">CBAM · 台灣碳費 · CSRD · ISSB 最新進度</div>' +
         cards +
-        '<div style="font-size:11px;color:var(--textM);margin-top:4px">每週自動更新 · 點擊「官方資訊」查閱原始文件</div>' +
+        '<div style="font-size:14px;color:var(--textM);margin-top:4px">每週自動更新 · 點擊「官方資訊」查閱原始文件</div>' +
         '</div>'
     )
 
@@ -858,33 +868,33 @@ def dashboard_impact_analysis():
     html = ""
     for a in analyses:
         semi = a["semi"]; solar = a["solar"]
-        semi_pts = "".join(f'<li style="font-size:12px;color:var(--text2);padding:2px 0">{p}</li>' for p in semi["points"])
-        solar_pts = "".join(f'<li style="font-size:12px;color:var(--text2);padding:2px 0">{p}</li>' for p in solar["points"])
+        semi_pts = "".join(f'<li style="font-size:15px;color:var(--text2);padding:2px 0">{p}</li>' for p in semi["points"])
+        solar_pts = "".join(f'<li style="font-size:15px;color:var(--text2);padding:2px 0">{p}</li>' for p in solar["points"])
         html += (
             f'<div style="border:1px solid var(--border);border-radius:8px;margin-bottom:10px;overflow:hidden">' +
             f'<div style="background:{a["color"]}15;padding:8px 12px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px">' +
-            f'<span style="font-size:16px">{a["icon"]}</span>' +
-            f'<span style="font-weight:700;font-size:13px">{a["reg"]}</span>' +
+            f'<span style="font-size:20px">{a["icon"]}</span>' +
+            f'<span style="font-weight:700;font-size:16px">{a["reg"]}</span>' +
             f'</div>' +
             f'<div style="display:grid;grid-template-columns:1fr 1fr;gap:0">' +
             f'<div style="padding:8px 10px;border-right:1px solid var(--border)">' +
             f'<div style="display:flex;align-items:center;gap:6px;margin-bottom:5px">' +
-            f'<span style="font-size:13px">🔬</span><span style="font-size:12px;font-weight:600">半導體業</span>' +
-            f'<span style="background:{semi["color"]}22;color:{semi["color"]};padding:1px 6px;border-radius:4px;font-size:11px;font-weight:600;margin-left:auto">{semi["level"]}</span>' +
+            f'<span style="font-size:16px">🔬</span><span style="font-size:15px;font-weight:600">半導體業</span>' +
+            f'<span style="background:{semi["color"]}22;color:{semi["color"]};padding:1px 6px;border-radius:4px;font-size:14px;font-weight:600;margin-left:auto">{semi["level"]}</span>' +
             f'</div><ul style="list-style:disc;padding-left:14px">{semi_pts}</ul></div>' +
             f'<div style="padding:8px 10px">' +
             f'<div style="display:flex;align-items:center;gap:6px;margin-bottom:5px">' +
-            f'<span style="font-size:13px">☀️</span><span style="font-size:12px;font-weight:600">光電業</span>' +
-            f'<span style="background:{solar["color"]}22;color:{solar["color"]};padding:1px 6px;border-radius:4px;font-size:11px;font-weight:600;margin-left:auto">{solar["level"]}</span>' +
+            f'<span style="font-size:16px">☀️</span><span style="font-size:15px;font-weight:600">光電業</span>' +
+            f'<span style="background:{solar["color"]}22;color:{solar["color"]};padding:1px 6px;border-radius:4px;font-size:14px;font-weight:600;margin-left:auto">{solar["level"]}</span>' +
             f'</div><ul style="list-style:disc;padding-left:14px">{solar_pts}</ul></div>' +
             f'</div></div>'
         )
     return (
         '<div class="dash-card">' +
         '<div class="dash-title">🤖 ESG 監管影響分析</div>' +
-        '<div style="font-size:11px;color:var(--textM);margin-bottom:10px">主要法規對半導體業 🔬 與光電業 ☀️ 的影響評估</div>' +
+        '<div style="font-size:14px;color:var(--textM);margin-bottom:10px">主要法規對半導體業 🔬 與光電業 ☀️ 的影響評估</div>' +
         html +
-        '<div style="font-size:11px;color:var(--textM);margin-top:4px">分析基準：各企業公開永續報告書 · 環境部公告 · 2025年</div>' +
+        '<div style="font-size:14px;color:var(--textM);margin-top:4px">分析基準：各企業公開永續報告書 · 環境部公告 · 2025年</div>' +
         '</div>'
     )
 
@@ -928,23 +938,23 @@ def dashboard_action_items():
     for a in actions:
         items_html = "".join(
             f'<div style="display:flex;gap:8px;padding:4px 0;border-bottom:1px dotted var(--border);align-items:flex-start">' +
-            f'<span style="font-size:14px;flex-shrink:0">{icon}</span>' +
-            f'<div><div style="font-size:12px;font-weight:600">{title}</div>' +
-            f'<div style="font-size:11px;color:var(--textM)">{desc}</div></div></div>'
+            f'<span style="font-size:18px;flex-shrink:0">{icon}</span>' +
+            f'<div><div style="font-size:15px;font-weight:600">{title}</div>' +
+            f'<div style="font-size:14px;color:var(--textM)">{desc}</div></div></div>'
             for icon,title,desc in a["items"]
         )
         html += (
             f'<div style="border:1px solid var(--border);border-left:4px solid {a["color"]};border-radius:8px;padding:10px 12px;margin-bottom:8px">' +
             f'<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">' +
-            f'<span style="font-size:16px">{a["icon"]}</span>' +
-            f'<span style="font-weight:700;font-size:13px">{a["title"]}</span>' +
-            f'<span style="background:#ef444422;color:#ef4444;padding:1px 8px;border-radius:4px;font-size:11px;font-weight:600;margin-left:auto">⏰ {a["urgent"]}</span>' +
+            f'<span style="font-size:20px">{a["icon"]}</span>' +
+            f'<span style="font-weight:700;font-size:16px">{a["title"]}</span>' +
+            f'<span style="background:#ef444422;color:#ef4444;padding:1px 8px;border-radius:4px;font-size:14px;font-weight:600;margin-left:auto">⏰ {a["urgent"]}</span>' +
             f'</div>{items_html}</div>'
         )
     return (
         '<div class="dash-card">' +
         '<div class="dash-title">✅ ESG 行動建議</div>' +
-        '<div style="font-size:11px;color:var(--textM);margin-bottom:10px">企業應準備的文件與行動清單</div>' +
+        '<div style="font-size:14px;color:var(--textM);margin-bottom:10px">企業應準備的文件與行動清單</div>' +
         html +
         '</div>'
     )
@@ -978,19 +988,19 @@ def dashboard_glossary():
             cats[cat_name] = []
         cats[cat_name].append(item)
     
-    html = '<div id="glossary-search" style="margin-bottom:10px"><input id="gls-input" type="text" placeholder="🔍 搜尋名詞...（輸入縮寫或中文）" oninput="filterGls()" style="width:100%;padding:7px 10px;border:1px solid var(--border);border-radius:var(--r-md);font-size:13px;outline:none;background:var(--bg)"></div>'
+    html = '<div id="glossary-search" style="margin-bottom:10px"><input id="gls-input" type="text" placeholder="🔍 搜尋名詞...（輸入縮寫或中文）" oninput="filterGls()" style="width:100%;padding:7px 10px;border:1px solid var(--border);border-radius:var(--r-md);font-size:16px;outline:none;background:var(--bg)"></div>'
     html += '<div id="gls-list">'
     for cat_name, items in cats.items():
         color = items[0][5]
-        html += f'<div style="margin-bottom:8px"><div style="font-size:11px;font-weight:600;color:{color};background:{color}15;padding:2px 8px;border-radius:4px;margin-bottom:4px">{cat_name}</div>'
+        html += f'<div style="margin-bottom:8px"><div style="font-size:14px;font-weight:600;color:{color};background:{color}15;padding:2px 8px;border-radius:4px;margin-bottom:4px">{cat_name}</div>'
         for abbr,en,zh,desc,cat,col in items:
             html += (
                 f'<div class="gls-item" style="padding:5px 0;border-bottom:1px dotted var(--border)">' +
                 f'<div style="display:flex;align-items:center;gap:6px">' +
-                f'<span style="font-weight:700;font-size:13px;color:{col}">{abbr}</span>' +
-                f'<span style="font-size:11px;color:var(--textM)">{zh}</span>' +
+                f'<span style="font-weight:700;font-size:16px;color:{col}">{abbr}</span>' +
+                f'<span style="font-size:14px;color:var(--textM)">{zh}</span>' +
                 f'</div>' +
-                f'<div style="font-size:11px;color:var(--text2);margin-top:1px">{desc}</div>' +
+                f'<div style="font-size:14px;color:var(--text2);margin-top:1px">{desc}</div>' +
                 f'</div>'
             )
         html += '</div>'
@@ -1006,7 +1016,7 @@ function filterGls(){
     return (
         '<div class="dash-card">' +
         '<div class="dash-title">📖 ESG 名詞庫</div>' +
-        '<div style="font-size:11px;color:var(--textM);margin-bottom:8px">CBAM · CSRD · IFRS S1/S2 · TNFD · SBTi · Scope 1/2/3 共16個核心名詞</div>' +
+        '<div style="font-size:14px;color:var(--textM);margin-bottom:8px">CBAM · CSRD · IFRS S1/S2 · TNFD · SBTi · Scope 1/2/3 共16個核心名詞</div>' +
         html +
         '</div>'
     )
@@ -1054,93 +1064,93 @@ def build_html(news, market, reg_news):
 <style>
 :root{{--g900:#0d2e1a;--g800:#1a4d2e;--g600:#2d7a4f;--g400:#4caf80;--g100:#e8f5ee;--amber:#f59e0b;--amberL:#fef3c7;--blue:#2563eb;--blueL:#dbeafe;--text1:#1a2e1f;--text2:#4b6358;--textM:#7a9488;--border:#c8e6d4;--bg:#f5fbf7;--card:#fff;--r-lg:14px;--r-md:8px}}
 *,*::before,*::after{{box-sizing:border-box;margin:0;padding:0}}
-body{{font-family:'Noto Sans TC',system-ui,sans-serif;background:var(--bg);color:var(--text1);line-height:1.7;font-size:17px}}
-.header{{background:var(--g900);color:#fff;padding:2rem 2rem 1.5rem;text-align:center}}
-.h-badge{{display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:20px;padding:3px 12px;font-size:13px;letter-spacing:.06em;margin-bottom:.75rem}}
-.header h1{{font-size:clamp(1.8rem,3.6vw,2.64rem);font-weight:700;margin-bottom:.3rem}}
+body{{font-family:'Noto Sans TC',system-ui,sans-serif;background:var(--bg);color:var(--text1);line-height:1.7;font-size:21px}}
+.header{{background:linear-gradient(135deg,var(--g900) 0%,#0a3d20 60%,#1a4d2e 100%);color:#fff;padding:2rem 2rem 1.5rem;text-align:center;border-bottom:4px solid var(--g400)}}
+.h-badge{{display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:20px;padding:3px 12px;font-size:16px;letter-spacing:.06em;margin-bottom:.75rem}}
+.header h1{{font-size:clamp(2.0rem,4vw,3.0rem);font-weight:700;margin-bottom:.3rem}}
 .header h1 span{{color:var(--g400)}}
-.header p{{opacity:.7;margin-bottom:1.5rem;font-size:16px}}
+.header p{{opacity:.7;margin-bottom:1.5rem;font-size:20px}}
 .stats{{display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap}}
 .stat{{text-align:center}}
-.stat-n{{font-size:1.92rem;font-weight:700;color:var(--g400);line-height:1}}
-.stat-l{{font-size:12px;opacity:.6;margin-top:2px}}
-.free-badge{{display:inline-block;background:rgba(76,175,128,.2);border:1px solid var(--g400);color:var(--g400);border-radius:20px;padding:2px 10px;font-size:13px;margin-top:.75rem}}
+.stat-n{{font-size:2.4rem;font-weight:700;color:var(--g400);line-height:1}}
+.stat-l{{font-size:15px;opacity:.6;margin-top:2px}}
+.free-badge{{display:inline-block;background:rgba(76,175,128,.2);border:1px solid var(--g400);color:var(--g400);border-radius:20px;padding:2px 10px;font-size:16px;margin-top:.75rem}}
 nav{{position:sticky;top:0;z-index:100;background:var(--card);border-bottom:1px solid var(--border);padding:0 1.5rem;display:flex;overflow-x:auto;box-shadow:0 2px 8px rgba(0,0,0,.06)}}
-nav a{{display:flex;align-items:center;gap:5px;padding:.75rem 1rem;color:var(--text2);text-decoration:none;font-size:16px;font-weight:500;white-space:nowrap;border-bottom:3px solid transparent;transition:.2s}}
+nav a{{display:flex;align-items:center;gap:5px;padding:.75rem 1rem;color:var(--text2);text-decoration:none;font-size:20px;font-weight:500;white-space:nowrap;border-bottom:3px solid transparent;transition:.2s}}
 nav a:hover{{color:var(--g600);border-color:var(--g400)}}
-.layout{{display:grid;grid-template-columns:1fr 340px 300px;gap:1.5rem;max-width:1440px;margin:0 auto;padding:1.5rem}}
-@media(max-width:1100px){{.layout{{grid-template-columns:1fr 320px}}}}
-@media(max-width:800px){{.layout{{grid-template-columns:1fr}}}}
+.layout{{display:grid;grid-template-columns:1fr 400px 360px;gap:1.25rem;max-width:100%;margin:0;padding:1.25rem 1.5rem}}
+@media(max-width:1300px){{.layout{{grid-template-columns:1fr 380px}}}}
+@media(max-width:900px){{.layout{{grid-template-columns:1fr}}}}
 .section{{margin-bottom:2.5rem}}
 .sec-head{{display:flex;align-items:center;gap:10px;margin-bottom:1.25rem;padding-bottom:.75rem;border-bottom:2px solid var(--g100)}}
-.sec-icon{{width:38px;height:38px;background:var(--g100);border-radius:var(--r-md);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}}
-.sec-head h2{{font-size:1.32rem;font-weight:700;color:var(--g900)}}
-.sec-head p{{font-size:13px;color:var(--textM);margin-top:1px}}
-.sec-cnt{{margin-left:auto;background:var(--g100);color:var(--g600);padding:2px 8px;border-radius:20px;font-size:13px;font-weight:600;white-space:nowrap}}
+.sec-icon{{width:38px;height:38px;background:var(--g100);border-radius:var(--r-md);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}}
+.sec-head h2{{font-size:1.65rem;font-weight:700;color:var(--g900)}}
+.sec-head p{{font-size:16px;color:var(--textM);margin-top:1px}}
+.sec-cnt{{margin-left:auto;background:var(--g100);color:var(--g600);padding:2px 8px;border-radius:20px;font-size:16px;font-weight:600;white-space:nowrap}}
 .cards{{display:flex;flex-direction:column;gap:.75rem}}
 .card{{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--g400);border-radius:var(--r-lg);padding:1rem 1.25rem;display:flex;gap:.75rem;transition:.15s}}
 .card:hover{{transform:translateY(-1px);box-shadow:0 4px 16px rgba(45,122,79,.1)}}
 .reg-card{{border-left-color:var(--blue)}}
-.card-rank{{font-size:1.44rem;font-weight:800;color:var(--g100);min-width:36px;text-align:center;padding-top:1px;line-height:1}}
+.card-rank{{font-size:1.8rem;font-weight:800;color:var(--g100);min-width:36px;text-align:center;padding-top:1px;line-height:1}}
 .card-body{{flex:1;min-width:0}}
 .card-meta{{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:6px}}
-.card-title{{font-size:1.08rem;font-weight:600;color:var(--text1);margin-bottom:4px;line-height:1.4}}
-.card-summary{{font-size:14px;color:var(--text2);line-height:1.6}}
-.card-footer{{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:8px;font-size:13px;color:var(--textM)}}
+.card-title{{font-size:1.35rem;font-weight:600;color:var(--text1);margin-bottom:4px;line-height:1.4}}
+.card-summary{{font-size:18px;color:var(--text2);line-height:1.6}}
+.card-footer{{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:8px;font-size:16px;color:var(--textM)}}
 .areas{{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}}
-.badge{{display:inline-block;padding:2px 7px;border-radius:20px;font-size:12px;font-weight:600}}
+.badge{{display:inline-block;padding:2px 7px;border-radius:20px;font-size:15px;font-weight:600}}
 .badge-green{{background:var(--g100);color:var(--g600)}}
 .badge-amber{{background:var(--amberL);color:#92400e}}
 .badge-gray{{background:#f1efeb;color:#5f5e5a}}
 .badge-blue{{background:var(--blueL);color:var(--blue)}}
-.tag{{display:inline-block;padding:2px 7px;background:var(--bg);border:1px solid var(--border);border-radius:20px;font-size:12px;color:var(--text2)}}
-.read-more{{color:var(--g600);text-decoration:none;font-weight:500;font-size:13px;margin-left:auto;white-space:nowrap}}
+.tag{{display:inline-block;padding:2px 7px;background:var(--bg);border:1px solid var(--border);border-radius:20px;font-size:15px;color:var(--text2)}}
+.read-more{{color:var(--g600);text-decoration:none;font-weight:500;font-size:16px;margin-left:auto;white-space:nowrap}}
 .read-more:hover{{text-decoration:underline}}
-.divider{{display:flex;align-items:center;gap:8px;margin:1rem 0;font-size:13px;color:var(--textM)}}
+.divider{{display:flex;align-items:center;gap:8px;margin:1rem 0;font-size:16px;color:var(--textM)}}
 .divider::before,.divider::after{{content:'';flex:1;border-top:1px dashed var(--border)}}
-.empty{{text-align:center;padding:1.5rem;color:var(--textM);font-size:16px}}
+.empty{{text-align:center;padding:1.5rem;color:var(--textM);font-size:20px}}
 .right-col{{display:flex;flex-direction:column;gap:1rem}}
-.dash-card{{background:var(--card);border:1px solid var(--border);border-radius:var(--r-lg);padding:1rem 1.1rem}}
-.dash-title{{font-size:1.02rem;font-weight:700;color:var(--g900);margin-bottom:.75rem;padding-bottom:.5rem;border-bottom:1px solid var(--g100)}}
+.dash-card{{background:var(--card);border:1px solid var(--border);border-radius:var(--r-lg);padding:1.25rem 1.35rem}}
+.dash-title{{font-size:1.27rem;font-weight:700;color:var(--g900);margin-bottom:.75rem;padding-bottom:.5rem;border-bottom:1px solid var(--g100)}}
 .dash-stats{{display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem;text-align:center}}
 .ds-item{{background:var(--bg);border-radius:var(--r-md);padding:.5rem .25rem}}
-.ds-n{{font-size:1.68rem;font-weight:700;color:var(--g600);line-height:1}}
-.ds-l{{font-size:12px;color:var(--textM);margin-top:2px}}
-.dash-table{{width:100%;border-collapse:collapse;font-size:14px}}
-.dash-table th{{background:var(--bg);padding:4px 6px;text-align:left;font-size:12px;color:var(--textM);font-weight:600;border-bottom:1px solid var(--border)}}
+.ds-n{{font-size:2.1rem;font-weight:700;color:var(--g600);line-height:1}}
+.ds-l{{font-size:15px;color:var(--textM);margin-top:2px}}
+.dash-table{{width:100%;border-collapse:collapse;font-size:18px}}
+.dash-table th{{background:var(--bg);padding:4px 6px;text-align:left;font-size:15px;color:var(--textM);font-weight:600;border-bottom:1px solid var(--border)}}
 .dash-table td{{padding:5px 6px;border-bottom:1px solid var(--g100);vertical-align:middle}}
 .dash-table tr:last-child td{{border-bottom:none}}
-.rank-badge{{display:inline-block;background:var(--g100);color:var(--g600);border-radius:4px;padding:1px 5px;font-size:12px;font-weight:700}}
+.rank-badge{{display:inline-block;background:var(--g100);color:var(--g600);border-radius:4px;padding:1px 5px;font-size:15px;font-weight:700}}
 .ncv-tabs{{display:flex;flex-direction:column;gap:.5rem}}
-.ncv-label{{font-size:12px;font-weight:600;color:var(--g600);background:var(--g100);padding:2px 8px;border-radius:4px;display:inline-block;margin-bottom:3px}}
+.ncv-label{{font-size:15px;font-weight:600;color:var(--g600);background:var(--g100);padding:2px 8px;border-radius:4px;display:inline-block;margin-bottom:3px}}
 .bar-chart{{display:flex;align-items:flex-end;gap:6px;height:140px;padding:4px 0}}
 .bar-item{{display:flex;flex-direction:column;align-items:center;flex:1;position:relative;cursor:default}}
 .bar-item:hover .bar-tooltip{{display:block}}
-.bar-tooltip{{display:none;position:absolute;bottom:100%;left:50%;transform:translateX(-50%);background:var(--g900);color:#fff;padding:4px 8px;border-radius:6px;font-size:12px;white-space:nowrap;z-index:10;margin-bottom:4px}}
+.bar-tooltip{{display:none;position:absolute;bottom:100%;left:50%;transform:translateX(-50%);background:var(--g900);color:#fff;padding:4px 8px;border-radius:6px;font-size:15px;white-space:nowrap;z-index:10;margin-bottom:4px}}
 .bar-fill{{width:100%;border-radius:4px 4px 0 0;min-height:4px}}
-.bar-val{{font-size:11px;font-weight:600;color:var(--text2);margin-top:2px}}
-.bar-yr{{font-size:11px;color:var(--textM)}}
-footer{{background:var(--g900);color:rgba(255,255,255,.6);text-align:center;padding:1.5rem;font-size:14px;margin-top:1rem}}
+.bar-val{{font-size:14px;font-weight:600;color:var(--text2);margin-top:2px}}
+.bar-yr{{font-size:14px;color:var(--textM)}}
+footer{{background:var(--g900);color:rgba(255,255,255,.6);text-align:center;padding:1.5rem;font-size:18px;margin-top:1rem}}
 footer strong{{color:rgba(255,255,255,.9)}}
 </style>
 </head>
 <body>
 <header class="header">
-  <div class="h-badge">🌿 ESG WEEKLY INTELLIGENCE</div>
-  <h1>全球 <span>ESG</span> 週報</h1>
-  <p>{DATE_STR} &nbsp;·&nbsp; {WEEK_STR} &nbsp;·&nbsp; 全球 + 台灣</p>
+  <div class="h-badge">🏛 ESG REGULATORY INTELLIGENCE PLATFORM</div>
+  <h1>🏛 <span>ESG</span> Regulatory Intelligence</h1>
+  <p>{DATE_STR} &nbsp;·&nbsp; {WEEK_STR} &nbsp;·&nbsp; 半導體業 · 光電業</p>
   <div class="stats">
     <div class="stat"><div class="stat-n">{len(news)}</div><div class="stat-l">精選新聞</div></div>
     <div class="stat"><div class="stat-n">{len(market)}</div><div class="stat-l">市場消息</div></div>
     <div class="stat"><div class="stat-n">{len(STATIC_REGULATIONS)}</div><div class="stat-l">追蹤法規</div></div>
     <div class="stat"><div class="stat-n">{len(reg_news)}</div><div class="stat-l">法規動態</div></div>
   </div>
-  <div class="free-badge">✅ 完全免費 · 連結已驗證可直接閱讀</div>
+  <div class="free-badge">✅ 免費開放 · 每週自動更新 · 半導體業 · 光電業 ESG 合規情報</div>
 </header>
 <nav>
-  <a href="#news">📰 全球+台灣新聞</a>
+  <a href="#news">📰 ESG NEWS</a>
   <a href="#market">📊 市場消息</a>
-  <a href="#regulations">🏛 法規追蹤</a>
+  <a href="#regulations">⚖️ 法規動態</a>
 </nav>
 <div class="layout">
   <div class="left-col">
@@ -1164,7 +1174,7 @@ footer strong{{color:rgba(255,255,255,.9)}}
     <section class="section" id="regulations">
       <div class="sec-head">
         <div class="sec-icon">🏛</div>
-        <div><h2>⚖️ 法規動態</h2><p>全球與台灣重要法規持續追蹤 · 含官方連結</p></div>
+        <div><h2>⚖️ 法規動態</h2><p>全球與台灣法規持續追蹤 · 點擊法規名稱連結官方資訊</p></div>
         <span class="sec-cnt">{len(STATIC_REGULATIONS)+len(reg_news)} 項</span>
       </div>
       <div class="divider">📋 重要法規持續追蹤</div>
