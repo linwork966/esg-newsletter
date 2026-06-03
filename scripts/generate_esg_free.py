@@ -16,6 +16,17 @@ WEEK_STR = NOW.strftime("第%W週")
 FILENAME = NOW.strftime("%Y-%m-%d")
 
 BLOCKED_DOMAINS = ['esgtoday.com','ft.com','wsj.com','bloomberg.com','barrons.com']
+
+# 過濾低價值新聞：得獎、排名、公司內部宣傳
+NOISE_KEYWORDS = [
+    'award','wins the','named as','honored','ranked','recognition award',
+    'best company','top 100','most admired','index inclusion','joins the',
+    '得獎','獲獎','榮獲','獲選','榜單','百大','最佳企業','列入指數',
+    'earns prominent','earns award','receives award','wins award',
+]
+def is_noise(title):
+    tl = title.lower()
+    return any(k in tl for k in NOISE_KEYWORDS)
 HEADERS = {"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"}
 
 NEWS_FEEDS = [
@@ -189,6 +200,7 @@ def fetch_feed(cfg, max_items=6):
             summary=clean_html(e.get('summary','') or e.get('description',''))
             link=e.get('link','')
             if not title or len(title)<10: continue
+            if is_noise(title): continue  # 過濾得獎/排名類新聞
             checked+=1
             print(f"    檢查: {title[:50]}")
             if not is_valid_url(link): continue
@@ -543,27 +555,29 @@ def news_summary_card(news, market):
 def dashboard_esg_radar():
     """ESG 法規雷達：追蹤六大法規最新進度"""
     regs = [
-        ("CBAM","歐盟碳邊境","🟡","過渡期末段（2025）","2026/01正式徵費，台灣業者準備中","78","#f59e0b"),
-        ("CSRD","歐盟永續報告","🟠","Omnibus鬆綁提案","2025年歐盟擬縮小適用範圍，仍待定","70","#f97316"),
-        ("IFRS S1/S2","ISSB準則","🟢","台灣2027強制接軌","金管會2024宣布接軌路徑，上市櫃準備","82","#22c55e"),
-        ("台灣碳費","碳費制度","🔴","2025已正式開徵","NT$300/t，首批約500家業者繳費","95","#ef4444"),
-        ("SBTi","科學減量目標","🟡","2024更新認證標準","新版1.5°C路徑更嚴格，申請仍熱絡","58","#f59e0b"),
-        ("歐盟ETS","歐盟碳交易","🟢","Phase 4進行中","2024均價約€55–65，2026 CBAM連動","85","#22c55e"),
+        ("CBAM","歐盟碳邊境","🟡","過渡期末段","2026/01正式徵費，台灣業者準備中","78","#f59e0b","https://taxation-customs.ec.europa.eu/carbon-border-adjustment-mechanism_en"),
+        ("CSRD","歐盟永續報告","🟠","Omnibus審議中","擬縮至1千家，2026年明朗化","70","#f97316","https://finance.ec.europa.eu/capital-markets-union-and-financial-markets/company-reporting-and-auditing/company-reporting/corporate-sustainability-reporting_en"),
+        ("IFRS S1/S2","ISSB準則","🟢","台灣2027強制","金管會2024宣布接軌路徑","82","#22c55e","https://www.ifrs.org/issued-standards/ifrs-sustainability-disclosure-standards/"),
+        ("台灣碳費","碳費制度","🔴","2025已開徵","NT$300/t，首批500家繳費","95","#ef4444","https://www.epa.gov.tw/climate/4B9E1E3855AAEE81"),
+        ("SBTi","科學減量目標","🟡","2024更新標準","新1.5°C路徑更嚴，全球7000+申請","58","#f59e0b","https://sciencebasedtargets.org/companies-taking-action"),
+        ("歐盟ETS","歐盟碳交易","🟢","Phase 4進行中","2024均價€55–65，CBAM連動","85","#22c55e","https://climate.ec.europa.eu/eu-action/eu-emissions-trading-system-eu-ets_en"),
     ]
     rows = ""
-    for code, name, dot, status, note, pct, color in regs:
-        rows += f'''<div style="padding:8px 0;border-bottom:1px dotted var(--border)">
-          <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">
-            <span style="font-size:11px">{dot}</span>
-            <span style="font-weight:700;font-size:13px;color:var(--text1)">{code}</span>
-            <span style="font-size:11px;color:var(--textM)">{name}</span>
-            <span style="margin-left:auto;font-size:11px;font-weight:600;color:{color}">{status}</span>
-          </div>
-          <div style="background:#e5e7eb;border-radius:20px;height:6px;margin-bottom:3px">
-            <div style="width:{pct}%;height:100%;background:{color};border-radius:20px"></div>
-          </div>
-          <div style="font-size:11px;color:var(--textM)">{note}</div>
-        </div>'''
+    for code, name, dot, status, note, pct, color, url in regs:
+        rows += (
+            f'<div style="padding:8px 0;border-bottom:1px dotted var(--border)">' +
+            f'<div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">' +
+            f'<span style="font-size:11px">{dot}</span>' +
+            f'<a href="{url}" target="_blank" style="font-weight:700;font-size:13px;color:var(--g600);text-decoration:none">{code} ↗</a>' +
+            f'<span style="font-size:11px;color:var(--textM)">{name}</span>' +
+            f'<span style="margin-left:auto;font-size:11px;font-weight:600;color:{color}">{status}</span>' +
+            f'</div>' +
+            f'<div style="background:#e5e7eb;border-radius:20px;height:6px;margin-bottom:3px">' +
+            f'<div style="width:{pct}%;height:100%;background:{color};border-radius:20px"></div>' +
+            f'</div>' +
+            f'<div style="font-size:11px;color:var(--textM)">{note}</div>' +
+            f'</div>'
+        )
     legend = '<div style="display:flex;gap:10px;margin-top:8px;font-size:11px">'
     for col,lbl in [("#22c55e","已生效/採用"),("#f59e0b","過渡/推動中"),("#ef4444","即將強制")]:
         legend += f'<span><span style="display:inline-block;width:10px;height:10px;background:{col};border-radius:50%;margin-right:3px"></span>{lbl}</span>'
@@ -744,6 +758,259 @@ def dashboard_critical_minerals():
         +'<div style="font-size:11px;font-weight:600;color:var(--g600);margin:8px 0 4px">🏭 台灣廠商因應動態</div>'
         +f'{r_html}<div style="font-size:11px;color:var(--textM);margin-top:6px">資料來源：中國商務部公告 · IEA Critical Minerals 2024 · 工研院</div></div>')
 
+
+# ── 本週法規變動 ───────────────────────────────────────────────────────────────
+def dashboard_reg_updates():
+    updates = [
+        {
+            "reg":"CBAM","color":"#f59e0b","icon":"🌍",
+            "status":"過渡期末段","date":"2025年持續",
+            "update":"歐盟執委會確認2026/01正式徵費時程不變。過渡期最後一份季度申報截止2025/07/31，出口商需完成產品碳含量計算與文件準備。",
+            "semi_impact":"中等","solar_impact":"高度",
+            "url":"https://taxation-customs.ec.europa.eu/carbon-border-adjustment-mechanism_en"
+        },
+        {
+            "reg":"台灣碳費","color":"#ef4444","icon":"🇹🇼",
+            "status":"已開徵","date":"2025年第一季",
+            "update":"環境部公告首批約500家業者納管名單，2025Q1完成排放量申報。自主減量計畫審查進入第二批，截止2025/06/30。優惠費率NT$50/t需通過減量路徑審查。",
+            "semi_impact":"高度","solar_impact":"中等",
+            "url":"https://www.epa.gov.tw/climate/4B9E1E3855AAEE81"
+        },
+        {
+            "reg":"歐盟CSRD","color":"#f97316","icon":"🇪🇺",
+            "status":"Omnibus審議中","date":"2025年",
+            "update":"歐洲議會2025年4月通過一讀：擬將強制適用企業從5萬家縮至1千家（資本額5億歐元以上）。中小型供應商仍受大型客戶要求影響，台灣出口廠商需持續關注客戶ESG查核要求。",
+            "semi_impact":"中等","solar_impact":"中等",
+            "url":"https://finance.ec.europa.eu/capital-markets-union-and-financial-markets/company-reporting-and-auditing/company-reporting/corporate-sustainability-reporting_en"
+        },
+        {
+            "reg":"台灣ISSB接軌","color":"#22c55e","icon":"📋",
+            "status":"準備期","date":"2025–2027",
+            "update":"金管會發布「永續發展行動方案2.0」，2026年資本額100億以上試行ISSB格式，2027年全面強制。建議企業2025年完成Gap分析並培訓ESG揭露團隊。",
+            "semi_impact":"高度","solar_impact":"高度",
+            "url":"https://cgc.twse.com.tw/frontEN/sustainReport"
+        },
+    ]
+    cards = ""
+    for u in updates:
+        semi_col = "#ef4444" if u["semi_impact"]=="高度" else "#f59e0b" if u["semi_impact"]=="中等" else "#22c55e"
+        solar_col = "#ef4444" if u["solar_impact"]=="高度" else "#f59e0b" if u["solar_impact"]=="中等" else "#22c55e"
+        cards += (
+            f'<div style="border:1px solid var(--border);border-left:4px solid {u["color"]};border-radius:8px;padding:10px 12px;margin-bottom:8px">' +
+            f'<div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">' +
+            f'<span style="font-size:16px">{u["icon"]}</span>' +
+            f'<span style="font-weight:700;font-size:13px;color:{u["color"]}">{u["reg"]}</span>' +
+            f'<span style="background:{u["color"]}22;color:{u["color"]};padding:1px 8px;border-radius:20px;font-size:11px;margin-left:auto">{u["status"]}</span>' +
+            f'</div>' +
+            f'<p style="font-size:12px;color:var(--text2);line-height:1.6;margin-bottom:6px">{u["update"]}</p>' +
+            f'<div style="display:flex;gap:8px;align-items:center">' +
+            f'<span style="font-size:11px;color:var(--textM)">半導體：</span><span style="background:{semi_col}22;color:{semi_col};padding:1px 6px;border-radius:4px;font-size:11px;font-weight:600">{u["semi_impact"]}</span>' +
+            f'<span style="font-size:11px;color:var(--textM)">光電：</span><span style="background:{solar_col}22;color:{solar_col};padding:1px 6px;border-radius:4px;font-size:11px;font-weight:600">{u["solar_impact"]}</span>' +
+            f'<a href="{u["url"]}" target="_blank" style="margin-left:auto;font-size:11px;color:var(--g600);text-decoration:none;font-weight:500">官方資訊 →</a>' +
+            f'</div></div>'
+        )
+    return (
+        '<div class="dash-card">' +
+        '<div class="dash-title">📰 本週法規變動</div>' +
+        '<div style="font-size:11px;color:var(--textM);margin-bottom:10px">CBAM · 台灣碳費 · CSRD · ISSB 最新進度</div>' +
+        cards +
+        '<div style="font-size:11px;color:var(--textM);margin-top:4px">每週自動更新 · 點擊「官方資訊」查閱原始文件</div>' +
+        '</div>'
+    )
+
+# ── AI 監管影響分析 ────────────────────────────────────────────────────────────
+def dashboard_impact_analysis():
+    analyses = [
+        {
+            "reg":"CBAM（歐盟碳邊境）","icon":"🌍","color":"#f59e0b",
+            "semi":{
+                "level":"中等影響","color":"#f59e0b",
+                "points":["半導體產品目前不在CBAM第一批清單（鋼鋁水泥電力）","間接影響：上游原材料（鋁封裝基板、鋼製設備）進口成本上升","2026年後若擴大至電子產品，影響將大幅提升","建議：追蹤原材料供應商碳含量，建立供應鏈碳數據庫"],
+            },
+            "solar":{
+                "level":"高度影響","color":"#ef4444",
+                "points":["太陽能模組出口歐盟若含高碳鋁框、鋼結構將受直接影響","多晶矽生產耗能高，碳含量高於歐盟競爭者","建議：優先完成光伏產品LCA碳足跡計算，準備CBAM申報文件","關注：歐盟擬2026年將太陽能模組納入CBAM範圍"],
+            }
+        },
+        {
+            "reg":"台灣碳費（2025已開徵）","icon":"🇹🇼","color":"#ef4444",
+            "semi":{
+                "level":"高度影響","color":"#ef4444",
+                "points":["台積電、聯電、世界先進等晶圓廠年排放均超25萬噸，碳費負擔重","以台積電2023年約500萬噸Scope 2計，一般費率年碳費達NT$15億+","建議：立即申請自主減量計畫，爭取NT$50/t優惠費率（可節省83%）","購買再生能源憑證降低Scope 2，同步降低碳費計算基礎"],
+            },
+            "solar":{
+                "level":"中等影響","color":"#f59e0b",
+                "points":["LED磊晶廠（如富采）排放量約40萬噸，年碳費約NT$1.2億（一般費率）","光電面板廠（友達/群創）年碳費可達NT$2–5億","建議：優先完成ISO 14064-1盤查，確認排放基準年","太陽能電池製造相對耗能較低，碳費壓力小於晶圓廠"],
+            }
+        },
+        {
+            "reg":"CSRD + ISSB接軌","icon":"📋","color":"#22c55e",
+            "semi":{
+                "level":"高度影響","color":"#ef4444",
+                "points":["台積電、日月光等為歐美大型企業供應商，間接受CSRD供應鏈條款約束","2027年台灣ISSB強制接軌，需揭露氣候財務影響（TCFD架構）","建議：2025年完成ISSB Gap分析，2026年試行揭露","設置ESG數據管理系統，確保數據可驗證性"],
+            },
+            "solar":{
+                "level":"中等影響","color":"#f59e0b",
+                "points":["光電廠歐洲客戶佔比較低，CSRD直接影響程度中等","UFLPA供應鏈溯源要求與CSRD盡職調查要求形成雙重壓力","建議：建立供應鏈ESG評估體系，優先針對歐美客戶","台灣ISSB接軌是主要合規壓力，需要提早準備"],
+            }
+        },
+    ]
+    html = ""
+    for a in analyses:
+        semi = a["semi"]; solar = a["solar"]
+        semi_pts = "".join(f'<li style="font-size:12px;color:var(--text2);padding:2px 0">{p}</li>' for p in semi["points"])
+        solar_pts = "".join(f'<li style="font-size:12px;color:var(--text2);padding:2px 0">{p}</li>' for p in solar["points"])
+        html += (
+            f'<div style="border:1px solid var(--border);border-radius:8px;margin-bottom:10px;overflow:hidden">' +
+            f'<div style="background:{a["color"]}15;padding:8px 12px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px">' +
+            f'<span style="font-size:16px">{a["icon"]}</span>' +
+            f'<span style="font-weight:700;font-size:13px">{a["reg"]}</span>' +
+            f'</div>' +
+            f'<div style="display:grid;grid-template-columns:1fr 1fr;gap:0">' +
+            f'<div style="padding:8px 10px;border-right:1px solid var(--border)">' +
+            f'<div style="display:flex;align-items:center;gap:6px;margin-bottom:5px">' +
+            f'<span style="font-size:13px">🔬</span><span style="font-size:12px;font-weight:600">半導體業</span>' +
+            f'<span style="background:{semi["color"]}22;color:{semi["color"]};padding:1px 6px;border-radius:4px;font-size:11px;font-weight:600;margin-left:auto">{semi["level"]}</span>' +
+            f'</div><ul style="list-style:disc;padding-left:14px">{semi_pts}</ul></div>' +
+            f'<div style="padding:8px 10px">' +
+            f'<div style="display:flex;align-items:center;gap:6px;margin-bottom:5px">' +
+            f'<span style="font-size:13px">☀️</span><span style="font-size:12px;font-weight:600">光電業</span>' +
+            f'<span style="background:{solar["color"]}22;color:{solar["color"]};padding:1px 6px;border-radius:4px;font-size:11px;font-weight:600;margin-left:auto">{solar["level"]}</span>' +
+            f'</div><ul style="list-style:disc;padding-left:14px">{solar_pts}</ul></div>' +
+            f'</div></div>'
+        )
+    return (
+        '<div class="dash-card">' +
+        '<div class="dash-title">🤖 ESG 監管影響分析</div>' +
+        '<div style="font-size:11px;color:var(--textM);margin-bottom:10px">主要法規對半導體業 🔬 與光電業 ☀️ 的影響評估</div>' +
+        html +
+        '<div style="font-size:11px;color:var(--textM);margin-top:4px">分析基準：各企業公開永續報告書 · 環境部公告 · 2025年</div>' +
+        '</div>'
+    )
+
+# ── ESG 行動建議 ───────────────────────────────────────────────────────────────
+def dashboard_action_items():
+    actions = [
+        {
+            "title":"CBAM 應準備文件清單","icon":"🌍","color":"#f59e0b","urgent":"2025/07前完成",
+            "items":[
+                ("📄","CBAM申報書","CE-3號表格，每季度申報一次，過渡期內免費"),
+                ("⚖️","產品碳含量計算","直接排放+間接排放，依歐盟CBAM法規計算方法"),
+                ("🏭","生產設施資料","製程說明、能源使用量、燃料類型與用量"),
+                ("💳","生產國碳價憑證","台灣已開徵碳費，可抵扣CBAM差額（需取得官方證明）"),
+                ("🔍","第三方查驗","建議2025年完成預查驗，確保2026年正式徵費前達標"),
+                ("📊","供應商碳數據","要求鋼鋁原材料供應商提供碳排放數據"),
+            ]
+        },
+        {
+            "title":"台灣碳費 優惠費率申請","icon":"🇹🇼","color":"#ef4444","urgent":"2025/06前申請",
+            "items":[
+                ("📋","排放量申報","完成2024年度溫室氣體排放量申報（ISO 14064-1）"),
+                ("📈","自主減量計畫","訂定2030年減碳目標、年度里程碑、具體措施"),
+                ("🌿","再生能源購買","採購T-REC再生能源憑證，可降低Scope 2計算基礎"),
+                ("✅","減量路徑審查","送環境部審查，通過後可適用NT$50/t優惠費率"),
+                ("💰","費用試算","使用平台碳費試算器，預估未來3年財務衝擊"),
+            ]
+        },
+        {
+            "title":"ISSB 接軌準備（2027前）","icon":"📋","color":"#22c55e","urgent":"2025年啟動",
+            "items":[
+                ("🔍","Gap分析","對照IFRS S1/S2要求，盤點現有揭露缺口"),
+                ("📊","氣候財務影響","完成TCFD四大架構揭露（治理/策略/風險管理/指標）"),
+                ("🌡","情境分析","至少完成1.5°C與2°C兩種氣候情境財務影響評估"),
+                ("💻","數據管理系統","建立ESG數據收集與驗證平台，確保數據可追溯"),
+                ("🎓","人員培訓","財務、法務、永續部門人員接受ISSB揭露培訓"),
+                ("🔒","第三方確信","提前接觸查驗機構，規劃有限確信→合理確信路徑"),
+            ]
+        },
+    ]
+    html = ""
+    for a in actions:
+        items_html = "".join(
+            f'<div style="display:flex;gap:8px;padding:4px 0;border-bottom:1px dotted var(--border);align-items:flex-start">' +
+            f'<span style="font-size:14px;flex-shrink:0">{icon}</span>' +
+            f'<div><div style="font-size:12px;font-weight:600">{title}</div>' +
+            f'<div style="font-size:11px;color:var(--textM)">{desc}</div></div></div>'
+            for icon,title,desc in a["items"]
+        )
+        html += (
+            f'<div style="border:1px solid var(--border);border-left:4px solid {a["color"]};border-radius:8px;padding:10px 12px;margin-bottom:8px">' +
+            f'<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">' +
+            f'<span style="font-size:16px">{a["icon"]}</span>' +
+            f'<span style="font-weight:700;font-size:13px">{a["title"]}</span>' +
+            f'<span style="background:#ef444422;color:#ef4444;padding:1px 8px;border-radius:4px;font-size:11px;font-weight:600;margin-left:auto">⏰ {a["urgent"]}</span>' +
+            f'</div>{items_html}</div>'
+        )
+    return (
+        '<div class="dash-card">' +
+        '<div class="dash-title">✅ ESG 行動建議</div>' +
+        '<div style="font-size:11px;color:var(--textM);margin-bottom:10px">企業應準備的文件與行動清單</div>' +
+        html +
+        '</div>'
+    )
+
+# ── ESG 名詞庫 ─────────────────────────────────────────────────────────────────
+def dashboard_glossary():
+    terms = [
+        ("CBAM","Carbon Border Adjustment Mechanism","碳邊境調整機制","歐盟對進口高碳產品徵收費用，防止碳洩漏。2026年正式生效。","歐盟法規","#f59e0b"),
+        ("CSRD","Corporate Sustainability Reporting Directive","企業永續報告指令","要求歐盟大型企業揭露永續資訊，取代NFRD。2025年Omnibus提案擬縮小範圍。","歐盟法規","#f97316"),
+        ("IFRS S1","IFRS Sustainability Disclosure Standard 1","永續相關財務資訊揭露","ISSB發布的通用永續揭露準則，要求企業揭露對財務有影響的永續風險與機會。","ISSB準則","#22c55e"),
+        ("IFRS S2","IFRS Sustainability Disclosure Standard 2","氣候相關揭露","ISSB發布的氣候專屬準則，涵蓋治理/策略/風險管理/指標目標四大主題。","ISSB準則","#22c55e"),
+        ("TNFD","Taskforce on Nature-related Financial Disclosures","自然相關財務揭露","仿照TCFD架構，要求企業揭露對自然生態系的依賴與影響。2023年正式發布。","新興框架","#8b5cf6"),
+        ("SBTi","Science Based Targets initiative","科學基礎減量目標","要求企業設定符合1.5°C氣候目標的減碳路徑，2024年更新更嚴格標準。","自願倡議","#3b82f6"),
+        ("TCFD","Task Force on Climate-related Financial Disclosures","氣候財務揭露","四大架構：治理/策略/風險管理/指標，已被IFRS S2全面納入。","揭露框架","#2563eb"),
+        ("GRI","Global Reporting Initiative","全球報告倡議","最廣泛使用的永續報告準則，GRI Standards適用於所有組織規模。","報告準則","#2d7a4f"),
+        ("CDP","Carbon Disclosure Project","碳揭露計畫","全球最大氣候揭露平台，評級A–D，台積電2023年獲A評級。","評級平台","#22c55e"),
+        ("PFAS","Per- and Polyfluoroalkyl Substances","全氟及多氟烷基物質","半導體製程廣泛使用的含氟化學品，歐盟擬2026–27年全面限制。","製程法規","#ef4444"),
+        ("UFLPA","Uyghur Forced Labor Prevention Act","維吾爾強迫勞動預防法","美國法案，源自新疆的商品一律扣押，光電業多晶矽溯源關鍵。","美國法規","#ef4444"),
+        ("RE100","Renewable Energy 100%","百分之百再生能源倡議","企業承諾2050年前達到100%使用再生能源，全球逾400家企業加入。","自願倡議","#22c55e"),
+        ("Scope 1","—","直接排放","企業自身擁有或控制的設施直接產生的溫室氣體排放。","溫室氣體","#2d7a4f"),
+        ("Scope 2","—","能源間接排放","購買電力、熱能、蒸汽的溫室氣體排放，半導體廠最大排放來源。","溫室氣體","#2d7a4f"),
+        ("Scope 3","—","其他間接排放","供應鏈上下游、員工通勤、產品使用等的排放，最難量化但佔比最高。","溫室氣體","#f59e0b"),
+        ("GWP","Global Warming Potential","全球暖化潛勢","衡量溫室氣體相對CO₂的增溫效果，SF₆的GWP高達25,200。","計算方法","#8b5cf6"),
+    ]
+    # 分組顯示
+    cats = {}
+    for item in terms:
+        c = item[5]  # category is index 4
+        cat_name = item[4]
+        if cat_name not in cats:
+            cats[cat_name] = []
+        cats[cat_name].append(item)
+    
+    html = '<div id="glossary-search" style="margin-bottom:10px"><input id="gls-input" type="text" placeholder="🔍 搜尋名詞...（輸入縮寫或中文）" oninput="filterGls()" style="width:100%;padding:7px 10px;border:1px solid var(--border);border-radius:var(--r-md);font-size:13px;outline:none;background:var(--bg)"></div>'
+    html += '<div id="gls-list">'
+    for cat_name, items in cats.items():
+        color = items[0][5]
+        html += f'<div style="margin-bottom:8px"><div style="font-size:11px;font-weight:600;color:{color};background:{color}15;padding:2px 8px;border-radius:4px;margin-bottom:4px">{cat_name}</div>'
+        for abbr,en,zh,desc,cat,col in items:
+            html += (
+                f'<div class="gls-item" style="padding:5px 0;border-bottom:1px dotted var(--border)">' +
+                f'<div style="display:flex;align-items:center;gap:6px">' +
+                f'<span style="font-weight:700;font-size:13px;color:{col}">{abbr}</span>' +
+                f'<span style="font-size:11px;color:var(--textM)">{zh}</span>' +
+                f'</div>' +
+                f'<div style="font-size:11px;color:var(--text2);margin-top:1px">{desc}</div>' +
+                f'</div>'
+            )
+        html += '</div>'
+    html += '</div>'
+    html += """<script>
+function filterGls(){
+  var q=document.getElementById('gls-input').value.toLowerCase();
+  document.querySelectorAll('.gls-item').forEach(function(el){
+    el.style.display=el.textContent.toLowerCase().includes(q)?'':'none';
+  });
+}
+</script>"""
+    return (
+        '<div class="dash-card">' +
+        '<div class="dash-title">📖 ESG 名詞庫</div>' +
+        '<div style="font-size:11px;color:var(--textM);margin-bottom:8px">CBAM · CSRD · IFRS S1/S2 · TNFD · SBTi · Scope 1/2/3 共16個核心名詞</div>' +
+        html +
+        '</div>'
+    )
+
 def build_html(news, market, reg_news):
     news_html     = '\n'.join(news_card(i) for i in news)
     market_html   = '\n'.join(news_card(i) for i in market)
@@ -753,28 +1020,29 @@ def build_html(news, market, reg_news):
     # 中欄：儀表板
     right_col = (
         dashboard_summary(news, market, reg_news) +
+        dashboard_reg_updates() +
+        dashboard_impact_analysis() +
         dashboard_esg_radar() +
-        dashboard_re100() +
-        dashboard_fgas() +
-        dashboard_water() +
         dashboard_carbon_sim() +
+        dashboard_re100() +
         dashboard_temp() +
         dashboard_cbam() +
         dashboard_tw_carbon_2027() +
-        dashboard_enterprise_response() +
-        dashboard_semi() +
-        dashboard_gwp() +
-        dashboard_ncv()
+        dashboard_enterprise_response()
     )
 
     # 右欄：永續報告書指引
     third_col = (
+        dashboard_action_items() +
+        dashboard_glossary() +
         dashboard_critical_minerals() +
         dashboard_uflpa() +
         dashboard_pfas() +
-        sr_checklist() +
-        sr_notes() +
-        sr_activities()
+        dashboard_fgas() +
+        dashboard_water() +
+        dashboard_semi() +
+        dashboard_gwp() +
+        dashboard_ncv()
     )
 
     return f"""<!DOCTYPE html>
@@ -782,7 +1050,7 @@ def build_html(news, market, reg_news):
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>ESG 每週報告 | {DATE_STR}</title>
+<title>ESG Regulatory Intelligence Platform | {DATE_STR}</title>
 <style>
 :root{{--g900:#0d2e1a;--g800:#1a4d2e;--g600:#2d7a4f;--g400:#4caf80;--g100:#e8f5ee;--amber:#f59e0b;--amberL:#fef3c7;--blue:#2563eb;--blueL:#dbeafe;--text1:#1a2e1f;--text2:#4b6358;--textM:#7a9488;--border:#c8e6d4;--bg:#f5fbf7;--card:#fff;--r-lg:14px;--r-md:8px}}
 *,*::before,*::after{{box-sizing:border-box;margin:0;padding:0}}
@@ -880,7 +1148,7 @@ footer strong{{color:rgba(255,255,255,.9)}}
     <section class="section" id="news">
       <div class="sec-head">
         <div class="sec-icon">📰</div>
-        <div><h2>ESG 全球 + 台灣新聞</h2><p>Google News 彙整，每筆連結皆已驗證可開啟</p></div>
+        <div><h2>ESG NEWS</h2><p>國際 + 台灣動態 · 自動過濾低價值資訊 · 連結已驗證</p></div>
         <span class="sec-cnt">{'Top '+str(len(news)) if news else '本週暫無'}</span>
       </div>
       <div class="cards">{news_html or '<div class="empty">本週暫無有效新聞連結</div>'}</div>
@@ -896,7 +1164,7 @@ footer strong{{color:rgba(255,255,255,.9)}}
     <section class="section" id="regulations">
       <div class="sec-head">
         <div class="sec-icon">🏛</div>
-        <div><h2>ESG 法規動態</h2><p>全球與台灣重要法規持續追蹤</p></div>
+        <div><h2>⚖️ 法規動態</h2><p>全球與台灣重要法規持續追蹤 · 含官方連結</p></div>
         <span class="sec-cnt">{len(STATIC_REGULATIONS)+len(reg_news)} 項</span>
       </div>
       <div class="divider">📋 重要法規持續追蹤</div>
