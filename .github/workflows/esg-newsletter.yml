@@ -2,8 +2,11 @@ name: ESG Weekly Newsletter (Free)
 
 on:
   schedule:
+    # 每週一 10:00 AM 台灣時間 (UTC+8) = UTC 02:00
     - cron: '0 2 * * 1'
-  workflow_dispatch:
+  workflow_dispatch:   # 手動觸發（測試用）
+  push:
+    branches: [main]   # ← 新增：每次 push 也觸發，確保 GitHub 不認為 repo 閒置
 
 permissions:
   contents: write
@@ -11,14 +14,20 @@ permissions:
 jobs:
   generate:
     runs-on: ubuntu-latest
+    timeout-minutes: 30    # ← 新增：避免卡死佔用額度
+
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
 
-      - uses: actions/setup-python@v5
+      - name: Setup Python
+        uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+          cache: 'pip'     # ← 新增：快取 pip 套件，加速執行
 
       - name: Install dependencies
         run: pip install feedparser requests
@@ -26,14 +35,25 @@ jobs:
       - name: Sync with remote
         run: |
           git config --global user.name "ESG Bot"
-          git config --global user.email "esg-bot@actions"
+          git config --global user.email "esg-bot@github-actions"
           git pull --rebase origin main
 
       - name: Generate ESG Report
         run: python scripts/generate_esg_free.py
 
-      - name: Commit and push
+      - name: Commit and push report
         run: |
           git add docs/
-          git diff --staged --quiet || git commit -m "📊 ESG Report $(date +'%Y-%m-%d')"
+          # 有變更才 commit（避免空 commit 錯誤）
+          git diff --staged --quiet || git commit -m "📊 ESG Report $(date +'%Y-%m-%d %H:%M UTC')"
           git push
+
+      # ↓ 新增：Keepalive — 每次執行都更新時間戳，防止 GitHub 停用排程
+      - name: Update keepalive timestamp
+        run: |
+          mkdir -p .github
+          echo "Last scheduled run: $(date -u '+%Y-%m-%d %H:%M UTC')" > .github/last-run.txt
+          echo "Taiwan time: $(TZ='Asia/Taipei' date '+%Y-%m-%d %H:%M %Z')" >> .github/last-run.txt
+          git add .github/last-run.txt
+          git commit -m "🔄 Keepalive $(date +'%Y-%m-%d')" || echo "No keepalive changes"
+          git push || echo "Push skipped"
