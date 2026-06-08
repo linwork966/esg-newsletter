@@ -1,0 +1,35 @@
+name: Keepalive (防止排程被停用)
+
+on:
+  schedule:
+    # 每週四執行一次（與主 workflow 錯開），確保每週都有活動
+    - cron: '0 10 * * 4'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+jobs:
+  keepalive:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Update activity timestamp
+        run: |
+          mkdir -p .github
+          echo "Keepalive: $(date -u '+%Y-%m-%d %H:%M UTC')" > .github/keepalive.txt
+          git config --global user.name "Keepalive Bot"
+          git config --global user.email "keepalive@github-actions"
+          git add .github/keepalive.txt
+          git commit -m "♻️ Keepalive $(date +'%Y-%m-%d')"
+          git push
+
+      # 重新啟用所有 workflow（預防被停用）
+      - name: Re-enable scheduled workflows
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          REPO="${{ github.repository }}"
+          gh workflow enable "esg-newsletter.yml" --repo "$REPO" || echo "Already enabled"
