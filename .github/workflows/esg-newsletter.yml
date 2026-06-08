@@ -4,9 +4,7 @@ on:
   schedule:
     # 每週一 10:00 AM 台灣時間 (UTC+8) = UTC 02:00
     - cron: '0 2 * * 1'
-  workflow_dispatch:   # 手動觸發（測試用）
-  push:
-    branches: [main]   # ← 新增：每次 push 也觸發，確保 GitHub 不認為 repo 閒置
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -14,20 +12,19 @@ permissions:
 jobs:
   generate:
     runs-on: ubuntu-latest
-    timeout-minutes: 30    # ← 新增：避免卡死佔用額度
+    timeout-minutes: 30
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-          cache: 'pip'     # ← 新增：快取 pip 套件，加速執行
+          # ← cache: 'pip' 已移除，這是失敗原因
 
       - name: Install dependencies
         run: pip install feedparser requests
@@ -44,16 +41,13 @@ jobs:
       - name: Commit and push report
         run: |
           git add docs/
-          # 有變更才 commit（避免空 commit 錯誤）
-          git diff --staged --quiet || git commit -m "📊 ESG Report $(date +'%Y-%m-%d %H:%M UTC')"
+          git diff --staged --quiet || git commit -m "📊 ESG Report $(date +'%Y-%m-%d')"
           git push
 
-      # ↓ 新增：Keepalive — 每次執行都更新時間戳，防止 GitHub 停用排程
       - name: Update keepalive timestamp
         run: |
           mkdir -p .github
-          echo "Last scheduled run: $(date -u '+%Y-%m-%d %H:%M UTC')" > .github/last-run.txt
-          echo "Taiwan time: $(TZ='Asia/Taipei' date '+%Y-%m-%d %H:%M %Z')" >> .github/last-run.txt
+          printf "Last run: $(date -u '+%Y-%m-%d %H:%M UTC')\nTW: $(TZ='Asia/Taipei' date '+%Y-%m-%d %H:%M %Z')\n" > .github/last-run.txt
           git add .github/last-run.txt
-          git commit -m "🔄 Keepalive $(date +'%Y-%m-%d')" || echo "No keepalive changes"
-          git push || echo "Push skipped"
+          git diff --staged --quiet || git commit -m "🔄 keepalive $(date +'%Y-%m-%d')"
+          git push || true
