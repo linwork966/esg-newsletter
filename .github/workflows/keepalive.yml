@@ -1,0 +1,28 @@
+name: Keepalive (防止排程被停用)
+
+on:
+  schedule:
+    # 每週四 10:00 AM 台灣時間 = UTC 02:00
+    - cron: '0 2 * * 4'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  keepalive:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Update timestamp
+        run: |
+          git config --global user.name "Keepalive Bot"
+          git config --global user.email "keepalive@github-actions"
+          mkdir -p .github
+          printf "Keepalive: $(date -u '+%Y-%m-%d %H:%M UTC')\n" > .github/keepalive.txt
+          git add .github/keepalive.txt
+          git diff --staged --quiet || git commit -m "♻️ keepalive $(date +'%Y-%m-%d')"
+          git push
